@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## About
+
+This is a my latest portfolio site using NextJS to display both my frontend development and UX design skills.
+
+## Tech
+
+- NextJS
+- Tailwind
+- GraphQL
 
 ## Getting Started
 
