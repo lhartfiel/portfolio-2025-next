@@ -6,34 +6,43 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-
     "moduleResolution": "node",
     "baseUrl": "./",
+    "paths": {
+      "@/apis/*": ["src/apis/*"],
+      "@/components/*": ["src/components/*"]
+    },
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "jsx": "react-jsx",
-
+    "jsx": "preserve",
     "resolveJsonModule": true,
-
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
+    "playwright-tests/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "playwright-tests/**/*.ts",
-    "tests/**/*.ts",
     "src/__tests__/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/home.spec.tsx",
     "tests/src/footer.spec.tsx",
-    "tests/home.spec.tsx"
-  ]
+    ".next/types/**/*.ts"
+  ],
+  "exclude": ["node_modules"]
 }
