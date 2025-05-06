@@ -13,10 +13,9 @@ interface Post {
   slug: string;
 }
 const BlogList = async () => {
-  const { loading, error, data } = await getClient().query({
+  const { data } = await getClient().query({
     query: GET_ALL_BLOG_POSTS,
   });
-  if (loading) return <p>Loading...</p>;
 
   return (
     <>
@@ -24,15 +23,16 @@ const BlogList = async () => {
       {data.allBlogs.length > 0 &&
         data.allBlogs.map((post: Post) => {
           return (
-            <>
+            <div key={post.id}>
               <Link href={{ pathname: `/blog/${post.slug}` }} key={post.id}>
                 <h2>{post.title}</h2>
                 <p>{post.subtitle}</p>
               </Link>
               <img src={post.image} alt={post.title} />
               <p>{new Date(post.createdAt).toLocaleDateString()}</p>
+              {/* TODO:// This won't work with prod until the django update is pushed */}
               {parse(post.excerpt)}
-            </>
+            </div>
           );
         })}
     </>
