@@ -1,4 +1,5 @@
 import { Skills } from "../components/Skills";
+export const dynamic = "force-dynamic";
 
 const Development = () => {
   return (

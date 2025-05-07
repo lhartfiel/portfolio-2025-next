@@ -1,6 +1,9 @@
 import { GET_SINGLE_BLOG_POST } from "../../apis/queries";
 import { getClient } from "../../ApolloClient";
 import parse from "html-react-parser";
+
+export const dynamic = "force-dynamic";
+
 interface BlogPageParams {
   params: Promise<{
     slug: string;

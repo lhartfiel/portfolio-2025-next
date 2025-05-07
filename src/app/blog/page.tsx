@@ -2,6 +2,7 @@ import { GET_ALL_BLOG_POSTS } from "../apis/queries";
 import { getClient } from "../ApolloClient";
 import Link from "next/link";
 import parse from "html-react-parser";
+export const dynamic = "force-dynamic"; // This is for Playwright to work with apollo fetching
 
 interface Post {
   id: number;
