@@ -6,7 +6,8 @@ import {
 } from "@apollo/client-integration-nextjs";
 
 // GraphQL client for server-side rendering
-const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+const GRAPHQL_URL =
+  process.env.NEXT_PUBLIC_GRAPHQL_URL || "localhost:3000/graphql";
 if (!GRAPHQL_URL) {
   throw new Error("Missing NEXT_PUBLIC_GRAPHQL_URL environment variable");
 }

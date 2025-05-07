@@ -8,7 +8,8 @@ import {
 } from "@apollo/client-integration-nextjs";
 
 // GraphQL client for client-side rendering
-const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+const GRAPHQL_URL =
+  process.env.NEXT_PUBLIC_GRAPHQL_URL || "localhost:3000/graphql";
 function makeClient() {
   const httpLink = new HttpLink({
     uri: GRAPHQL_URL,
