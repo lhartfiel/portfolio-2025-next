@@ -39,6 +39,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
   - To run playwright tests:
     - Run the end-to-end tests: `npx playwright test`
     - Start the interactive UI mode: `npx playwright test --ui`
+    - Run in headed mode: `npx playwright test --headed`
     - Run the tests only on Desktop Chrome: `npx playwright test --project=chromium`
     - Run the tests in a specific file: `npx playwright test example`
     - Run the tests in debug mode: `npx playwright test --debug`
