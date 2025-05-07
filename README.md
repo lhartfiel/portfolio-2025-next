@@ -7,6 +7,7 @@ This is a my latest portfolio site using NextJS to display both my frontend deve
 - NextJS
 - Tailwind
 - GraphQL
+- Node > 18
 
 ## Getting Started
 
@@ -21,6 +22,8 @@ pnpm dev
 # or
 bun dev
 ```
+
+If you encounter any issues with node, ensure you are running Node > 18. Run `nvm use` to ensure you local node runs the correct version.
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

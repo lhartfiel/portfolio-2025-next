@@ -1,5 +1,6 @@
 import { render } from "@testing-library/react";
-import Contact, { SEND_MESSAGE } from "./page";
+import Contact from "./page";
+import { SEND_MESSAGE } from "../apis/mutations";
 import { MockedProvider } from "@apollo/client/testing";
 
 const mocks = [

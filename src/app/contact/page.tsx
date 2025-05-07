@@ -1,16 +1,7 @@
 "use client";
 import { useState } from "react";
-import { gql, useMutation } from "@apollo/client";
-
-export const SEND_MESSAGE = gql`
-  mutation sendMessage($name: String!, $email: String!, $message: String!) {
-    createContact(input: { name: $name, email: $email, message: $message }) {
-      email
-      name
-      message
-    }
-  }
-`;
+import { useMutation } from "@apollo/client";
+import { SEND_MESSAGE } from "../apis/mutations";
 
 const Contact = () => {
   const [message, setMessage] = useState("");
