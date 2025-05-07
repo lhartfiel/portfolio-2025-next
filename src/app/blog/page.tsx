@@ -13,15 +13,26 @@ interface Post {
   slug: string;
 }
 const BlogList = async () => {
-  const { data } = await getClient().query({
-    query: GET_ALL_BLOG_POSTS,
-  });
+  let blogsPosts = [];
+  try {
+    const { data } = await getClient().query({ query: GET_ALL_BLOG_POSTS });
+    blogsPosts = data?.allBlogs || [];
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+    blogsPosts = [
+      {
+        heading: "Fallback Skill",
+        description: "<p>Data fetch failed.</p>",
+        icon: { type: "fallback", className: "fallback-icon" },
+      },
+    ];
+  }
 
   return (
     <>
       <h1>Blog List</h1>
-      {data.allBlogs.length > 0 &&
-        data.allBlogs.map((post: Post) => {
+      {blogsPosts.length > 0 &&
+        blogsPosts.map((post: Post) => {
           return (
             <div key={post.id}>
               <Link href={{ pathname: `/blog/${post.slug}` }} key={post.id}>

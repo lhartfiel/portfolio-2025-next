@@ -7,16 +7,32 @@ interface BlogPageParams {
   }>;
 }
 
+interface BlogPost {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: string;
+  createdAt: string;
+  updatedDate: string;
+  content: string;
+  slug: string;
+}
+
 const BlogPage = async ({ params }: BlogPageParams) => {
   const { slug } = await params;
-  console.log("slug", slug);
-  const { data } = await getClient().query({
-    query: GET_SINGLE_BLOG_POST,
-    variables: {
-      slug, // replace with actual slug
-    },
-  });
-  const blog = data.blogBySlug;
+  let blog = {} as BlogPost;
+  try {
+    const { data } = await getClient().query({
+      query: GET_SINGLE_BLOG_POST,
+      variables: {
+        slug, // replace with actual slug
+      },
+    });
+    blog = data?.blogBySlug || {};
+  } catch (error) {
+    console.error("Error fetching blog posts:", error);
+  }
+
   return (
     <>
       <h1>Blog Page</h1>
