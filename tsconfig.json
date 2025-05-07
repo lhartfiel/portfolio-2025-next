@@ -42,7 +42,9 @@
     "tests/**/*.ts",
     "tests/home.spec.tsx",
     "tests/src/footer.spec.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "**/*.d.ts"
   ],
   "exclude": ["node_modules"]
 }

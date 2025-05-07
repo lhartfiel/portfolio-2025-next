@@ -17,13 +17,14 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Start Server
+      - name: Build and Start Server
         run: |
-          npm install
           npm run build
-          npm start &
+          npm run start &
         env:
           PORT: 3000
+      - name: Wait for server to be ready
+        run: npx wait-on http://localhost:3000
       - name: Run Playwright tests
         run: npx playwright test
       - uses: actions/upload-artifact@v4
