@@ -10,7 +10,7 @@ interface BlogPageParams {
 const BlogPage = async ({ params }: BlogPageParams) => {
   const { slug } = await params;
   console.log("slug", slug);
-  const { loading, error, data } = await getClient().query({
+  const { data } = await getClient().query({
     query: GET_SINGLE_BLOG_POST,
     variables: {
       slug, // replace with actual slug

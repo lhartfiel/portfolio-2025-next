@@ -17,7 +17,7 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  const [sendMessage, { data, loading, error }] = useMutation(SEND_MESSAGE, {
+  const [sendMessage, { loading, error }] = useMutation(SEND_MESSAGE, {
     variables: { name, email, message },
     onCompleted: (data) => {
       debugger;
