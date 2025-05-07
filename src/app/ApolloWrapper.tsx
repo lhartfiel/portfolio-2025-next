@@ -9,7 +9,7 @@ import {
 
 // GraphQL client for client-side rendering
 const GRAPHQL_URL =
-  process.env.NEXT_PUBLIC_GRAPHQL_URL || "localhost:3000/graphql";
+  process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:3000/graphql";
 function makeClient() {
   const httpLink = new HttpLink({
     uri: GRAPHQL_URL,

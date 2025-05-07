@@ -7,7 +7,7 @@ import {
 
 // GraphQL client for server-side rendering
 const GRAPHQL_URL =
-  process.env.NEXT_PUBLIC_GRAPHQL_URL || "localhost:3000/graphql";
+  process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:3000/graphql";
 if (!GRAPHQL_URL) {
   throw new Error("Missing NEXT_PUBLIC_GRAPHQL_URL environment variable");
 }
