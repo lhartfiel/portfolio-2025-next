@@ -13,12 +13,16 @@ test("should navigate to each nav item page", async ({ page }) => {
   await page.goto("http://localhost:3000/");
 
   for (let item of navItems) {
+    const home = page.getByRole("link", { name: /home/i });
     const navLink = page.getByRole("link", { name: `${item.text}` });
     await expect(navLink).toBeVisible();
     await navLink.click();
 
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
 
-    // await expect(page).toHaveURL("http://localhost:3000/");
+    await page.waitForSelector("h1");
+
+    await home.click();
+    await expect(page).toHaveURL("http://localhost:3000/");
   }
 });
