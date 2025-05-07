@@ -11,11 +11,24 @@ type skill = {
   };
 };
 export const Skills = async () => {
-  const { data } = await getClient().query({ query: GET_ALL_SKILLS });
+  let skillsData = [];
+  try {
+    const { data } = await getClient().query({ query: GET_ALL_SKILLS });
+    skillsData = data?.allSkills || [];
+  } catch (error) {
+    console.error("Error fetching skills data:", error);
+    skillsData = [
+      {
+        heading: "Fallback Skill",
+        description: "<p>Data fetch failed.</p>",
+        icon: { type: "fallback", className: "fallback-icon" },
+      },
+    ];
+  }
 
   return (
     <>
-      {data?.allSkills.map((skill: skill) => {
+      {skillsData.map((skill: skill) => {
         return (
           <div key={skill.heading}>
             <h3>{skill.heading}</h3>
