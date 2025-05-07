@@ -10,7 +10,7 @@
     "baseUrl": "./",
     "paths": {
       "@/apis/*": ["src/apis/*"],
-      "@/components/*": ["src/components/*"]
+      "@/components/*": ["src/app/components/*"]
     },
     "allowImportingTsExtensions": true,
     "isolatedModules": true,

@@ -3,28 +3,32 @@
  * https://jestjs.io/docs/configuration
  */
 
-import type { Config } from 'jest';
-import nextJest from 'next/jest.js'
+import type { Config } from "jest";
+import nextJest from "next/jest.js";
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: './',
-})
+  dir: "./",
+});
 
 const config: Config = {
   clearMocks: true,
-  moduleDirectories: ['node_modules', '<rootDir>/'],
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  moduleDirectories: ["node_modules", "<rootDir>/"],
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1', // Map @/ to ./src/
+    "^@/(.*)$": "<rootDir>/src/$1", // Map @/ to ./src/
   },
   globals: {
-    'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.json',
+    "ts-jest": {
+      tsconfig: "<rootDir>/tsconfig.json",
     },
   },
+  testPathIgnorePatterns: [
+    "<rootDir>/tests/", // Ignore Playwright tests
+    "<rootDir>/tests-examples/", // Ignore Playwright tests
+  ],
 };
 
 // export default config;
-export default createJestConfig(config)
+export default createJestConfig(config);

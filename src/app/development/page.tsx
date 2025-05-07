@@ -1,4 +1,4 @@
-import { Skills } from "@/components/skills";
+import { Skills } from "../components/Skills";
 
 const Development = () => {
   return (

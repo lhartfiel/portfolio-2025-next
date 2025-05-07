@@ -28,6 +28,22 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Testing
+
+- Jest - unit tests
+  - Jest tests are located in the same directory as the component they are testing
+  - To run tests: `npm run test` or `npm run test:watch`
+- Playwright - end-to-end tests
+
+  - Tests are located in the `tests` directory
+  - To run playwright tests:
+    - Run the end-to-end tests: `npx playwright test`
+    - Start the interactive UI mode: `npx playwright test --ui`
+    - Run the tests only on Desktop Chrome: `npx playwright test --project=chromium`
+    - Run the tests in a specific file: `npx playwright test example`
+    - Run the tests in debug mode: `npx playwright test --debug`
+    - Auto generate tests with Codegen: `npx playwright codegen`
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
