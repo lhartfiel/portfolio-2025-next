@@ -76,5 +76,8 @@ export default defineConfig({
     command: "npm run start",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
+    env: {
+      PORT: "3000", // Ensure the port is set
+    },
   },
 });
