@@ -2,7 +2,6 @@ import { GET_ALL_BLOG_POSTS } from "../apis/queries";
 import { getClient } from "../ApolloClient";
 import Link from "next/link";
 import parse from "html-react-parser";
-export const dynamic = "force-dynamic"; // This is for Playwright to work with apollo fetching
 
 interface Post {
   id: number;
@@ -20,13 +19,6 @@ const BlogList = async () => {
     blogsPosts = data?.allBlogs || [];
   } catch (error) {
     console.error("Error fetching blog posts:", error);
-    blogsPosts = [
-      {
-        heading: "Fallback Skill",
-        description: "<p>Data fetch failed.</p>",
-        icon: { type: "fallback", className: "fallback-icon" },
-      },
-    ];
   }
 
   return (
