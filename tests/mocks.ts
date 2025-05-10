@@ -1,5 +1,3 @@
-import { isConciseBody } from "typescript";
-
 const skillsResponse = {
   data: [
     {
