@@ -16,7 +16,7 @@ jobs:
         with:
           repository: lhartfiel/portfoliodjango
           path: backend
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_GITHUB_PAT }}
 
       - name: Set up Python
         uses: actions/setup-python@v4
