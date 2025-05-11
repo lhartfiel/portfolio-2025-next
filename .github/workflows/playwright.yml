@@ -39,6 +39,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Ensure the server is running before tests
+      - name: Start Next.js server
+        run: npm run start &
+        continue-on-error: true
+
       # Build the application
       - name: Build application
         run: npm run build
