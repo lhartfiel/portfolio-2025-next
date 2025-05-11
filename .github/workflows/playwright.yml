@@ -20,7 +20,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Set NEXT_PUBLIC_GRAPHQL_URL for build
-        run: echo "NEXT_PUBLIC_GRAPHQL_URL=http://localhost:3000/graphql" >> $GITHUB_ENV
+        run: echo "NEXT_PUBLIC_GRAPHQL_URL=http://localhost:3000/api/graphql" >> $GITHUB_ENV
 
       # Resore the cache
       - name: Cache Next.js build and NPM
