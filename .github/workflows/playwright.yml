@@ -11,20 +11,27 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Checkout backend (Django) repo
+        uses: actions/checkout@v4
+        with:
+          repository: lhartfiel/portfoliodjango
+          path: backend
+          token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11" # or your version
 
       - name: Install Python dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r backend/requirements.txt
 
       - name: Run Django migrations
-        run: python manage.py migrate --noinput
+        run: python backend/manage.py migrate --noinput
 
       - name: Start Django backend
         run: |
-          nohup python manage.py runserver 127.0.0.1:8000 > django.log 2>&1 &
+          nohup python backend/manage.py runserver 127.0.0.1:8000 > django.log 2>&1 &
       - name: Wait for Django server to be ready
         run: |
           until curl --fail http://127.0.0.1:8000/graphql; do
