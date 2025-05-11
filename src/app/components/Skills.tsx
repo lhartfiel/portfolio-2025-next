@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import { GET_ALL_SKILLS } from "src/app/apis/queries";
+import { GET_ALL_SKILLS } from "src/app/api/graphql/queries";
 import { getClient } from "src/app/ApolloClient";
 
 type skill = {

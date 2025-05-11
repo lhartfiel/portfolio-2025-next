@@ -22,6 +22,7 @@ test("should navigate to each nav item page", async ({ page }) => {
   };
 
   await page.route("**/graphql", async (route, request) => {
+    console.log("GraphQL request intercepted");
     const postData = request.postDataJSON();
     const query = postData.query;
 
@@ -42,13 +43,15 @@ test("should navigate to each nav item page", async ({ page }) => {
       }
 
       console.warn("⚠️ No matching mock for query:", query);
+      await route.continue();
     } catch (err) {
       console.error("❌ Failed to parse postData JSON", err);
+      await route.continue();
     }
-    route.continue();
   });
 
   await page.goto("http://localhost:3000/");
+  await page.waitForURL("http://localhost:3000/");
 
   for (let item of navItems) {
     const home = page.getByRole("link", { name: /home/i });

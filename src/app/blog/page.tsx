@@ -1,4 +1,4 @@
-import { GET_ALL_BLOG_POSTS } from "../apis/queries";
+import { GET_ALL_BLOG_POSTS } from "../api/graphql/queries";
 import { getClient } from "../ApolloClient";
 import Link from "next/link";
 import parse from "html-react-parser";

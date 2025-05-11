@@ -1,4 +1,4 @@
-import { GET_SINGLE_BLOG_POST } from "../../apis/queries";
+import { GET_SINGLE_BLOG_POST } from "../../api/graphql/queries";
 import { getClient } from "../../ApolloClient";
 import parse from "html-react-parser";
 
