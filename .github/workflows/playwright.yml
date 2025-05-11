@@ -11,34 +11,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Checkout backend (Django) repo
-        uses: actions/checkout@v4
-        with:
-          repository: lhartfiel/portfoliodjango
-          path: backend
-          token: ${{ secrets.MY_GITHUB_PAT }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11" # or your version
-
-      - name: Install Python dependencies
-        run: pip install -r backend/requirements.txt
-
-      - name: Run Django migrations
-        run: python backend/manage.py migrate --noinput
-
-      - name: Start Django backend
-        run: |
-          nohup python backend/manage.py runserver 127.0.0.1:8000 > django.log 2>&1 &
-      - name: Wait for Django server to be ready
-        run: |
-          until curl --fail http://127.0.0.1:8000/graphql; do
-            echo "Waiting for Django backend..."
-            sleep 5
-          done
-
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -48,7 +20,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Set NEXT_PUBLIC_GRAPHQL_URL for build
-        run: echo "NEXT_PUBLIC_GRAPHQL_URL=http://127.0.0.1:8000/graphql" >> $GITHUB_ENV
+        run: echo "NEXT_PUBLIC_GRAPHQL_URL=http://127.0.0.1:8000/api/graphql" >> $GITHUB_ENV
 
       # Resore the cache
       - name: Cache Next.js build and NPM
