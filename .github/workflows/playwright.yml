@@ -19,6 +19,13 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      - name: Wait for the server to be ready
+        run: |
+          while ! curl -s http://localhost:3000/graphql; do
+            echo "Waiting for server..."
+            sleep 5
+          done
+
       # Resore the cache
       - name: Cache Next.js build and NPM
         uses: actions/cache@v4

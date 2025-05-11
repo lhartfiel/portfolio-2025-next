@@ -21,7 +21,7 @@ test("should navigate to each nav item page", async ({ page }) => {
     blogBySlug: { data: { blogBySlug: singleBlogPostResponse.data } },
   };
 
-  await page.route("**/graphql", async (route, request) => {
+  await page.route("http://127.0.0.1:8000/graphql", async (route, request) => {
     console.log("GraphQL request intercepted");
     const postData = request.postDataJSON();
     const query = postData.query;
@@ -29,8 +29,6 @@ test("should navigate to each nav item page", async ({ page }) => {
     console.log("query", query);
 
     try {
-      const { query } = JSON.parse(postData);
-
       for (const key of Object.keys(graphqlMocks)) {
         if (query.includes(key)) {
           console.log(`✅ Mocking response for: ${key}`);
