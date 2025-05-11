@@ -27,14 +27,23 @@ test("should navigate to each nav item page", async ({ page }) => {
 
     console.log("query", query);
 
-    for (const key of Object.keys(graphqlMocks)) {
-      if (query.includes(key)) {
-        return route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify(graphqlMocks[key]),
-        });
+    try {
+      const { query } = JSON.parse(postData);
+
+      for (const key of Object.keys(graphqlMocks)) {
+        if (query.includes(key)) {
+          console.log(`✅ Mocking response for: ${key}`);
+          return route.fulfill({
+            status: 200,
+            contentType: "application/json",
+            body: JSON.stringify(graphqlMocks[key]),
+          });
+        }
       }
+
+      console.warn("⚠️ No matching mock for query:", query);
+    } catch (err) {
+      console.error("❌ Failed to parse postData JSON", err);
     }
     route.continue();
   });
