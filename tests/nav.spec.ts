@@ -21,35 +21,32 @@ test("should navigate to each nav item page", async ({ page }) => {
     blogBySlug: { data: { blogBySlug: singleBlogPostResponse.data } },
   };
 
-  await page.route(
-    "http://127.0.0.1:8000/api/graphql",
-    async (route, request) => {
-      console.log("GraphQL request intercepted");
-      const postData = request.postDataJSON();
-      const query = postData.query;
+  await page.route("**/graphql", async (route, request) => {
+    console.log("GraphQL request intercepted");
+    const postData = request.postDataJSON();
+    const query = postData.query;
 
-      console.log("query", query);
+    console.log("query", query);
 
-      try {
-        for (const key of Object.keys(graphqlMocks)) {
-          if (query.includes(key)) {
-            console.log(`✅ Mocking response for: ${key}`);
-            return route.fulfill({
-              status: 200,
-              contentType: "application/json",
-              body: JSON.stringify(graphqlMocks[key]),
-            });
-          }
+    try {
+      for (const key of Object.keys(graphqlMocks)) {
+        if (query.includes(key)) {
+          console.log(`✅ Mocking response for: ${key}`);
+          return route.fulfill({
+            status: 200,
+            contentType: "application/json",
+            body: JSON.stringify(graphqlMocks[key]),
+          });
         }
-
-        console.warn("⚠️ No matching mock for query:", query);
-        await route.continue();
-      } catch (err) {
-        console.error("❌ Failed to parse postData JSON", err);
-        await route.continue();
       }
+
+      console.warn("⚠️ No matching mock for query:", query);
+      await route.continue();
+    } catch (err) {
+      console.error("❌ Failed to parse postData JSON", err);
+      await route.continue();
     }
-  );
+  });
 
   await page.goto("http://localhost:3000/");
   await page.waitForURL("http://localhost:3000/");
