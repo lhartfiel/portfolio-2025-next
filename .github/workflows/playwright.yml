@@ -41,7 +41,7 @@ jobs:
 
       # Ensure the server is running before tests
       - name: Start Next.js server
-        run: npm run start &
+        run: npm run start -p 3000 &
         continue-on-error: true
 
       # Build the application
