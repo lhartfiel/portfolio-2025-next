@@ -15,17 +15,17 @@ const navItems = [
 ];
 
 test("should navigate to each nav item page", async ({ page }) => {
-  await page.goto("http://localhost:3000/");
-
   const graphqlMocks = {
-    skills: { data: { skills: skillsResponse.data } },
-    blogPosts: { data: { blogPosts: blogPostsResponse.data } },
+    allSkills: { data: { skills: skillsResponse.data } },
+    allBlogs: { data: { blogPosts: blogPostsResponse.data } },
     blog: { data: { blog: singleBlogPostResponse.data } },
   };
 
   await page.route("**/graphql", async (route, request) => {
     const postData = request.postDataJSON();
     const query = postData.query;
+
+    console.log("query", query);
 
     for (const key of Object.keys(graphqlMocks)) {
       if (query.includes(key)) {
@@ -38,6 +38,8 @@ test("should navigate to each nav item page", async ({ page }) => {
     }
     route.continue();
   });
+
+  await page.goto("http://localhost:3000/");
 
   for (let item of navItems) {
     const home = page.getByRole("link", { name: /home/i });
