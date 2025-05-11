@@ -16,9 +16,9 @@ const navItems = [
 
 test("should navigate to each nav item page", async ({ page }) => {
   const graphqlMocks = {
-    allSkills: { data: { skills: skillsResponse.data } },
-    allBlogs: { data: { blogPosts: blogPostsResponse.data } },
-    blog: { data: { blog: singleBlogPostResponse.data } },
+    allSkills: { data: { allSkills: skillsResponse.data } },
+    allBlogs: { data: { allBlogs: blogPostsResponse.data } },
+    blogBySlug: { data: { blogBySlug: singleBlogPostResponse.data } },
   };
 
   await page.route("**/graphql", async (route, request) => {
