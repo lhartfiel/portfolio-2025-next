@@ -1,5 +1,9 @@
 "use client";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+
+const houseIcon = <FontAwesomeIcon icon={faHouse} className="w-4 mr-2" />;
 
 const Nav = ({ mobileNavIsActive }: { mobileNavIsActive: boolean }) => {
   return (
@@ -10,7 +14,7 @@ const Nav = ({ mobileNavIsActive }: { mobileNavIsActive: boolean }) => {
         }`}
       >
         <Link className={`${mobileNavIsActive ? "py-3" : ""}`} href="/">
-          Home
+          {houseIcon} Home
         </Link>
         <Link className={`${mobileNavIsActive ? "py-3" : ""}`} href="/about">
           About
