@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Nav = () => {
   return (
-    <nav>
+    <nav className="flex justify-evenly items-center py-4 text-gray-800 w-full">
       <Link href="/">Home</Link>
       <Link href="/about">About</Link>
       <Link href="/development">Development</Link>
