@@ -9,8 +9,9 @@ const Nav = ({ mobileNavIsActive }: { mobileNavIsActive: boolean }) => {
   return (
     <nav className="flex flex-wrap sm:flex-nowrap items-center justify-end sm:justify-evenly w-full">
       <div
+        data-testid="nav-items"
         className={`nav-items w-full justify-between sm:flex flex-col sm:flex-row sm:items-center sm:justify-evenly py-4 text-gray-800 ${
-          mobileNavIsActive ? "flex flex-wrap ml-0" : "hidden"
+          mobileNavIsActive ? "flex flex-wrap ml-0" : "max-sm:hidden"
         }`}
       >
         <Link className={`${mobileNavIsActive ? "py-3" : ""}`} href="/">
