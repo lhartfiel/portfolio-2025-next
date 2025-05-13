@@ -8,11 +8,12 @@ const MobileMenu = ({
   mobileNavIsActive: boolean;
 }) => {
   return (
-    <a
+    <button
       className="sm:hidden flex flex-wrap justify-end relative w-11 h-8 mt-2"
       onClick={() => toggleMobileNav()}
     >
       <div
+        data-testid="mobile-line1"
         className={`line absolute w-11 h-[3px] bg-gray-500 border-gray-500 border-1 rounded-sm ${
           mobileNavIsActive
             ? "transition delay-[100] duration-150 ease-in-out top-2 rotate-45"
@@ -31,7 +32,7 @@ const MobileMenu = ({
             : "top-4"
         }`}
       ></div>
-    </a>
+    </button>
   );
 };
 export default MobileMenu;
