@@ -14,7 +14,7 @@ const Header = () => {
       <div className="flex flex-wrap sm:flex-nowrap justify-between items-center max-w-screen-2xl w-full">
         <Link
           href="/"
-          className="logo flex items-center min-w-[80px] lg:min-w-[250px]"
+          className="logo flex items-center min-w-[80px] lg:min-w-[250px] "
         >
           LH
         </Link>
