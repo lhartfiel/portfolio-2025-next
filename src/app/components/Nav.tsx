@@ -17,8 +17,8 @@ const Nav = () => {
   return (
     <nav className="flex flex-wrap h-full relative z-10 sm:flex-nowrap items-center justify-end sm:justify-evenly w-full">
       <div
-        data-testid="nav-items overflow-y-auto"
-        className={`nav-items w-full justify-between sm:flex flex-col sm:flex-row sm:items-center sm:justify-end py-4 text-primary text-body md:text-[28px] font-medium ${
+        data-testid="nav-items"
+        className={`nav-items w-full overflow-y-auto justify-between sm:flex flex-col sm:flex-row sm:items-center sm:justify-end py-4 text-primary text-body md:text-[28px] font-medium ${
           mobileNavIsActive
             ? "flex flex-wrap right-6 text-white ml-8"
             : "max-sm:hidden right-full"

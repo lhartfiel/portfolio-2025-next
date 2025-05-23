@@ -3,15 +3,20 @@ import Nav from "./Nav";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
 import { useContext } from "react";
-import { MobileNavDispatchContext } from "./NavContext";
+import { MobileNavDispatchContext, MobileNavContext } from "./NavContext";
 
 const Header = () => {
+  const mobileNavIsActive = useContext(MobileNavContext);
   const dispatch = useContext(MobileNavDispatchContext);
   const toggleMobileNav = () => {
     if (dispatch) dispatch();
   };
   return (
-    <header className="flex justify-center w-full mx-auto">
+    <header
+      className={`flex justify-center w-full mx-auto  ${
+        mobileNavIsActive ? "h-screen overflow-y-auto" : ""
+      }`}
+    >
       <div className="flex flex-wrap sm:flex-nowrap justify-between items-center max-w-screen-2xl w-full">
         <Link
           href="/"

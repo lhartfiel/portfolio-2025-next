@@ -24,11 +24,11 @@ const LayoutBody = ({
       className={`overflow-x-hidden transition delay-75 ${gothicA1.variable} ${
         gothicA1.variable
       } ${
-        mobileNavIsActive ? "min-h-screen" : "bg-white"
+        mobileNavIsActive ? "fixed min-h-screen" : "bg-white"
       } text-primary antialiased flex flex-wrap w-full mx-auto px-0`}
     >
       <div
-        className={`fixed top-0 right-0 bottom-0 w-full h-screen bg-primary transform transition-transform duration-250 ease-in-out overflow-y-auto ${
+        className={`absolute top-0 right-0 bottom-0 w-full h-screen bg-primary transform transition-transform duration-300 ease-in-out overflow-y-auto ${
           mobileNavIsActive ? " translate-x-0 -z-0" : "translate-x-full -z-50"
         }`}
       ></div>
