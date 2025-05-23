@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useContext } from "react";
-import { MobileNavContext } from "./NavContext";
+import { MobileNavContext, MobileNavDispatchContext } from "./NavContext";
 import SocialLinks from "./SocialLinks";
 
 const navItems = [
@@ -14,6 +14,7 @@ const navItems = [
 
 const Nav = () => {
   const mobileNavIsActive = useContext(MobileNavContext);
+  const dispatch = useContext(MobileNavDispatchContext);
   return (
     <nav className="flex flex-wrap h-full relative z-10 sm:flex-nowrap items-center justify-end sm:justify-evenly w-full">
       <div
@@ -34,6 +35,9 @@ const Nav = () => {
                   : ""
               }`}
               href={item.link}
+              onClick={() => {
+                if (dispatch) dispatch();
+              }}
             >
               {item.text}
             </Link>
