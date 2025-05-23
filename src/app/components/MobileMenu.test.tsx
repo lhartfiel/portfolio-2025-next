@@ -1,4 +1,4 @@
-import { render, waitFor, fireEvent } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import MobileMenu from "./MobileMenu";
 import { MobileNavContext } from "./NavContext";
 
@@ -16,7 +16,7 @@ describe("MobileMenu component", () => {
   it("should call toggleMobileNav when hamburger menu is clicked", () => {
     const toggleMobileNavMock = jest.fn();
 
-    const { getByRole, getByTestId } = render(
+    const { getByRole } = render(
       <MobileNavContext.Provider value={false}>
         <MobileMenu toggleMobileNav={toggleMobileNavMock} />
       </MobileNavContext.Provider>
