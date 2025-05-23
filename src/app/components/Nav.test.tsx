@@ -3,14 +3,14 @@ import Nav from "./Nav";
 
 describe("Nav component", () => {
   it("should display the hidden className when mobileNavIsActive is false", async () => {
-    const { findByTestId } = render(<Nav mobileNavIsActive={false} />);
+    const { findByTestId } = render(<Nav />);
     const navWrapper = await findByTestId("nav-items");
     expect(navWrapper).toBeInTheDocument();
     expect(navWrapper).toHaveClass("max-sm:hidden");
   });
 
   it("should not display the hidden className when mobileNavIsActive is true", async () => {
-    const { findByTestId } = render(<Nav mobileNavIsActive={true} />);
+    const { findByTestId } = render(<Nav />);
     const navWrapper = await findByTestId("nav-items");
     expect(navWrapper).toBeInTheDocument();
     expect(navWrapper).toHaveClass("flex flex-wrap ml-0");
