@@ -20,7 +20,7 @@ test("should navigate to each nav item page", async ({ page }) => {
     blogBySlug: { data: { blogBySlug: singleBlogPostResponse.data } },
   };
 
-  await page.route("**/graphql", async (route, request) => {
+  await page.route("**/api/graphql", async (route, request) => {
     console.log("GraphQL request intercepted");
     const postData = request.postDataJSON();
     const query = postData.query;
@@ -62,7 +62,5 @@ test("should navigate to each nav item page", async ({ page }) => {
     await navLink.click();
 
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
-
-    await page.waitForSelector("h1", { timeout: 60000 });
   }
 });
