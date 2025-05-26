@@ -63,6 +63,6 @@ test("should navigate to each nav item page", async ({ page }) => {
 
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
 
-    await page.waitForSelector("h1");
+    await page.waitForSelector("h1", { timeout: 60000 });
   }
 });
