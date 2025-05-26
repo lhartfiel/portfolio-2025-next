@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import SocialLinks from "./SocialLinks";
 
 const heartIcon = <FontAwesomeIcon icon={faHeart} className="w-4 mx-1" />;
