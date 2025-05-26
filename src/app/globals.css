@@ -1,4 +1,8 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 @import "tailwindcss";
+/* @import "tailwindcss"; */
 
 /* :root {
   --background: #ffffff;
@@ -12,15 +16,63 @@
   --font-mono: var(--font-geist-mono);
 } */
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
+} */
+
+@theme {
+  --color-primary: #2e1b7f;
+  --color-secondary: #7fbc8f;
+  --color-tertiary: #ffba31;
+  --color-accent: #fc535e;
+
+  --font-gothic-a1: "Gothic A1", sans-serif;
+  --font-kanit: "Kanit", sans-serif;
+
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: 1440px;
+
+  --text-h1: 60px;
+  --text-h1--line-height: 78px;
+  --text-h1-sm: 32px;
+  --text-h1-sm--line-height: 36px;
+  --text-h2: 36px;
+  --text-h2--line-height: 42px;
+  --text-h2-sm: 24px;
+  --text-h2-sm--line-height: 30px;
+  --text-h3: 24px;
+  --text-h3--line-height: 32px;
+  --text-h3-sm: 20px;
+  --text-h3-sm--line-height: 26px;
+  --text-h4-sm: 16px;
+  --text-h4-sm--line-height: 20px;
+  --text-intro: 24px;
+  --text-intro--line-height: 32px;
+  --text-intro-sm: 20px;
+  --text-intro-sm--line-height: 28px;
+  --text-intro-min: 20px;
+  --text-intro-min--line-height: 28px;
+  --text-intro-min-sm: 18px;
+  --text-intro-min-sm--line-height: 28px;
+  --text-body: 20px;
+  --text-body--line-height: 26px;
+  --text-body-sm: 16px;
+  --text-body-sm--line-height: 24px;
+  --text-body-min: 18px;
+  --text-body-min--line-height: 26px;
+  --text-body-min-sm: 14px;
+  --text-body-min-sm--line-height: 20px;
+
+  --text-shadow-xl: 2px 2px 2px rgba(0, 0, 0, 0.85);
+}
+
+:root {
+  --font-gothic-a1: "Gothic A1", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-gothic-a1), Arial, Helvetica, sans-serif;
 }

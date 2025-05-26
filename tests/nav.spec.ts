@@ -6,11 +6,10 @@ import {
 } from "./mocks";
 
 const navItems = [
-  { text: "Home", url: "/" },
-  { text: "About", url: "/about" },
   { text: "Development", url: "/development" },
   { text: "UX", url: "/ux" },
   { text: "Blog", url: "/blog" },
+  { text: "About", url: "/about" },
   { text: "Contact", url: "/contact" },
 ];
 
@@ -21,7 +20,7 @@ test("should navigate to each nav item page", async ({ page }) => {
     blogBySlug: { data: { blogBySlug: singleBlogPostResponse.data } },
   };
 
-  await page.route("**/graphql", async (route, request) => {
+  await page.route("**/api/graphql", async (route, request) => {
     console.log("GraphQL request intercepted");
     const postData = request.postDataJSON();
     const query = postData.query;
@@ -52,17 +51,16 @@ test("should navigate to each nav item page", async ({ page }) => {
   await page.waitForURL("http://localhost:3000/");
 
   for (let item of navItems) {
-    const home = page.getByRole("link", { name: /home/i });
-    const navLink = page.getByRole("link", { name: `${item.text}` });
+    const navLink = page.getByRole("link", {
+      name: `${item.text}`,
+      exact: true,
+    });
     await expect(navLink).toBeVisible();
+
+    await page.goto("http://localhost:3000/");
 
     await navLink.click();
 
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
-
-    await page.waitForSelector("h1");
-
-    await home.click();
-    await expect(page).toHaveURL("http://localhost:3000/");
   }
 });

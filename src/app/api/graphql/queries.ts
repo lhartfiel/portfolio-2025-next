@@ -12,14 +12,15 @@ export const GET_ALL_SKILLS = gql`
   }
 `;
 
+// TODO: Add excerpt for prod
 export const GET_ALL_BLOG_POSTS = gql`
   query {
     allBlogs {
       createdAt
       updatedDate
-      excerpt
       title
       subtitle
+      excerpt
       image
       id
       slug
