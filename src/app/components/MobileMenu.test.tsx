@@ -1,6 +1,8 @@
+
 import { render, fireEvent } from "@testing-library/react";
 import MobileMenu from "./MobileMenu";
 import { MobileNavContext } from "./NavContext";
+
 
 describe("MobileMenu component", () => {
   it("should display the hamburger icon when mobileNavIsActive is false", async () => {
