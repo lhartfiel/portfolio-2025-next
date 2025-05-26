@@ -6,11 +6,10 @@ import {
 } from "./mocks";
 
 const navItems = [
-  { text: "Home", url: "/" },
-  { text: "About", url: "/about" },
   { text: "Development", url: "/development" },
   { text: "UX", url: "/ux" },
   { text: "Blog", url: "/blog" },
+  { text: "About", url: "/about" },
   { text: "Contact", url: "/contact" },
 ];
 
@@ -52,17 +51,18 @@ test("should navigate to each nav item page", async ({ page }) => {
   await page.waitForURL("http://localhost:3000/");
 
   for (let item of navItems) {
-    const home = page.getByRole("link", { name: /home/i });
-    const navLink = page.getByRole("link", { name: `${item.text}` });
+    const navLink = page.getByRole("link", {
+      name: `${item.text}`,
+      exact: true,
+    });
     await expect(navLink).toBeVisible();
 
-    await navLink.click();
+    await page.goto("http://localhost:3000/");
+
+    navLink.click();
 
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
 
     await page.waitForSelector("h1");
-
-    await home.click();
-    await expect(page).toHaveURL("http://localhost:3000/");
   }
 });
