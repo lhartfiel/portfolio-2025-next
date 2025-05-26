@@ -9,7 +9,7 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@/apis/*": ["src/apis/*"],
+      "@/apis/*": ["src/api/*"],
       "@/components/*": ["src/app/components/*"]
     },
     "allowImportingTsExtensions": true,

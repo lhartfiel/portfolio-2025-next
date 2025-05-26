@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
-const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_PATH;
+const IMAGE_URL =
+  process.env.NEXT_PUBLIC_IMAGE_PATH ||
+  "https://lindsayhartfiel.com/media/uploads/";
 const url = new URL(IMAGE_URL as string);
 
 const nextConfig: NextConfig = {

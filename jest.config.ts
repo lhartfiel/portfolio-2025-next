@@ -4,7 +4,7 @@
  */
 
 import type { Config } from "jest";
-import nextJest from "next/jest.js";
+import nextJest from "next/jest";
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
@@ -17,7 +17,8 @@ const config: Config = {
   testEnvironment: "jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1", // Map @/ to ./src/
+    "^@/apis/(.*)$": "<rootDir>/src/api/$1",
+    "^@/components/(.*)$": "<rootDir>/src/app/components/$1",
   },
   globals: {
     "ts-jest": {

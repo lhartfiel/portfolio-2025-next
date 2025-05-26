@@ -11,7 +11,6 @@ const Header = () => {
   const toggleMobileNav = () => {
     if (dispatch) dispatch();
   };
-  console.log("mob nav", mobileNavIsActive);
   return (
     <header
       className={`flex justify-center w-full mx-auto bg-white  ${
