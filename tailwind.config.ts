@@ -16,10 +16,14 @@ module.exports = {
       },
       fontFamily: {
         gothic: ["var(--font-gothic-a1)", "sans-serif"],
+        kanit: ["Kanit", "sans-serif"],
       },
       screens: {
         xl: "1200px",
         "2xl": "1440px",
+      },
+      textShadow: {
+        xl: "1px 3px 3px rgba(0, 0, 0, 0.5)",
       },
     },
   },

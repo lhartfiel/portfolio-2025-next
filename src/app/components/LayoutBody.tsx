@@ -1,5 +1,5 @@
 "use client";
-import { Gothic_A1 } from "next/font/google";
+import { Gothic_A1, Kanit } from "next/font/google";
 import Header from "./Header";
 import Footer from "./Footer";
 import { ApolloWrapper } from "../ApolloWrapper";
@@ -13,6 +13,13 @@ const gothicA1 = Gothic_A1({
   weight: ["400", "500", "600", "700"], // Specify the desired font weights
 });
 
+const kanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["600", "700", "800"], // Specify the desired font weights
+});
+
 const LayoutBody = ({
   children,
 }: Readonly<{
@@ -21,21 +28,21 @@ const LayoutBody = ({
   const mobileNavIsActive = useContext(MobileNavContext);
   return (
     <div
-      className={`overflow-x-hidden transition delay-75 ${gothicA1.variable} ${
+      className={`bg-gray-50 overflow-x-hidden transition delay-75 ${
         gothicA1.variable
-      } ${
-        mobileNavIsActive ? "fixed min-h-screen" : "relative bg-white"
-      } text-primary antialiased flex flex-wrap w-full mx-auto px-0`}
+      } ${kanit.variable} ${
+        mobileNavIsActive ? "fixed min-h-screen" : "relative "
+      } text-primary antialiased flex flex-wrap justify-center w-full mx-auto px-0`}
     >
       <div
-        className={`fixed top-0 right-0 bottom-0 w-full h-screen bg-primary transform transition-transform duration-300 ease-in-out overflow-y-auto ${
-          mobileNavIsActive ? " translate-x-0 -z-0" : "translate-x-full -z-50"
+        className={`fixed top-0 right-0 bottom-0  w-full h-screen bg-primary transform transition-transform duration-400 ease-in-out overflow-y-auto ${
+          mobileNavIsActive ? " translate-x-0 -z-0" : "translate-x-full z-30"
         }`}
       ></div>
       <Header />
       <ApolloWrapper>
         <main
-          className={`flex flex-wrap items-center mx-auto min-h-screen py-2 max-w-screen-2xl w-full`}
+          className={`flex flex-wrap justify-center shadow-sm bg-white 2xl:mx-[72px] min-h-screen max-w-[1440px] w-full`}
         >
           {children}
         </main>

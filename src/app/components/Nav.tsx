@@ -36,7 +36,7 @@ const Nav = () => {
               }`}
               href={item.link}
               onClick={() => {
-                if (dispatch) dispatch();
+                if (dispatch && mobileNavIsActive) dispatch();
               }}
             >
               {item.text}
