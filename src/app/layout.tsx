@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <MobileNavProvider>
         <body>
-          <LayoutBody children={children} />
+          <LayoutBody>{children}</LayoutBody>
         </body>
       </MobileNavProvider>
     </html>
