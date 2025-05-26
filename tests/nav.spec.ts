@@ -59,7 +59,7 @@ test("should navigate to each nav item page", async ({ page }) => {
 
     await page.goto("http://localhost:3000/");
 
-    navLink.click();
+    await navLink.click();
 
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
 
