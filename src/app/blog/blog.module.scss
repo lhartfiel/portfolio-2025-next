@@ -1,0 +1,53 @@
+.blog {
+  h2 {
+    font-family: "Kanit", sans-serif;
+    // font-size: var(--text-h2-sm);
+    font-size: 24px;
+    // line-height: var(--text-h2-sm--line-height);
+    margin-bottom: 32px;
+    color: #000;
+
+    @media screen and (min-width: 768px) {
+      font-size: var(--text-h2);
+      line-height: var(--text-h2--line-height);
+    }
+  }
+
+  h3 {
+    font-family: "Gothic A1", sans-serif;
+    font-size: var(--text-h3);
+    line-height: var(--text-h3--line-height);
+    color: #000;
+  }
+
+  p {
+    margin-bottom: var(--text-h2--line-height);
+  }
+
+  ol li, ul li {
+    font-family: "Gothic A1", sans-serif;
+    font-size: var(--text-body-sm);
+    line-height: var(--text-body-sm--line-height);
+    position: relative;
+
+    @media screen and (min-width: 768px) {
+      font-size: var(--text-body);
+      line-height: var(--text-body--line-height);
+    }
+  }
+
+  ol li {
+    left: 1.5em;
+    &:before {
+      background-color: var(--color-primary);
+      border-radius: 100%;
+      content: '';
+      height: 10px;
+      left: -1.5em;
+      position: absolute;
+      top: 6px;
+      width: 10px;
+    }
+  }
+}
+
