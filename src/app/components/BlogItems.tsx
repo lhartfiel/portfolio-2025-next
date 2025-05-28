@@ -3,9 +3,12 @@ import Image from "next/image";
 import parse from "html-react-parser";
 import { Post } from "../blog/page";
 import Button from "./Button";
+import dayjs from "dayjs";
 
 const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
   const hostname = process.env.NEXT_PUBLIC_IMAGE_PATH;
+  const date = dayjs(post.createdAt, "MMM D, YYYY");
+
   return (
     <>
       {idx !== 0 && (
@@ -24,14 +27,18 @@ const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
             </span>
             <div className="flex flex-col flex-1">
               <span className="">
-                <h3 className="text-h3 font-semibold w-full">{post.title}</h3>
+                <h3 className="text-h4 lg:text-h3 font-semibold w-full">
+                  {post.title}
+                </h3>
                 <p className="text-body-sm w-full my-3">
-                  {new Date(post.createdAt).toLocaleDateString()}
+                  {date.format("MMM D, YYYY")}
                 </p>
                 {post.subtitle ? (
-                  <p className="text-intro-min-sm mb-4">{post.subtitle}</p>
+                  <p className="text-body-sm lg:text-intro-min-sm mb-4">
+                    {post.subtitle}
+                  </p>
                 ) : (
-                  <span className="text-intro-min-sm mb-4">
+                  <span className="text-body-sm lg:text-intro-min-sm mb-4">
                     {parse(post.excerpt)}
                   </span>
                 )}

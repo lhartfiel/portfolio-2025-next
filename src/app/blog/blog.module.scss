@@ -1,13 +1,12 @@
 .blog {
   h2 {
     font-family: "Kanit", sans-serif;
-    // font-size: var(--text-h2-sm);
-    font-size: 24px;
-    // line-height: var(--text-h2-sm--line-height);
-    margin-bottom: 32px;
+    font-size: var(--text-h2-sm);
+    line-height: var(--text-h2-sm--line-height);
+    margin-bottom: 20px;
     color: #000;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
       font-size: var(--text-h2);
       line-height: var(--text-h2--line-height);
     }
@@ -15,38 +14,106 @@
 
   h3 {
     font-family: "Gothic A1", sans-serif;
-    font-size: var(--text-h3);
-    line-height: var(--text-h3--line-height);
-    color: #000;
+    font-size: var(--text-h3-sm);
+    font-weight: 600;
+    line-height: var(--text-h3-sm--line-height);
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: var(--text-h3-sm);;
+      line-height: var(--text-h3-sm--line-height);
+    }
   }
 
-  p {
-    margin-bottom: var(--text-h2--line-height);
+  p, ol, ul {
+    margin-bottom: var(--text-intro-sm--line-height);
+
+    @media screen and (min-width: 1024px) {
+      margin-bottom: var(--text-h2--line-height);
+    }
   }
 
-  ol li, ul li {
+  ol li, ul li, code {
     font-family: "Gothic A1", sans-serif;
     font-size: var(--text-body-sm);
     line-height: var(--text-body-sm--line-height);
     position: relative;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1024px) {
       font-size: var(--text-body);
       line-height: var(--text-body--line-height);
     }
   }
 
-  ol li {
+  code {
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  div:has(code) {
+    margin-bottom: 24px;
+  }
+
+  ul li {
     left: 1.5em;
+    margin-bottom: 16px;
     &:before {
       background-color: var(--color-primary);
       border-radius: 100%;
       content: '';
-      height: 10px;
+      height: 8px;
       left: -1.5em;
       position: absolute;
-      top: 6px;
-      width: 10px;
+      top: 8px;
+      width: 8px;
+    }
+  }
+
+  ol {
+    counter-reset: count;
+    list-style: none;
+    li {
+      counter-increment: count;
+      left: 2em;
+      margin-bottom: 16px;
+      position: relative;
+
+      &:before {
+        background-color: var(--color-primary);
+        border-radius: 100%;
+        bottom: 0;
+        color: #fff;
+        content: counter(count);
+        font-size: 16px;
+        font-weight: 600;
+        height: 28px;
+        left: -2.5em;
+        padding-top: 3px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 28px;
+
+        @media screen and (min-width: 1024px) {
+          font-size: 18px;
+          height: 32px;
+          width: 32px;;
+        }
+      }
+    }
+  }
+
+  a {
+    background-color: transparent;
+    display: inline;
+    padding: 3px 1px;
+    position: relative;
+    text-decoration: underline var(--color-accent);
+    text-underline-offset: 4px;
+    transition: 0.4s ease-in-out;
+    z-index: 10;
+
+    &:hover {
+      background-color: rgba(252, 83, 94, 0.25);
     }
   }
 }
