@@ -42,11 +42,11 @@
   --text-h2: 36px;
   --text-h2--line-height: 42px;
   --text-h2-sm: 24px;
-  --text-h2-sm--line-height: 30px;
+  --text-h2-sm--line-height: 32px;
   --text-h3: 24px;
   --text-h3--line-height: 32px;
   --text-h3-sm: 20px;
-  --text-h3-sm--line-height: 26px;
+  --text-h3-sm--line-height: 28px;
   --text-h4-sm: 16px;
   --text-h4-sm--line-height: 20px;
   --text-intro: 24px;
@@ -58,7 +58,7 @@
   --text-intro-min-sm: 18px;
   --text-intro-min-sm--line-height: 28px;
   --text-body: 20px;
-  --text-body--line-height: 26px;
+  --text-body--line-height: 30px;
   --text-body-sm: 16px;
   --text-body-sm--line-height: 24px;
   --text-body-min: 18px;
