@@ -21,7 +21,7 @@ const Nav = () => {
         data-testid="nav-items"
         className={`nav-items w-full overflow-y-auto justify-between sm:flex flex-col sm:flex-row sm:items-center sm:justify-end py-4 text-primary text-body md:text-[28px] font-medium ${
           mobileNavIsActive
-            ? "flex flex-wrap right-6 text-white ml-8"
+            ? "flex flex-wrap right-6 text-white md:text-primary md:flex-nowrap ml-8"
             : "max-sm:hidden right-full"
         }`}
       >
@@ -31,7 +31,7 @@ const Nav = () => {
               key={item.text}
               className={`sm:mr-[50px] ${
                 mobileNavIsActive
-                  ? "pt-9 pb-5 border-b-[0.5px] border-b-white"
+                  ? "pt-9 pb-5 border-b-[0.5px] border-b-white md:p-0"
                   : ""
               }`}
               href={item.link}
@@ -45,7 +45,7 @@ const Nav = () => {
         })}
       </div>
       {mobileNavIsActive && (
-        <div className="flex flex-nowrap justify-center w-full mt-12">
+        <div className="flex flex-nowrap justify-center w-full mt-12 md:hidden">
           <SocialLinks />
         </div>
       )}
