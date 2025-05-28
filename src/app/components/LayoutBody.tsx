@@ -28,21 +28,21 @@ const LayoutBody = ({
   const mobileNavIsActive = useContext(MobileNavContext);
   return (
     <div
-      className={`bg-gray-50 overflow-x-hidden transition delay-75 ${
+      className={`bg-gray-50 min-h-screen overflow-x-hidden transition delay-75 ${
         gothicA1.variable
       } ${kanit.variable} ${
-        mobileNavIsActive ? "fixed min-h-screen" : "relative "
-      } text-primary antialiased flex flex-wrap justify-center w-full mx-auto px-0`}
+        mobileNavIsActive ? "fixed md:relative" : "relative "
+      } text-primary antialiased flex flex-col flex-1 justify-center w-full mx-auto px-0`}
     >
       <div
-        className={`fixed top-0 right-0 bottom-0  w-full h-screen bg-primary transform transition-transform duration-400 ease-in-out overflow-y-auto ${
+        className={`fixed md:relative top-0 right-0 bottom-0 w-full h-screen md:h-auto bg-primary md:bg-transparent transform transition-transform duration-400 ease-in-out overflow-y-auto ${
           mobileNavIsActive ? " translate-x-0 -z-0" : "translate-x-full z-30"
         }`}
       ></div>
       <Header />
       <ApolloWrapper>
         <main
-          className={`flex flex-wrap justify-center shadow-sm bg-white 2xl:mx-[72px] min-h-screen max-w-[1440px] w-full`}
+          className={`flex-1 flex flex-col mx-auto items-center min-h-0 shadow-sm bg-white max-w-[1440px] w-full`}
         >
           {children}
         </main>
