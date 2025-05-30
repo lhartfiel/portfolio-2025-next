@@ -16,7 +16,7 @@ const Home = async () => {
     return (
       <div className="w-full mx-[12px]">
         <p className="text-red-500 text-lg">
-          Sorry. We're having trouble loading the data.
+          {"Sorry. We're having trouble loading the data."}
         </p>
       </div>
     );
