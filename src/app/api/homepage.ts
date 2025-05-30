@@ -9,6 +9,7 @@ const getHomepageData = async () => {
     return homeData;
   } catch (error) {
     console.error("Error fetching blog posts:", error);
+    return null;
   }
 };
 export default getHomepageData;
