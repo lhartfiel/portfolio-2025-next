@@ -18,13 +18,12 @@ const Button = ({
   callback?: () => void;
   customClass?: string;
 }) => {
-  console.log("link", link);
   return (
     <>
       {link !== undefined ? (
         <Link
           href={link}
-          className={`relative font-semibold rounded-[20px] transition duration-300 ease-in-out
+          className={`relative inline-block font-kanit font-bold rounded-[20px] transition duration-300 ease-in-out
           ${customClass ? customClass : ""}
           ${size === "large" ? "py-[9px]" : "py-[7px] px-[14px]"}
         ${
@@ -38,7 +37,7 @@ const Button = ({
       ) : (
         <div
           onClick={() => (callback ? callback() : null)}
-          className={`relative font-semibold justify-center rounded-[20px] transition duration-300 ease-in-out
+          className={`relative inline-block font-kanit font-bold justify-center rounded-[20px] transition duration-300 ease-in-out
             ${customClass ? customClass : ""}
           ${size === "large" ? "py-[9px]" : "py-[7px] px-[14px]"}
         ${

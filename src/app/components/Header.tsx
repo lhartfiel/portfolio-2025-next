@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <header
       className={`flex justify-center w-full mx-auto bg-white shadow lg:z-10  ${
-        mobileNavIsActive ? "h-screen overflow-y-auto md:h-auto" : "h-auto"
+        mobileNavIsActive ? "h-screen overflow-y-auto md:h-auto" : "h-auto z-10"
       }`}
     >
       <div className="flex flex-wrap sm:flex-nowrap justify-between items-center max-w-screen-2xl w-full">

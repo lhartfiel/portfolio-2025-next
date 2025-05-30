@@ -27,7 +27,8 @@
     "react-dom": "^19.0.0",
     "sanitize-html": "^2.16.0",
     "sass": "^1.89.0",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "web-streams-polyfill": "^4.1.0"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.27.1",

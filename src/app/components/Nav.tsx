@@ -19,7 +19,7 @@ const Nav = () => {
     <nav
       className={`flex flex-wrap ${
         mobileNavIsActive ? "h-full" : "h-auto"
-      } relative z-10 sm:flex-nowrap items-center justify-end sm:justify-evenly w-full`}
+      } relative z-10 sm:flex-nowrap items-start lg:items-center justify-end sm:justify-evenly w-full`}
     >
       <div
         data-testid="nav-items"
