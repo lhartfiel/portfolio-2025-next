@@ -44,13 +44,6 @@ jobs:
       - name: Build application
         run: npm run build
 
-      # Ensure the server is running before tests
-      - name: Start Next.js server
-        run: |
-          echo "NEXT_PUBLIC_GRAPHQL_URL=http://localhost:3000/api/graphql" >> $GITHUB_ENV
-          npm run start -p 3000 &
-        continue-on-error: true
-
       - name: Run Playwright tests
         run: npx playwright test
 
