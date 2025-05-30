@@ -18,7 +18,6 @@ const Button = ({
   callback?: () => void;
   customClass?: string;
 }) => {
-  console.log("link", link);
   return (
     <>
       {link !== undefined ? (

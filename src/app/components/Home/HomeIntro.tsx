@@ -8,8 +8,6 @@ type HomeIntro = {
   intro: string;
 };
 const HomeIntro = ({ image, imageAlt, title, intro }: HomeIntro) => {
-  console.log("GraphQL endpoint:", process.env.GRAPHQL_URL);
-  console.log("Image:", process.env.NEXT_PUBLIC_IMAGE_PATH);
   return (
     <section className="w-full px-6 gap-6 lg:grid lg:grid-cols-12">
       <div
