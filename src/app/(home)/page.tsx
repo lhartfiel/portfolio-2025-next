@@ -5,7 +5,22 @@ import HomeIntro from "@/components/Home/HomeIntro";
 import HomeAbout from "@/components/Home/HomeAbout";
 
 const Home = async () => {
-  const homeData = await getHomepageData();
+  let homeData = null;
+  try {
+    homeData = await getHomepageData();
+  } catch (error) {
+    console.error("Error loading homepage data:", error);
+  }
+
+  if (!homeData) {
+    return (
+      <div className="w-full mx-[12px]">
+        <p className="text-red-500 text-lg">
+          Sorry. We're having trouble loading the data.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full mx-[12px]">
