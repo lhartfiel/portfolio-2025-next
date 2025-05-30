@@ -8,6 +8,10 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+
+    env:
+      NEXT_PUBLIC_GRAPHQL_URL: ${{ secrets.NEXT_PUBLIC_GRAPHQL_URL }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -18,9 +22,6 @@ jobs:
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-
-      - name: Set NEXT_PUBLIC_GRAPHQL_URL for build
-        run: echo "NEXT_PUBLIC_GRAPHQL_URL=http://localhost:3000/api/graphql" >> $GITHUB_ENV
 
       # Resore the cache
       - name: Cache Next.js build and NPM
@@ -39,17 +40,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Ensure the server is running before tests
-      - name: Start Next.js server
-        run: npm run start -p 3000 &
-        continue-on-error: true
-
       # Build the application
       - name: Build application
         run: npm run build
 
+      # Ensure the server is running before tests
+      - name: Start Next.js server
+        run: |
+          echo "NEXT_PUBLIC_GRAPHQL_URL=http://localhost:3000/api/graphql" >> $GITHUB_ENV
+          npm run start -p 3000 &
+        continue-on-error: true
+
       - name: Run Playwright tests
         run: npx playwright test
+
       - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
