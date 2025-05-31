@@ -1,13 +1,13 @@
 import Image from "next/image";
 import parse from "html-react-parser";
 
-type HomeIntro = {
+type PageIntro = {
   image: string;
   imageAlt: string;
   title: string;
   intro: string;
 };
-const HomeIntro = ({ image, imageAlt, title, intro }: HomeIntro) => {
+const PageIntro = ({ image, imageAlt, title, intro }: PageIntro) => {
   return (
     <section className="w-full px-6 gap-6 lg:grid lg:grid-cols-12">
       <div
@@ -18,7 +18,7 @@ const HomeIntro = ({ image, imageAlt, title, intro }: HomeIntro) => {
         <div className="rounded-full max-w-full relative overflow-hidden md:-top-8">
           <Image
             src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}/`}
-            alt={imageAlt || "Home Image"}
+            alt={imageAlt || "Page Image"}
             width={600}
             height={600}
             style={{
@@ -41,4 +41,4 @@ const HomeIntro = ({ image, imageAlt, title, intro }: HomeIntro) => {
   );
 };
 
-export default HomeIntro;
+export default PageIntro;

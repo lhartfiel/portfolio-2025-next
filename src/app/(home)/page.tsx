@@ -1,8 +1,8 @@
 import getHomepageData from "../api/homepage";
 import HomeSkills from "@/components/Home/HomeSkills";
 import HomeSnapshot from "@/components/Home/HomeSnapshot";
-import HomeIntro from "@/components/Home/HomeIntro";
-import HomeAbout from "@/components/Home/HomeAbout";
+import PageAbout from "@/components/PageAbout";
+import PageIntro from "@/components/PageIntro";
 
 const Home = async () => {
   let homeData = null;
@@ -24,13 +24,13 @@ const Home = async () => {
 
   return (
     <div className="w-full mx-[12px]">
-      <HomeIntro
+      <PageIntro
         image={homeData.image}
         imageAlt={homeData.imageAlt}
         title={homeData.title}
         intro={homeData.intro}
       />
-      <HomeAbout
+      <PageAbout
         aboutHeading={homeData.aboutHeading}
         aboutDescription={homeData.aboutDescription}
       />
