@@ -42,3 +42,29 @@ export const GET_SINGLE_BLOG_POST = gql`
     }
   }
 `;
+
+export const GET_HOME_PAGE = gql`
+  query {
+    home {
+      title
+      intro
+      image
+      imageAlt
+      aboutHeading
+      aboutDescription
+      skillsHeading
+      snapshotHeading
+      skills {
+        description
+        icon
+        iconAlt
+        link
+        subhead
+      }
+      snapshots {
+        value
+        description
+      }
+    }
+  }
+`;

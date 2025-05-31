@@ -16,7 +16,11 @@ const Nav = () => {
   const mobileNavIsActive = useContext(MobileNavContext);
   const dispatch = useContext(MobileNavDispatchContext);
   return (
-    <nav className="flex flex-wrap h-full relative z-10 sm:flex-nowrap items-center justify-end sm:justify-evenly w-full">
+    <nav
+      className={`flex flex-wrap ${
+        mobileNavIsActive ? "h-full" : "h-auto"
+      } relative z-10 sm:flex-nowrap items-start lg:items-center justify-end sm:justify-evenly w-full`}
+    >
       <div
         data-testid="nav-items"
         className={`nav-items w-full overflow-y-auto justify-between sm:flex flex-col sm:flex-row sm:items-center sm:justify-end py-4 text-primary text-body md:text-[28px] font-medium ${

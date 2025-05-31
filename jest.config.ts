@@ -19,6 +19,8 @@ const config: Config = {
   moduleNameMapper: {
     "^@/apis/(.*)$": "<rootDir>/src/api/$1",
     "^@/components/(.*)$": "<rootDir>/src/app/components/$1",
+    "^web-streams-polyfill/ponyfill$":
+      "<rootDir>/node_modules/web-streams-polyfill/ponyfill.js",
   },
   globals: {
     "ts-jest": {

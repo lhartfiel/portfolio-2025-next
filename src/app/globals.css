@@ -32,6 +32,9 @@
   --font-gothic-a1: "Gothic A1", sans-serif;
   --font-kanit: "Kanit", sans-serif;
 
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
   --breakpoint-xl: 1200px;
   --breakpoint-2xl: 1440px;
 
