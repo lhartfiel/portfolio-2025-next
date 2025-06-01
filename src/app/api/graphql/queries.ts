@@ -12,6 +12,12 @@ export const GET_ABOUT_PAGE = gql`
       funFactValue
       funFactHeading
       funFactDescription
+      interests {
+        name
+        icon
+        heading
+        description
+      }
     }
   }
 `;
