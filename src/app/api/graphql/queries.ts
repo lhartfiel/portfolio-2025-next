@@ -1,4 +1,27 @@
 import { gql } from "@apollo/client";
+
+export const GET_ABOUT_PAGE = gql`
+  query {
+    about {
+      title
+      intro
+      image
+      imageAlt
+      subheading
+      description
+      funFactValue
+      funFactHeading
+      funFactDescription
+      interests {
+        name
+        icon
+        heading
+        description
+      }
+    }
+  }
+`;
+
 export const GET_ALL_SKILLS = gql`
   query {
     allSkills {
