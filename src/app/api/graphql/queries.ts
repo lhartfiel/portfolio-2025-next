@@ -91,3 +91,32 @@ export const GET_HOME_PAGE = gql`
     }
   }
 `;
+
+export const GET_DEVELOPMENT_PAGE = gql`
+  query {
+    development {
+      title
+      intro
+      experienceHeading
+      experienceSubheading
+      projectHeading
+      projectSubheading
+      projects {
+        projectTitle
+        projectDescription
+        order
+        skill {
+          type
+        }
+      }
+      skills {
+        heading
+        description
+        icon
+        skillIcon {
+          type
+        }
+      }
+    }
+  }
+`;
