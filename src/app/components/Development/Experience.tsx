@@ -62,7 +62,7 @@ const Experience = ({
                   className="flex flex-nowrap gap-6 md:gap-0 md:flex-wrap justify-start md:justify-center items-start w-full md:w-1/3"
                 >
                   <div className="flex icon text-4xl min-w-12 md:text-5xl md:w-auto text-primary text-center mb-7">
-                    <FontAwesomeIcon icon={skillIcon} />
+                    {skillIcon && <FontAwesomeIcon icon={skillIcon} />}
                   </div>
 
                   <div className="flex flex-wrap justify-start text-left mb-8">
