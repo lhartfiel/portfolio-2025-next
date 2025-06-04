@@ -1,24 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faPeopleArrows,
-  faFileLines,
-  faLightbulb,
-  faObjectGroup,
-  faComment,
-  faArrowsSpin,
-} from "@fortawesome/free-solid-svg-icons";
-import { library } from "@fortawesome/fontawesome-svg-core";
 import getUserExperiencePageData from "../api/uxpage";
 import PageIntro from "@/components/PageIntro";
-
-library.add(
-  faPeopleArrows,
-  faFileLines,
-  faLightbulb,
-  faObjectGroup,
-  faComment,
-  faArrowsSpin
-);
+import UxProcess from "@/components/UX/UxProcess";
 
 const UserExperience = async () => {
   let uxData = null;
@@ -41,6 +23,11 @@ const UserExperience = async () => {
   return (
     <>
       <PageIntro title={uxData.title} intro={uxData.intro} />
+      <UxProcess
+        processHeading={uxData.processHeading}
+        processes={uxData.processes}
+      />
+      ;
     </>
   );
 };
