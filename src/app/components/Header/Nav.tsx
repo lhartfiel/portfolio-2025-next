@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useContext } from "react";
 import { MobileNavContext, MobileNavDispatchContext } from "./NavContext";
-import SocialLinks from "./SocialLinks";
+import { SocialLinks } from "../SocialLinks";
 
 const navItems = [
   { link: "/development", text: "Development" },
@@ -57,4 +57,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export { Nav };

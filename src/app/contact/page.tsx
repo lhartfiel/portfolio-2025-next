@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE } from "../api/graphql/mutations";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 

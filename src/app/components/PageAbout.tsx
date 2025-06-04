@@ -21,4 +21,4 @@ const PageAbout = ({
   );
 };
 
-export default PageAbout;
+export { PageAbout };

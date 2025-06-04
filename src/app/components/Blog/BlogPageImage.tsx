@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
-import { BlogPost } from "../blog/[slug]/page";
+import { BlogPost } from "../../blog/[slug]/page";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,4 +31,4 @@ const BlogPageImage = ({ blog }: { blog: BlogPost }) => {
   );
 };
 
-export default BlogPageImage;
+export { BlogPageImage };

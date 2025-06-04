@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import parse from "html-react-parser";
-import { Post } from "../blog/page";
-import Button from "./Button";
+import { Post } from "../../blog/page";
+import { Button } from "../Button";
 import dayjs from "dayjs";
 
 const BlogPostFeatured = ({ post }: { post: Post }) => {
@@ -47,4 +47,4 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
   );
 };
 
-export default BlogPostFeatured;
+export { BlogPostFeatured };

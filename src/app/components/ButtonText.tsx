@@ -12,4 +12,4 @@ const ButtonText = ({ text, size }: { text: string; size: ButtonSize }) => {
   );
 };
 
-export default ButtonText;
+export { ButtonText };

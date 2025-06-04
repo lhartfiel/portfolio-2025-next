@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
 import getDevData from "../api/developmentpage";
-import PageIntro from "@/components/PageIntro";
-import Experience from "@/components/Development/Experience";
-import Projects from "@/components/Development/Projects";
+import { PageIntro } from "@/components/PageIntro";
+import { Experience } from "@/components/Development/Experience";
+import { Projects } from "@/components/Development/Projects";
 
 const Development = async () => {
   let devData = null;

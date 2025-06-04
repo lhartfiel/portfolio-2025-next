@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ButtonText from "./ButtonText";
+import { ButtonText } from "./ButtonText";
 
 export type ButtonSize = "small" | "large";
 
@@ -53,4 +53,4 @@ const Button = ({
   );
 };
 
-export default Button;
+export { Button };

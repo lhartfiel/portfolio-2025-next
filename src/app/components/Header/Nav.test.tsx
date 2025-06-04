@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import Nav from "./Nav";
+import { Nav } from "./Nav";
 import { MobileNavContext } from "./NavContext";
 
 describe("Nav component", () => {

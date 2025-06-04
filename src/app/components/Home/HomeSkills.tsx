@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/components/Button";
+import { Button } from "@/components/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsersRectangle } from "@fortawesome/free-solid-svg-icons";
@@ -74,4 +74,4 @@ const HomeSkills = ({
   );
 };
 
-export default HomeSkills;
+export { HomeSkills };

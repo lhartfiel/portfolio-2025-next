@@ -1,5 +1,5 @@
 import Image from "next/image";
-import PageIntroContent from "./PageIntroContent";
+import { PageIntroContent } from "./PageIntroContent";
 
 type PageIntro = {
   image?: string;
@@ -44,4 +44,4 @@ const PageIntro = ({ image, imageAlt, title, intro }: PageIntro) => {
   );
 };
 
-export default PageIntro;
+export { PageIntro };

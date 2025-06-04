@@ -39,4 +39,4 @@ const AboutFact = ({
   );
 };
 
-export default AboutFact;
+export { AboutFact };

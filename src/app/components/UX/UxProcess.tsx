@@ -78,4 +78,4 @@ const UxProcess = ({
   );
 };
 
-export default UxProcess;
+export { UxProcess };

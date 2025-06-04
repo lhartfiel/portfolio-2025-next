@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
 import parse from "html-react-parser";
-import { Post } from "../blog/page";
-import Button from "./Button";
+import { Post } from "../../blog/page";
+import { Button } from "../Button";
 import dayjs from "dayjs";
 
 const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
@@ -59,4 +59,4 @@ const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
   );
 };
 
-export default BlogItems;
+export { BlogItems };

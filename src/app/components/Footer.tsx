@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import SocialLinks from "./SocialLinks";
+import { SocialLinks } from "./SocialLinks";
 
 const heartIcon = <FontAwesomeIcon icon={faHeart} className="w-4 mx-1" />;
 
@@ -24,4 +24,4 @@ const Footer = () => {
     </footer>
   );
 };
-export default Footer;
+export { Footer };

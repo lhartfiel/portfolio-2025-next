@@ -1,6 +1,6 @@
 import getUserExperiencePageData from "../api/uxpage";
-import PageIntro from "@/components/PageIntro";
-import UxProcess from "@/components/UX/UxProcess";
+import { PageIntro } from "@/components/PageIntro";
+import { UxProcess } from "@/components/UX/UxProcess";
 
 const UserExperience = async () => {
   let uxData = null;
@@ -27,7 +27,6 @@ const UserExperience = async () => {
         processHeading={uxData.processHeading}
         processes={uxData.processes}
       />
-      ;
     </>
   );
 };
