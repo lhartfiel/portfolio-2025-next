@@ -54,7 +54,7 @@ const UxProcess = ({
           const processIcon =
             icon in iconMap ? iconMap[icon as keyof typeof iconMap] : undefined;
           return (
-            <div className="flex flex-nowrap">
+            <div key={icon} className="flex flex-nowrap">
               {processIcon && (
                 <div className="shrink-0 icon text-[30px] md:text-[32px] w-14 h-14 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
                   <FontAwesomeIcon icon={processIcon} />
