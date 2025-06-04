@@ -1,8 +1,8 @@
-import PageAbout from "@/components/PageAbout";
-import PageIntro from "@/components/PageIntro";
+import { PageAbout } from "@/components/PageAbout";
+import { PageIntro } from "@/components/PageIntro";
 import getAboutpageData from "../api/aboutpage";
-import AboutInterests from "@/components/About/AboutInterests";
-import AboutFact from "@/components/About/AboutFact";
+import { AboutInterests } from "@/components/About/AboutInterests";
+import { AboutFact } from "@/components/About/AboutFact";
 
 const About = async () => {
   let aboutData = null;

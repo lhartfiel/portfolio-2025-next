@@ -1,7 +1,7 @@
 import { GET_ALL_BLOG_POSTS } from "../api/graphql/queries";
 import { getClient } from "../ApolloClient";
-import BlogItems from "@/components/Blog/BlogItems";
-import BlogPostFeatured from "@/components/Blog/BlogPostFeatured";
+import { BlogItems } from "@/components/Blog/BlogItems";
+import { BlogPostFeatured } from "@/components/Blog/BlogPostFeatured";
 
 export interface Post {
   id: number;
