@@ -32,4 +32,4 @@ const MobileMenu = ({ toggleMobileNav }: { toggleMobileNav: () => void }) => {
     </button>
   );
 };
-export default MobileMenu;
+export { MobileMenu };

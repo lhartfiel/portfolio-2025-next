@@ -18,4 +18,4 @@ const PageIntroContent = ({
   );
 };
 
-export default PageIntroContent;
+export { PageIntroContent };

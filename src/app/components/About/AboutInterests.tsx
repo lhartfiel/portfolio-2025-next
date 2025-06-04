@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import parse from "html-react-parser";
-import ButtonLink from "../ButtonLink";
+import { ButtonLink } from "../ButtonLink";
 import { useState, useCallback } from "react";
 
 const iconMap = { faPersonRunning, faBookOpenReader, faGlobe, faCookieBite };
@@ -101,4 +101,4 @@ const AboutInterests = ({ interests }: { interests: [Interest] }) => {
   );
 };
 
-export default AboutInterests;
+export { AboutInterests };

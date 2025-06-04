@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { MobileNavProvider } from "./components/NavContext";
-import LayoutBody from "./components/LayoutBody";
+import { MobileNavProvider } from "./components/Header/NavContext";
+import { LayoutBody } from "./components/LayoutBody";
 
 export const metadata: Metadata = {
   title: "Lindsay Hartfiel Portfolio",

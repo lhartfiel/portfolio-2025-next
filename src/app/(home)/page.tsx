@@ -1,8 +1,8 @@
 import getHomepageData from "../api/homepage";
-import HomeSkills from "@/components/Home/HomeSkills";
-import HomeSnapshot from "@/components/Home/HomeSnapshot";
-import PageAbout from "@/components/PageAbout";
-import PageIntro from "@/components/PageIntro";
+import { HomeSkills } from "@/components/Home/HomeSkills";
+import { HomeSnapshot } from "@/components/Home/HomeSnapshot";
+import { PageAbout } from "@/components/PageAbout";
+import { PageIntro } from "@/components/PageIntro";
 
 const Home = async () => {
   let homeData = null;

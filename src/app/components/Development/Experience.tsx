@@ -93,4 +93,4 @@ const Experience = ({
   );
 };
 
-export default Experience;
+export { Experience };

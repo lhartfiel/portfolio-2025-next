@@ -38,4 +38,4 @@ const HomeSnapshot = ({
   );
 };
 
-export default HomeSnapshot;
+export { HomeSnapshot };

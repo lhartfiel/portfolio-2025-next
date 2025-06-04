@@ -5,7 +5,7 @@ import styles from "../blog.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays } from "@fortawesome/free-regular-svg-icons";
 import { Suspense } from "react";
-import BlogPageImage from "@/components/BlogPageImage";
+import { BlogPageImage } from "@/components/Blog/BlogPageImage";
 import dayjs from "dayjs";
 
 const calendarIcon = (

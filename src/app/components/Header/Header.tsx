@@ -1,7 +1,7 @@
 "use client";
-import Nav from "./Nav";
+import { Nav } from "./Nav";
 import Link from "next/link";
-import MobileMenu from "./MobileMenu";
+import { MobileMenu } from "./MobileMenu";
 import { useContext } from "react";
 import { MobileNavDispatchContext, MobileNavContext } from "./NavContext";
 
@@ -30,4 +30,4 @@ const Header = () => {
     </header>
   );
 };
-export default Header;
+export { Header };

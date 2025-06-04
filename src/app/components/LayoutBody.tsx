@@ -1,10 +1,10 @@
 "use client";
 import { Gothic_A1, Kanit } from "next/font/google";
-import Header from "./Header";
-import Footer from "./Footer";
+import { Header } from "./Header/Header";
+import { Footer } from "./Footer";
 import { ApolloWrapper } from "../ApolloWrapper";
 import { useContext } from "react";
-import { MobileNavContext } from "./NavContext";
+import { MobileNavContext } from "./Header/NavContext";
 
 const gothicA1 = Gothic_A1({
   variable: "--font-gothic-a1",
@@ -52,4 +52,4 @@ const LayoutBody = ({
   );
 };
 
-export default LayoutBody;
+export { LayoutBody };

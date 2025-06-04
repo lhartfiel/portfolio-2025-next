@@ -1,7 +1,7 @@
 "use client";
 import parse from "html-react-parser";
 import { useState, useCallback } from "react";
-import ButtonLink from "../ButtonLink";
+import { ButtonLink } from "../ButtonLink";
 import striptags from "striptags";
 
 type Project = {
@@ -100,4 +100,4 @@ const Projects = ({
     </section>
   );
 };
-export default Projects;
+export { Projects };

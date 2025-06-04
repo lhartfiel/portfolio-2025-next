@@ -120,3 +120,18 @@ export const GET_DEVELOPMENT_PAGE = gql`
     }
   }
 `;
+
+export const GET_UX_PAGE = gql`
+  query {
+    userExperience {
+      title
+      intro
+      processHeading
+      processes {
+        heading
+        description
+        icon
+      }
+    }
+  }
+`;
