@@ -135,3 +135,39 @@ export const GET_UX_PAGE = gql`
     }
   }
 `;
+
+export const GET_UX_PROJECTS = gql`
+  query {
+    uxProject {
+      title
+      intro
+      role
+      duration
+      projectType
+      excerpt
+      excerptImage
+      slug
+    }
+  }
+`;
+
+export const GET_UX_PROJECT_BY_SLUG = gql`
+  query uxProject($slug: String!) {
+    uxProjectBySlug(slug: $slug) {
+      title
+      intro
+      role
+      duration
+      projectType
+      blocks {
+        heading
+        description
+        blockquote
+        images {
+          image
+          imageAlt
+        }
+      }
+    }
+  }
+`;
