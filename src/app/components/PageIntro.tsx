@@ -6,8 +6,9 @@ type PageIntro = {
   imageAlt?: string;
   title: string;
   intro: string;
+  type?: string;
 };
-const PageIntro = ({ image, imageAlt, title, intro }: PageIntro) => {
+const PageIntro = ({ image, imageAlt, title, intro, type }: PageIntro) => {
   return (
     <section className="w-full px-6 gap-6 lg:grid lg:grid-cols-12">
       {image ? (
@@ -17,6 +18,12 @@ const PageIntro = ({ image, imageAlt, title, intro }: PageIntro) => {
                   lg:float-none lg:w-auto lg:ml-0 lg:mb-0
                   lg:order-2 lg:col-span-6 lg:col-start-7"
           >
+            {type && (
+              <img
+                className="absolute z-20 top-[2%] -left-[2%]"
+                src="/assets/arrow-hifive.png"
+              />
+            )}
             <div className="rounded-full max-w-full relative overflow-hidden md:-top-8 lg:absolute lg:left-0">
               <Image
                 src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}/`}

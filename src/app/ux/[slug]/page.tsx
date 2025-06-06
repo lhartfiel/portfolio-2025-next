@@ -1,5 +1,7 @@
 import { getUxProjectBySlug } from "src/app/api/uxprojects";
 import { PageIntro } from "@/components/PageIntro";
+import { UxBlock } from "@/components/UX/UxBlock";
+import { UxDetails } from "@/components/UX/UxDetails";
 
 interface UxProjectParams {
   params: Promise<{
@@ -31,6 +33,12 @@ const UxProject = async ({ params }: UxProjectParams) => {
   return (
     <>
       <PageIntro title={uxProject.title} intro={uxProject.intro} />
+      <UxDetails
+        role={uxProject.role}
+        duration={uxProject.duration}
+        type={uxProject.projectType}
+      />
+      <UxBlock blocks={uxProject.blocks} />
     </>
   );
 };

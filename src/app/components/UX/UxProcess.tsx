@@ -48,7 +48,7 @@ const UxProcess = ({
           {processHeading}
         </h2>
       )}
-      <div className="col-span-full grid grid-cols-2 md:[grid-template-columns:repeat(3,288px)] mx-auto gap-6">
+      <div className="col-span-full grid grid-cols-2 lg:[grid-template-columns:repeat(3,288px)] mx-auto gap-6">
         {processes.map((step) => {
           const { heading, description, icon } = step;
           const processIcon =

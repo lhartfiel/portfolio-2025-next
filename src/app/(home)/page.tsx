@@ -29,6 +29,7 @@ const Home = async () => {
         imageAlt={homeData.imageAlt}
         title={homeData.title}
         intro={homeData.intro}
+        type="home"
       />
       <PageAbout
         aboutHeading={homeData.aboutHeading}

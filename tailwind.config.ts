@@ -13,6 +13,7 @@ module.exports = {
         secondary: "#7FBC8F",
         tertiary: "#FFBA31",
         accent: "#FC535E",
+        "gray-light": "D9D9D9",
       },
       fontFamily: {
         gothic: ["var(--font-gothic-a1)", "sans-serif"],

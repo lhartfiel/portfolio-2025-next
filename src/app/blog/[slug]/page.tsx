@@ -36,7 +36,7 @@ const BlogPage = async ({ params }: BlogPageParams) => {
     const { data } = await getClient().query({
       query: GET_SINGLE_BLOG_POST,
       variables: {
-        slug, // replace with actual slug
+        slug,
       },
     });
     blog = data?.blogBySlug || {};

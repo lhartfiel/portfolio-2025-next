@@ -160,6 +160,8 @@ export const GET_UX_PROJECT_BY_SLUG = gql`
       duration
       projectType
       blocks {
+        id
+        showBackgroundColor
         heading
         description
         blockquote

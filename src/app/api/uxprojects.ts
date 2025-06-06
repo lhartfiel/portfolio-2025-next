@@ -1,16 +1,18 @@
 import { getClient } from "../ApolloClient";
 import { GET_UX_PROJECTS, GET_UX_PROJECT_BY_SLUG } from "./graphql/queries";
 
-interface Image {
+export interface Image {
   image: string;
   imageAlt: string;
 }
 
-interface Block {
+export interface Block {
+  id: string;
   heading?: string;
   description?: string;
   blockquote?: string;
-  image?: Image;
+  images?: [Image];
+  showBackgroundColor: boolean;
 }
 
 interface Project {
@@ -22,7 +24,7 @@ interface Project {
   role: string;
   duration: string;
   projectType: string;
-  block: Block;
+  blocks: Block;
 }
 
 const getUxProjectData = async () => {
