@@ -13,6 +13,7 @@ export interface Block {
   blockquote?: string;
   images?: [Image];
   showBackgroundColor: boolean;
+  slidesPerView: number;
 }
 
 interface Project {

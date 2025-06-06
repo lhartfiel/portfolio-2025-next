@@ -162,6 +162,7 @@ export const GET_UX_PROJECT_BY_SLUG = gql`
       blocks {
         id
         showBackgroundColor
+        slidesPerView
         heading
         description
         blockquote

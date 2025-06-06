@@ -19,4 +19,9 @@
   :global(.swiper-pagination-bullet-active) {
     background-color: var(--color-tertiary);
   }
+
+  :global(.swiper) {
+    // max-height: 560px;
+  }
 }
+
