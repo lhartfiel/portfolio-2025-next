@@ -46,7 +46,7 @@ const UxDetails = ({
       {details.map((detail) => (
         <div
           key={detail.name}
-          className="flex flex-nowrap w-1/3 lg:w-auto icon text-white mr-8"
+          className="flex flex-nowrap items-center w-1/3 lg:w-auto icon text-white mr-8"
         >
           {detail.icon}{" "}
           <span className="flex flex-wrap ">

@@ -11,17 +11,14 @@ import {
 } from "swiper/modules";
 import { Image } from "src/app/api/uxprojects";
 
-import "swiper/css";
-import "swiper/css/zoom";
-import "swiper/css/effect-fade";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
+import "swiper/swiper.min.css";
+import "swiper/modules/zoom.min.css";
+import "swiper/modules/effect-fade.min.css";
+import "swiper/modules/navigation.min.css";
+import "swiper/modules/pagination.min.css";
+import "swiper/modules/scrollbar.min.css";
 
 import styles from "../../ux/ux.module.scss";
-
-// Customizations:
-// slidesPerView
 
 const UxCarousel = ({
   images,
