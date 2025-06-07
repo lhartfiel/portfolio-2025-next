@@ -38,7 +38,13 @@ const UxProject = async ({ params }: UxProjectParams) => {
         duration={uxProject.duration}
         type={uxProject.projectType}
       />
-      <UxBlock blocks={uxProject.blocks} />
+      <UxBlock
+        blocks={
+          Array.isArray(uxProject.blocks)
+            ? uxProject.blocks
+            : [uxProject.blocks]
+        }
+      />
     </>
   );
 };

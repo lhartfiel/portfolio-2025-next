@@ -4,7 +4,7 @@ import styles from "../../blog/blog.module.scss";
 import { UxCarousel } from "./UxCarousel";
 import { UxCallout } from "./UxCallout";
 
-const UxBlock = ({ blocks }: { blocks: [Block] }) => {
+const UxBlock = ({ blocks }: { blocks: Block[] }) => {
   console.log("block", blocks);
 
   // heading?: string;
