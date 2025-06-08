@@ -73,6 +73,8 @@ export const GET_HOME_PAGE = gql`
       intro
       image
       imageAlt
+      id
+      highFiveCount
       aboutHeading
       aboutDescription
       skillsHeading

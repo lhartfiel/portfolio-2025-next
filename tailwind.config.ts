@@ -29,6 +29,22 @@ module.exports = {
       textShadow: {
         xl: "1px 3px 3px rgba(0, 0, 0, 0.5)",
       },
+      animation: {
+        "twirl-in": "twirl-in 1s ease-in forwards",
+        "twirl-out": "twirl-out 1s ease-in forwards",
+      },
+      keyframes: {
+        "twirl-in": {
+          "0%": { transform: "rotate(0deg) scale(0)" },
+          "25%": { transform: "rotate(0deg) scale(0.5)" },
+          "50%": { transform: "rotate(360deg) scale(1.5)" },
+          "100%": { transform: "rotate(720deg) scale(1)" },
+        },
+        "twirl-out": {
+          "0%": { transform: "rotate(720deg) scale(1)" },
+          "100%": { transform: "rotate(1080deg) scale(0)" },
+        },
+      },
     },
   },
   safelist: ["text-primary"],

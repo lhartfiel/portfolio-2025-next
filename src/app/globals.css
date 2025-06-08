@@ -49,6 +49,32 @@
   --text-body-min-sm--line-height: 20px;
 
   --text-shadow-xl: 2px 2px 2px rgba(0, 0, 0, 0.85);
+
+  @keyframes twirl-in {
+    0% {
+      transform: rotate(0deg) scale(0);
+    }
+    25% {
+      transform: rotate(0deg) scale(0.5);
+    }
+    50% {
+      transform: rotate(360deg) scale(1.5);
+    }
+    100% {
+      transform: rotate(720deg) scale(1);
+    }
+  }
+
+  @keyframes twirl-out {
+    0% {
+      transform: rotate(720deg) scale(1);
+    }
+    100% {
+      transform: rotate(1080deg) scale(0);
+    }
+  }
+  --animate-twirl-in: twirl-in 1s ease-in 1;
+  --animate-twirl-out: twirl-out 1s ease-in 1;
 }
 
 :root {
@@ -58,6 +84,7 @@
 body {
   font-family: var(--font-gothic-a1), Arial, Helvetica, sans-serif;
 }
+
 .abt-description p {
   margin-bottom: 28px;
 }

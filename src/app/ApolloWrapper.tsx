@@ -6,10 +6,17 @@ import {
   ApolloClient,
   InMemoryCache,
 } from "@apollo/client-integration-nextjs";
+import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
 // GraphQL client for client-side rendering
 const GRAPHQL_URL =
   process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:3000/api/graphql";
+
+if (process.env.NODE_ENV !== "production") {
+  // Adds messages only in a dev environment
+  loadDevMessages();
+  loadErrorMessages();
+}
 function makeClient() {
   const httpLink = new HttpLink({
     uri: GRAPHQL_URL,

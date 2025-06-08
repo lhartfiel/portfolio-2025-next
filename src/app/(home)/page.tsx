@@ -25,11 +25,13 @@ const Home = async () => {
   return (
     <div className="w-full mx-[12px]">
       <PageIntro
+        highFiveCount={homeData.highFiveCount}
         image={homeData.image}
         imageAlt={homeData.imageAlt}
         title={homeData.title}
         intro={homeData.intro}
         type="home"
+        id={homeData.id}
       />
       <PageAbout
         aboutHeading={homeData.aboutHeading}
