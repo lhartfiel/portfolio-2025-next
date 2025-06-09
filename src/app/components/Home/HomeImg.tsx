@@ -45,7 +45,7 @@ const HomeImg = ({
       }, 4000);
       setTimeout(() => {
         setHighFiveActive(false);
-        setTwirlOut(true);
+        setTwirlOut(false);
       }, 5000);
     },
     onError: (err) => {
