@@ -30,8 +30,6 @@ const UserExperience = async () => {
     );
   }
 
-  console.log("proj", uxProject);
-
   return (
     <>
       <PageIntro title={uxData.title} intro={uxData.intro} />

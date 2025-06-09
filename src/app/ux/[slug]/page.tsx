@@ -19,8 +19,6 @@ const UxProject = async ({ params }: UxProjectParams) => {
     console.error("Error loading about UX page data:", error);
   }
 
-  console.log("ux", uxProject);
-
   if (!uxProject) {
     return (
       <div className="w-full mx-[12px]">

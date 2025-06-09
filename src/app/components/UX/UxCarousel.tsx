@@ -20,9 +20,6 @@ import "swiper/css/scrollbar";
 
 import styles from "../../ux/ux.module.scss";
 
-// Customizations:
-// slidesPerView
-
 const UxCarousel = ({
   images,
   slidesPerView = 1,

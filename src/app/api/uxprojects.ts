@@ -50,7 +50,6 @@ const getUxProjectBySlug = async ({ slug }: { slug: string }) => {
       },
     });
     uxProjectData = data?.uxProjectBySlug || {};
-    console.log("proj", uxProjectData);
     return uxProjectData;
   } catch (error) {
     console.error("Error fetching UX Project:", error);

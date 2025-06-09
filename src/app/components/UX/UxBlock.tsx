@@ -5,12 +5,6 @@ import { UxCarousel } from "./UxCarousel";
 import { UxCallout } from "./UxCallout";
 
 const UxBlock = ({ blocks }: { blocks: Block[] }) => {
-  console.log("block", blocks);
-
-  // heading?: string;
-  //   description?: string;
-  //   blockquote?: string;
-  //   image?: Image;
   return (
     <>
       {blocks.map((block) => {
