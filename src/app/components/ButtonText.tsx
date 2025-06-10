@@ -1,11 +1,22 @@
 import { ButtonSize } from "./Button";
 
-const ButtonText = ({ text, size }: { text: string; size: ButtonSize }) => {
+const ButtonText = ({
+  text,
+  size,
+  disabled,
+}: {
+  text: string;
+  size: ButtonSize;
+  disabled?: boolean;
+}) => {
   return (
     <button
+      disabled={disabled ? true : false}
       type="button"
-      className={`cursor-pointer
-        ${size === "large" ? "w-[230px]" : "px-[14px]"}`}
+      className={`
+        ${size === "large" ? "w-[230px]" : "px-[14px]"} ${
+        disabled ? "cursor-not-allowed" : "cursor-pointer"
+      }`}
     >
       {text}
     </button>

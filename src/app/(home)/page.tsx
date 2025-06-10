@@ -3,6 +3,7 @@ import { HomeSkills } from "@/components/Home/HomeSkills";
 import { HomeSnapshot } from "@/components/Home/HomeSnapshot";
 import { PageAbout } from "@/components/PageAbout";
 import { PageIntro } from "@/components/PageIntro";
+import { DataError } from "@/components/DataError";
 
 const Home = async () => {
   let homeData = null;
@@ -13,13 +14,7 @@ const Home = async () => {
   }
 
   if (!homeData) {
-    return (
-      <div className="w-full mx-[12px]">
-        <p className="text-red-500 text-lg">
-          {"Sorry. We're having trouble loading the data."}
-        </p>
-      </div>
-    );
+    return <DataError />;
   }
 
   return (

@@ -3,6 +3,7 @@ import { getUxProjectData } from "../api/uxprojects";
 import { PageIntro } from "@/components/PageIntro";
 import { UxProcess } from "@/components/UX/UxProcess";
 import { UxProject } from "@/components/UX/UxProject";
+import { DataError } from "@/components/DataError";
 
 const UserExperience = async () => {
   let uxData,
@@ -21,13 +22,7 @@ const UserExperience = async () => {
   }
 
   if (!uxProject) {
-    return (
-      <div className="w-full mx-[12px]">
-        <p className="text-red-500 text-lg">
-          {"Sorry. We're having trouble loading the data."}
-        </p>
-      </div>
-    );
+    return <DataError />;
   }
 
   return (

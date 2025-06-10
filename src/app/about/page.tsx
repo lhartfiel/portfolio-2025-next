@@ -3,6 +3,7 @@ import { PageIntro } from "@/components/PageIntro";
 import getAboutpageData from "../api/aboutpage";
 import { AboutInterests } from "@/components/About/AboutInterests";
 import { AboutFact } from "@/components/About/AboutFact";
+import { DataError } from "@/components/DataError";
 
 const About = async () => {
   let aboutData = null;
@@ -13,13 +14,7 @@ const About = async () => {
   }
 
   if (!aboutData) {
-    return (
-      <div className="w-full mx-[12px]">
-        <p className="text-red-500 text-lg">
-          {"Sorry. We're having trouble loading the data."}
-        </p>
-      </div>
-    );
+    return <DataError />;
   }
 
   return (

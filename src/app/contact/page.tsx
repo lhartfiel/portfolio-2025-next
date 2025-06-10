@@ -24,7 +24,11 @@ const Contact = () => {
   const [sendMessage, { loading, error }] = useMutation(SEND_MESSAGE, {
     variables: { name, email, message },
     onCompleted: (data) => {
-      debugger;
+      if (!data || !data.sendMessage || !data.sendMessage.ok) {
+        setSubmissionMessage("Error sending message. Please check your input.");
+        return;
+      }
+
       console.log("Message sent successfully", data);
       setName("");
       setEmail("");
@@ -36,6 +40,12 @@ const Contact = () => {
     onError: (error) => {
       setSubmissionMessage("Error sending message. Please try again later.");
       console.error("Error sending message", error);
+      if (error.graphQLErrors.length > 0) {
+        console.error("GraphQL Errors:", error.graphQLErrors);
+      }
+      if (error.networkError) {
+        console.error("Network Error:", error.networkError);
+      }
     },
   });
 
@@ -59,16 +69,18 @@ const Contact = () => {
             </div>
           )}
         </div>
-        <div className="wrapper text-center col-span-4 col-start-1 lg:col-span-4 lg:col-start-3 w-full">
+        <div className="wrapper text-left col-span-4 col-start-1 lg:col-span-4 lg:col-start-3 w-full">
           <div>
             <label className="text-white" htmlFor="name">
-              Name
+              Name*
             </label>
             <input
+              placeholder="Your Name"
               type="text"
               id="name"
               name="name"
               value={name}
+              required
               onChange={(e) => setName(e.target.value)}
               style={{
                 border: "1px solid black",
@@ -83,9 +95,10 @@ const Contact = () => {
           </div>
           <div>
             <label className="text-white" htmlFor="email">
-              Email
+              Email*
             </label>
             <input
+              placeholder="Your Email"
               type="email"
               id="email"
               name="email"
@@ -104,9 +117,10 @@ const Contact = () => {
           </div>
           <div>
             <label className="text-white text-left" htmlFor="message">
-              Message
+              Message*
             </label>
             <textarea
+              placeholder="A short message"
               id="message"
               name="message"
               value={message}
@@ -124,6 +138,7 @@ const Contact = () => {
           </div>
           <div className="flex justify-center">
             <Button
+              disabled={!name || !email || !message ? true : false}
               type="primary"
               size="large"
               callback={sendMessage}

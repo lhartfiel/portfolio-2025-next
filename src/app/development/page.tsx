@@ -3,6 +3,7 @@ import getDevData from "../api/developmentpage";
 import { PageIntro } from "@/components/PageIntro";
 import { Experience } from "@/components/Development/Experience";
 import { Projects } from "@/components/Development/Projects";
+import { DataError } from "@/components/DataError";
 
 const Development = async () => {
   let devData = null;
@@ -14,13 +15,7 @@ const Development = async () => {
   }
 
   if (!devData) {
-    return (
-      <div className="w-full mx-[12px]">
-        <p className="text-red-500 text-lg">
-          {"Sorry. We're having trouble loading the data."}
-        </p>
-      </div>
-    );
+    return <DataError />;
   }
   return (
     <>
