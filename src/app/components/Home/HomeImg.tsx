@@ -3,13 +3,16 @@ import { useMutation } from "@apollo/client";
 import { SEND_HIGH_FIVE } from "src/app/api/graphql/mutations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurst } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const HomeImg = ({
   image,
+  imageAlt,
   highFiveCount,
   id,
 }: {
   image: string;
+  imageAlt: string;
   highFiveCount: number | undefined;
   id: number | undefined;
 }) => {
@@ -58,12 +61,12 @@ const HomeImg = ({
 
   return (
     <>
-      <img
+      <Image
         useMap="#selfmap"
         src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}`}
-        alt=""
-        width="600"
-        height="600"
+        alt={imageAlt}
+        width={600}
+        height={600}
         className="rounded-full object-contain object-center"
       />
       {highFiveActive && (

@@ -42,10 +42,14 @@ const PageIntro = ({
             )}
             <div className="rounded-full max-w-full relative  xl:-top-8 lg:absolute lg:left-0">
               {type === "home" ? (
-                <HomeImg image={image} highFiveCount={highFiveCount} id={id} />
+                <HomeImg
+                  image={image}
+                  imageAlt={imageAlt || "Page Image"}
+                  highFiveCount={highFiveCount}
+                  id={id}
+                />
               ) : (
                 <Image
-                  useMap={`${type === "home"} ? '#selfmap' : ''`}
                   src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}/`}
                   alt={imageAlt || "Page Image"}
                   width={600}
