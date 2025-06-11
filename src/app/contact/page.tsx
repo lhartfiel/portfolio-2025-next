@@ -47,7 +47,7 @@ const Contact = () => {
     return setEmail(value);
   };
 
-  const [sendMessage, { loading, error }] = useMutation(SEND_MESSAGE, {
+  const [sendMessage, { loading }] = useMutation(SEND_MESSAGE, {
     variables: { name, email, message },
     onCompleted: (data) => {
       if (!data || !data.createContact || !data.createContact.ok) {
@@ -84,7 +84,7 @@ const Contact = () => {
       } else {
         setSubmissionMessage({
           success: false,
-          message: `Error sending message. Please try again.`,
+          message: "Error sending message. Please try again.",
         });
       }
     },
