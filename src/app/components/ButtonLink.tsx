@@ -16,9 +16,9 @@ const ButtonLink = ({
   const clickHandler = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
       setClickIcon((prev) => !prev);
-      callback(e);
+      if (callback) callback(e);
     },
-    []
+    [callback]
   );
 
   return (

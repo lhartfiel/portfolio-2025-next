@@ -1,10 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE } from "../api/graphql/mutations";
 import { Button } from "@/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faExclamationTriangle,
+} from "@fortawesome/free-solid-svg-icons";
 
 const checkmarkIcon = (
   <div className="flex items-center justify-center aspect-square shrink-0 bg-secondary w-6 h-6 md:w-8 md:h-8 rounded-full mr-2">
@@ -14,12 +17,23 @@ const checkmarkIcon = (
     />
   </div>
 );
+const errorIcon = (
+  <div className="flex items-center justify-center aspect-square shrink-0 bg-tertiary w-6 h-6 md:w-8 md:h-8 rounded-full mr-2">
+    <FontAwesomeIcon
+      icon={faExclamationTriangle}
+      className="text-primary text-xl md:text-1xl"
+    />
+  </div>
+);
 
 const Contact = () => {
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [submissionMessage, setSubmissionMessage] = useState("");
+  const [submissionMessage, setSubmissionMessage] = useState({
+    success: true,
+    message: "",
+  });
   const [errorMessage, setErrorMessage] = useState("");
 
   const verifyEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,8 +50,11 @@ const Contact = () => {
   const [sendMessage, { loading, error }] = useMutation(SEND_MESSAGE, {
     variables: { name, email, message },
     onCompleted: (data) => {
-      if (!data || !data.sendMessage || !data.sendMessage.ok) {
-        setSubmissionMessage("Error sending message. Please check your input.");
+      if (!data || !data.createContact || !data.createContact.ok) {
+        setSubmissionMessage({
+          success: false,
+          message: "Error sending message. Please check your input.",
+        });
         return;
       }
 
@@ -45,21 +62,37 @@ const Contact = () => {
       setName("");
       setEmail("");
       setMessage("");
-      setSubmissionMessage(
-        "Thank you! Your message has been successfully sent."
-      );
+      setSubmissionMessage({
+        success: true,
+        message: "Thank you! Your message has been successfully sent.",
+      });
     },
     onError: (error) => {
-      setSubmissionMessage("Error sending message. Please try again later.");
       console.error("Error sending message", error);
       if (error.graphQLErrors.length > 0) {
         console.error("GraphQL Errors:", error.graphQLErrors);
-      }
-      if (error.networkError) {
+        setSubmissionMessage({
+          success: false,
+          message: `Error sending message. ${error.graphQLErrors[0].message}.`,
+        });
+      } else if (error.networkError) {
         console.error("Network Error:", error.networkError);
+        setSubmissionMessage({
+          success: false,
+          message: `Error sending message. ${error.networkError}.`,
+        });
+      } else {
+        setSubmissionMessage({
+          success: false,
+          message: `Error sending message. Please try again.`,
+        });
       }
     },
   });
+
+  const sendMessageWrapper = useCallback(() => {
+    sendMessage();
+  }, [sendMessage]);
 
   return (
     <section className="grid grid-cols-4 flex-1 md:grid-cols-8 px-10 gap-x-4 lg:grid-cols-12 w-full bg-primary lg:bg-transparent">
@@ -73,11 +106,10 @@ const Contact = () => {
       <form className="w-full py-12 col-span-4 md:col-start-3 col-start-1 lg:col-span-8 lg:col-start-3 lg:grid lg:grid-cols-8 lg:mb-12 mx-auto justify-center bg-primary">
         <div className="col-span-4 col-start-1 md:col-span-6 md:col-start-2 text-center mb-6">
           {loading && "Loading..."}
-          {error && <p style={{ color: "red" }}>Error sending message</p>}
-          {submissionMessage && (
+          {submissionMessage.message && (
             <div className="flex items-start justify-center text-white text-body-sm md:text-body text-center">
-              {checkmarkIcon}
-              <p className="flex flex-wrap">{submissionMessage}</p>
+              {submissionMessage.success ? checkmarkIcon : errorIcon}
+              <p className="flex flex-wrap">{submissionMessage.message}</p>
             </div>
           )}
         </div>
@@ -134,7 +166,7 @@ const Contact = () => {
               }
               type="primary"
               size="large"
-              callback={sendMessage}
+              callback={sendMessageWrapper}
               text="Send Message"
               customClass="inline-block"
             ></Button>
