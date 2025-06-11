@@ -1,7 +1,7 @@
 import { getClient } from "../ApolloClient";
 import { GET_UX_PROJECTS, GET_UX_PROJECT_BY_SLUG } from "./graphql/queries";
 
-export interface Image {
+export interface ImageType {
   image: string;
   imageAlt: string;
 }
@@ -11,9 +11,10 @@ export interface Block {
   heading?: string;
   description?: string;
   blockquote?: string;
-  images?: [Image];
+  images?: [ImageType];
   showBackgroundColor: boolean;
   slidesPerView: number;
+  limitHeight: boolean;
 }
 
 interface Project {

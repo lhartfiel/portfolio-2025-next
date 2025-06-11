@@ -12,6 +12,10 @@
       font-weight: 600;
     }
   }
+  :global(.limit-height img) {
+    max-height: 500px;
+  }
+
   :global(.swiper-pagination-bullet) {
     height: 14px;
     width: 14px;

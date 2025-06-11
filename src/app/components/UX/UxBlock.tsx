@@ -37,6 +37,7 @@ const UxBlock = ({ blocks }: { blocks: Block[] }) => {
                   <UxCarousel
                     images={block.images}
                     slidesPerView={block.slidesPerView}
+                    limitHeight={block.limitHeight}
                   />
                 )}
                 {block.blockquote && <UxCallout callout={block.blockquote} />}

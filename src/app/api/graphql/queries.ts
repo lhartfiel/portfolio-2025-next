@@ -165,6 +165,7 @@ export const GET_UX_PROJECT_BY_SLUG = gql`
         id
         showBackgroundColor
         slidesPerView
+        limitHeight
         heading
         description
         blockquote

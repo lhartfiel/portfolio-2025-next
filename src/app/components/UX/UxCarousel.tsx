@@ -9,7 +9,8 @@ import {
   Zoom,
   Mousewheel,
 } from "swiper/modules";
-import { Image } from "src/app/api/uxprojects";
+import { ImageType } from "src/app/api/uxprojects";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/zoom";
@@ -23,14 +24,17 @@ import styles from "../../ux/ux.module.scss";
 const UxCarousel = ({
   images,
   slidesPerView = 1,
+  limitHeight,
 }: {
-  images: [Image];
+  images: [ImageType];
   slidesPerView: number;
+  limitHeight?: boolean;
 }) => {
   const imagePath = process.env.NEXT_PUBLIC_IMAGE_PATH;
   return (
-    <div className={`${styles.carousel} `}>
+    <div className={`${styles.carousel}`}>
       <Swiper
+        className={`${limitHeight && "limit-height"}`}
         modules={[
           Navigation,
           Pagination,
@@ -57,7 +61,7 @@ const UxCarousel = ({
           return (
             <SwiperSlide key={img.image}>
               <div className="swiper-zoom-container">
-                <img src={`${imagePath}${img.image}`} />
+                <img src={`${imagePath}${img.image}`} alt={img.imageAlt} />
               </div>
             </SwiperSlide>
           );
