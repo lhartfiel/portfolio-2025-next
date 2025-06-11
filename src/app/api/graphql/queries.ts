@@ -73,6 +73,8 @@ export const GET_HOME_PAGE = gql`
       intro
       image
       imageAlt
+      id
+      highFiveCount
       aboutHeading
       aboutDescription
       skillsHeading
@@ -131,6 +133,46 @@ export const GET_UX_PAGE = gql`
         heading
         description
         icon
+      }
+    }
+  }
+`;
+
+export const GET_UX_PROJECTS = gql`
+  query {
+    uxProject {
+      title
+      intro
+      role
+      duration
+      projectType
+      excerpt
+      excerptImage
+      slug
+    }
+  }
+`;
+
+export const GET_UX_PROJECT_BY_SLUG = gql`
+  query uxProject($slug: String!) {
+    uxProjectBySlug(slug: $slug) {
+      title
+      intro
+      role
+      duration
+      projectType
+      blocks {
+        id
+        showBackgroundColor
+        slidesPerView
+        limitHeight
+        heading
+        description
+        blockquote
+        images {
+          image
+          imageAlt
+        }
       }
     }
   }

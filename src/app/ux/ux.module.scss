@@ -1,0 +1,27 @@
+.carousel {
+  :global(.swiper-button-next),
+  :global(.swiper-button-prev) {
+    background-color: var(--color-tertiary);
+    border-radius: 100%;
+    color: var(--color-primary);
+    width: 36px;
+    height: 36px;
+
+    &:after {
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  :global(.limit-height img) {
+    max-height: 500px;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    height: 14px;
+    width: 14px;
+  }
+  :global(.swiper-pagination-bullet-active) {
+    background-color: var(--color-tertiary);
+  }
+}
+

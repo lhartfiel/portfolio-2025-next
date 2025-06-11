@@ -1,33 +1,12 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
 @import "tailwindcss";
-/* @import "tailwindcss"; */
-
-/* :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
 
 @theme {
   --color-primary: #2e1b7f;
   --color-secondary: #7fbc8f;
   --color-tertiary: #ffba31;
   --color-accent: #fc535e;
+  --color-portfolio-gray: #d9d9d9;
+  --color-portfolio-gray-light: rgba(217, 217, 217, 0.5);
 
   --font-gothic-a1: "Gothic A1", sans-serif;
   --font-kanit: "Kanit", sans-serif;
@@ -70,6 +49,32 @@
   --text-body-min-sm--line-height: 20px;
 
   --text-shadow-xl: 2px 2px 2px rgba(0, 0, 0, 0.85);
+
+  @keyframes twirl-in {
+    0% {
+      transform: rotate(0deg) scale(0);
+    }
+    25% {
+      transform: rotate(0deg) scale(0.5);
+    }
+    50% {
+      transform: rotate(360deg) scale(1.5);
+    }
+    100% {
+      transform: rotate(720deg) scale(1);
+    }
+  }
+
+  @keyframes twirl-out {
+    0% {
+      transform: rotate(720deg) scale(1);
+    }
+    100% {
+      transform: rotate(1080deg) scale(0);
+    }
+  }
+  --animate-twirl-in: twirl-in 1s ease-in 1;
+  --animate-twirl-out: twirl-out 1s ease-in 1;
 }
 
 :root {
@@ -78,4 +83,8 @@
 
 body {
   font-family: var(--font-gothic-a1), Arial, Helvetica, sans-serif;
+}
+
+.abt-description p {
+  margin-bottom: 28px;
 }

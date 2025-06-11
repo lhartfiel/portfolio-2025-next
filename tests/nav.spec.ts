@@ -25,8 +25,6 @@ test("should navigate to each nav item page", async ({ page }) => {
     const postData = request.postDataJSON();
     const query = postData.query;
 
-    console.log("query", query);
-
     try {
       for (const key of Object.keys(graphqlMocks)) {
         if (query.includes(key)) {
@@ -56,11 +54,7 @@ test("should navigate to each nav item page", async ({ page }) => {
       exact: true,
     });
     await expect(navLink).toBeVisible();
-
-    await page.goto("http://localhost:3000/");
-
     await navLink.click();
-
     await expect(page).toHaveURL(`http://localhost:3000${item.url}`);
   }
 });
