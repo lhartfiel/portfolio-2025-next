@@ -20,6 +20,18 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submissionMessage, setSubmissionMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const verifyEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    const pattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (pattern.test(value)) {
+      setErrorMessage("");
+    } else {
+      setErrorMessage("Please provide a valid email address");
+    }
+    return setEmail(value);
+  };
 
   const [sendMessage, { loading, error }] = useMutation(SEND_MESSAGE, {
     variables: { name, email, message },
@@ -70,9 +82,9 @@ const Contact = () => {
           )}
         </div>
         <div className="wrapper text-left col-span-4 col-start-1 lg:col-span-4 lg:col-start-3 w-full">
-          <div>
+          <div className="mb-6">
             <label className="text-white" htmlFor="name">
-              Name*
+              Name *
             </label>
             <input
               placeholder="Your Name"
@@ -82,20 +94,12 @@ const Contact = () => {
               value={name}
               required
               onChange={(e) => setName(e.target.value)}
-              style={{
-                border: "1px solid black",
-                padding: "8px 24px",
-                height: "60px",
-                borderRadius: "7px",
-                backgroundColor: "white",
-                marginBottom: "24px",
-                width: "100%",
-              }}
+              className="w-full h-[60px] rounded-[7px] py-2 px-6 border-1 border-black bg-white"
             />
           </div>
-          <div>
+          <div className="mb-6">
             <label className="text-white" htmlFor="email">
-              Email*
+              Email *
             </label>
             <input
               placeholder="Your Email"
@@ -103,21 +107,16 @@ const Contact = () => {
               id="email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              style={{
-                border: "1px solid black",
-                padding: "8px 24px",
-                height: "60px",
-                borderRadius: "7px",
-                backgroundColor: "white",
-                marginBottom: "24px",
-                width: "100%",
-              }}
+              className="w-full h-[60px] rounded-[7px] py-2 px-6 border-1 border-black bg-white"
+              onChange={(e) => verifyEmail(e)}
             />
+            {errorMessage && (
+              <p className="text-tertiary font-bold mt-2">{errorMessage}</p>
+            )}
           </div>
-          <div>
+          <div className="mb-6">
             <label className="text-white text-left" htmlFor="message">
-              Message*
+              Message *
             </label>
             <textarea
               placeholder="A short message"
@@ -125,20 +124,14 @@ const Contact = () => {
               name="message"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              style={{
-                border: "1px solid black",
-                padding: "8px 24px",
-                height: "180px",
-                borderRadius: "7px",
-                backgroundColor: "white",
-                marginBottom: "24px",
-                width: "100%",
-              }}
+              className="w-full h-[180px] rounded-[7px] py-2 px-6 border-1 border-black bg-white"
             ></textarea>
           </div>
           <div className="flex justify-center">
             <Button
-              disabled={!name || !email || !message ? true : false}
+              disabled={
+                !name || !email || !message || errorMessage ? true : false
+              }
               type="primary"
               size="large"
               callback={sendMessage}
