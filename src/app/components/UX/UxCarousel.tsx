@@ -10,7 +10,6 @@ import {
   Mousewheel,
 } from "swiper/modules";
 import { ImageType } from "src/app/api/uxprojects";
-import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/zoom";
