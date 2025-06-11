@@ -32,9 +32,12 @@ const PageIntro = ({
                   lg:order-2 lg:col-span-6 lg:col-start-7"
           >
             {type === "home" && (
-              <img
+              <Image
                 className="absolute z-20 top-0 -left-[10%] w-[36%]"
                 src="/assets/arrow.svg"
+                alt="yellow arrow"
+                width={100}
+                height={100}
               />
             )}
             <div className="rounded-full max-w-full relative  xl:-top-8 lg:absolute lg:left-0">
