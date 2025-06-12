@@ -49,30 +49,35 @@ const UxProcess = ({
         </h2>
       )}
       <div className="col-span-full grid grid-cols-2 lg:[grid-template-columns:repeat(3,288px)] mx-auto gap-6">
-        {processes.map((step) => {
-          const { heading, description, icon } = step;
-          const processIcon =
-            icon in iconMap ? iconMap[icon as keyof typeof iconMap] : undefined;
-          return (
-            <div key={icon} className="flex flex-nowrap">
-              {processIcon && (
-                <div className="shrink-0 icon text-[30px] md:text-[32px] w-14 h-14 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
-                  <FontAwesomeIcon icon={processIcon} />
-                </div>
-              )}
-              <div className="content ml-4">
-                {heading && (
-                  <h3 className="text-h3-sm md:text-h3 font-semibold text-black">
-                    {heading}
-                  </h3>
+        {processes?.length > 0 &&
+          processes.map((step) => {
+            const { heading, description, icon } = step;
+            const processIcon =
+              icon in iconMap
+                ? iconMap[icon as keyof typeof iconMap]
+                : undefined;
+            return (
+              <div key={icon} className="flex flex-nowrap">
+                {processIcon && (
+                  <div className="shrink-0 icon text-[30px] md:text-[32px] w-14 h-14 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
+                    <FontAwesomeIcon icon={processIcon} />
+                  </div>
                 )}
-                <span className="text-body-min-sm md:text-body-min">
-                  {parse(description)}
-                </span>
+                <div className="content ml-4">
+                  {heading && (
+                    <h3 className="text-h3-sm md:text-h3 font-semibold text-black">
+                      {heading}
+                    </h3>
+                  )}
+                  {description && (
+                    <span className="text-body-min-sm md:text-body-min">
+                      {parse(description)}
+                    </span>
+                  )}
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </section>
   );

@@ -32,7 +32,7 @@ export const Skills = async () => {
         return (
           <div key={skill.heading}>
             <h3>{skill.heading}</h3>
-            {parse(skill.description)}
+            {skill.description && parse(skill.description)}
             <i className={skill.icon.className}></i>
           </div>
         );

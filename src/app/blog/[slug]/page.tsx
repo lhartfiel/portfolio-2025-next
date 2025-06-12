@@ -76,9 +76,11 @@ const BlogPage = async ({ params }: BlogPageParams) => {
                 </p>
               </span>
             </div>
-            <div className={`${styles.blog} blog-body`}>
-              {parse(blog.content)}
-            </div>
+            {blog.content && (
+              <div className={`${styles.blog} blog-body`}>
+                {parse(blog.content)}
+              </div>
+            )}
           </div>
         </section>
       </article>

@@ -11,9 +11,11 @@ const PageIntroContent = ({
       <h1 className="text-h1-sm md:text-h1 text-primary font-kanit font-bold mb-6">
         {title}
       </h1>
-      <span className="text-intro-sm md:text-intro text-black">
-        {parse(intro)}
-      </span>
+      {intro && (
+        <span className="text-intro-sm md:text-intro text-black">
+          {parse(intro)}
+        </span>
+      )}
     </>
   );
 };

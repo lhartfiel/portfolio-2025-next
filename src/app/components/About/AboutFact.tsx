@@ -12,7 +12,7 @@ const AboutFact = ({
   value: string;
   description: string;
 }) => {
-  const headingItems = heading.split(" ");
+  const headingItems = heading ? heading.split(" ") : "";
   return (
     <section className="grid grid-cols-4 md:grid-cols-12 xl:[grid-template-columns:repeat(12,72px)] gap-6 justify-center mx-4 py-7 md:py-11">
       <h2 className=" col-span-full justify-center text-center text-h2-sm md:text-h2 mb-11 text-black font-kanit font-bold">

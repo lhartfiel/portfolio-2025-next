@@ -58,9 +58,11 @@ const UxProject = ({ projects }: { projects: [Project] }) => {
                   <h3 className="text-h3-sm md:text-h3 font-semibold mb-4">
                     {project.title}
                   </h3>
-                  <span className="mb-8 text-black">
-                    {parse(project.excerpt)}
-                  </span>
+                  {project.excerpt && (
+                    <span className="mb-8 text-black">
+                      {parse(project.excerpt)}
+                    </span>
+                  )}
                   <Button
                     size={`${lgSize ? "large" : "small"}`}
                     type="primary"
