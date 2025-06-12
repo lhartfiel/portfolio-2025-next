@@ -38,9 +38,11 @@ const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
                     {post.subtitle}
                   </p>
                 ) : (
-                  <span className="text-body-sm lg:text-intro-min-sm mb-4">
-                    {parse(post.excerpt)}
-                  </span>
+                  post.excerpt && (
+                    <span className="text-body-sm lg:text-intro-min-sm mb-4">
+                      {parse(post.excerpt)}
+                    </span>
+                  )
                 )}
               </span>
               <div className="mt-auto ml-auto pt-4">

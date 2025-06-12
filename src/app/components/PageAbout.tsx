@@ -14,9 +14,11 @@ const PageAbout = ({
           {aboutHeading}
         </h2>
       )}
-      <span className="abt-description text-body-sm md:text-body columns-2 col-span-4 md:col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3 gap-7">
-        {parse(aboutDescription)}
-      </span>
+      {aboutDescription && (
+        <span className="abt-description text-body-sm md:text-body columns-2 col-span-4 md:col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3 gap-7">
+          {parse(aboutDescription)}
+        </span>
+      )}
     </section>
   );
 };

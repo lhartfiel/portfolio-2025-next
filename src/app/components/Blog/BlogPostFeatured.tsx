@@ -30,9 +30,11 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
           <p className="text-white text-body-min-sm md:text-body-min text-shadow-xl my-4">
             {date.format("MMM D, YYYY")}
           </p>
-          <span className="block text-white text-intro-sm lg:text-intro text-shadow-xl mb-6 w-full">
-            {parse(post.excerpt)}
-          </span>
+          {post.excerpt && (
+            <span className="block text-white text-intro-sm lg:text-intro text-shadow-xl mb-6 w-full">
+              {parse(post.excerpt)}
+            </span>
+          )}
           <div className="wrapper mt-auto -mb-[18px] lg:mb-0 lg:mt-0">
             <Button
               size="large"

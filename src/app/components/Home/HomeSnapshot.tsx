@@ -18,21 +18,24 @@ const HomeSnapshot = ({
         {snapshotHeading}
       </h2>
       <div className="snapshot flex flex-nowrap justify-between col-span-4 md:col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-6 xl:col-start-4 w-1-3">
-        {snapshots.map((snapshot) => {
-          return (
-            <div
-              key={snapshot.value}
-              className="w-full mr-6 md:mr-11 last:mr-0"
-            >
-              <p className="font-kanit font-bold text-primary text-center text-4xl bg-secondary px-4 py-3 mb-4">
-                {snapshot.value}
-              </p>
-              <div className="text-body-min md:text-body-min text-center">
-                {parse(snapshot.description)}
+        {snapshots?.length > 0 &&
+          snapshots.map((snapshot) => {
+            return (
+              <div
+                key={snapshot.value}
+                className="w-full mr-6 md:mr-11 last:mr-0"
+              >
+                <p className="font-kanit font-bold text-primary text-center text-4xl bg-secondary px-4 py-3 mb-4">
+                  {snapshot.value}
+                </p>
+                {snapshot.description && (
+                  <div className="text-body-min md:text-body-min text-center">
+                    {parse(snapshot.description)}
+                  </div>
+                )}
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
       </div>
     </section>
   );
