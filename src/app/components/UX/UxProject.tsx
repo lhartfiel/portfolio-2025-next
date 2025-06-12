@@ -40,7 +40,7 @@ const UxProject = ({ projects }: { projects: [Project] }) => {
                     }`}
                   >
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${project.excerptImage}/`}
+                      src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${project.excerptImage}`}
                       alt={"Page Image"}
                       fill
                       style={{

@@ -50,7 +50,7 @@ const PageIntro = ({
                 />
               ) : (
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}/`}
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}`}
                   alt={imageAlt || "Page Image"}
                   width={600}
                   height={600}

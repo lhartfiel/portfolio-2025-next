@@ -8,6 +8,7 @@ const url = new URL(IMAGE_URL as string);
 
 const nextConfig: NextConfig = {
   images: {
+    domains: ["lhartfiel.pythonanywhere.com"],
     remotePatterns: [
       {
         protocol: url.protocol.replace(":", "") as "http" | "https",
