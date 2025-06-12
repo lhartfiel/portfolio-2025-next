@@ -12,7 +12,7 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
     <div className="flex flex-wrap items-center justify-center relative w-full h-[405px] mb-16">
       <div className="overlay absolute top-o bottom-0 left-0 right-0 w-full h-full z-10 bg-black opacity-60"></div>
       <Image
-        src={`${hostname}${post.image}/`}
+        src={`${hostname}${post.image}`}
         alt={`Photo for ${post.title}`}
         fill
         sizes="(max-width: 1440px) 100vw, 1440px"

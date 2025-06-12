@@ -16,7 +16,7 @@ const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
           <div className="flex flex-col p-5 h-full transition duration-300 rounded-md hover:shadow-xl shadow-xl md:shadow-none">
             <span className="relative img-wrapper h-[180px] w-full overflow-hidden mb-6 xl:mb-8">
               <Image
-                src={`${hostname}${post.image}/`}
+                src={`${hostname}${post.image}`}
                 alt={`Photo for ${post.title}`}
                 fill
                 style={{
