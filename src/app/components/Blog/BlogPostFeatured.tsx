@@ -27,7 +27,7 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
           {post.title}
         </h1>
         <div className="h-full justify-between lg:justify-start flex flex-col col-span-10 col-start-2 xl:col-span-6 xl:col-start-4">
-          <p className="text-white text-body-min-sm md:text-body-min text-shadow-xl my-4">
+          <p className="text-white text-body-min-sm md:text-body-min text-shadow-xl my-3">
             {date.format("MMM D, YYYY")}
           </p>
           {post.excerpt && (
