@@ -57,20 +57,32 @@ const UxProcess = ({
                 ? iconMap[icon as keyof typeof iconMap]
                 : undefined;
             return (
-              <div key={icon} className="flex flex-nowrap">
-                {processIcon && (
-                  <div className="shrink-0 icon text-[18px] sm:text-[28px] md:text-[32px] w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
-                    <FontAwesomeIcon icon={processIcon} />
-                  </div>
-                )}
-                <div className="content ml-2 sm:ml-4">
+              <div
+                key={icon}
+                className="flex flex-col sm:flex-row sm:items-start"
+              >
+                <div className="flex items-center">
+                  {processIcon && (
+                    <div className="shrink-0 icon text-[22px] sm:text-[28px] md:text-[32px] w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
+                      <FontAwesomeIcon icon={processIcon} />
+                    </div>
+                  )}
+                  {/* Show this heading on mobile so it's on the same line as the icon */}
                   {heading && (
-                    <h3 className="text-h3-sm md:text-h3 font-semibold text-black">
+                    <h3 className="sm:hidden ml-3 text-h3-sm md:text-h3 font-semibold text-black">
+                      {heading}
+                    </h3>
+                  )}
+                </div>
+                <div className="flex flex-wrap sm:ml-4">
+                  {/* Show this heading on larger screens so the heading and text are aligned to the right of the icon */}
+                  {heading && (
+                    <h3 className="hidden sm:block text-h3-sm md:text-h3 font-semibold text-black">
                       {heading}
                     </h3>
                   )}
                   {description && (
-                    <span className="text-body-min-sm md:text-body-min">
+                    <span className="mt-3 sm:mt-2 mb-4 text-body-min-sm md:text-body-min">
                       {parse(description)}
                     </span>
                   )}
