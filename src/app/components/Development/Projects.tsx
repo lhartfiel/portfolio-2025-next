@@ -76,7 +76,7 @@ const Projects = ({
                   {cleanText.length > 150 ? (
                     <ButtonLink
                       buttonText="Read More"
-                      customClass="block text-right text-[16px] text-primary font-semibold mt-2"
+                      customClass="justify-end text-[16px] text-primary font-semibold mt-2"
                       callback={(e) => readMoreHandler(e, project.projectTitle)}
                     />
                   ) : (

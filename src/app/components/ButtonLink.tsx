@@ -25,14 +25,14 @@ const ButtonLink = ({
     <>
       <a
         href="#"
-        className={`body-sm font-semibold ${customClass}`}
+        className={`flex w-full text-link-wrapper body-sm font-semibold ${customClass}`}
         onClick={clickHandler}
       >
-        {buttonText}
-        <span className="ml-2">
+        <span className="text-link relative">{buttonText}</span>
+        <span className="arrow-down ml-2">
           <FontAwesomeIcon
             icon={faChevronDown}
-            className={`ml-2 transition duration-300 ${
+            className={`ml-1 transition duration-300 ${
               clickIcon ? "rotate-180" : "rotate-0"
             }`}
           />

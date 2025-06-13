@@ -88,3 +88,30 @@ body {
 .abt-description p {
   margin-bottom: 28px;
 }
+
+.text-link:before {
+  background-color: transparent;
+  bottom: 5px;
+  content: "";
+  height: 2px;
+  position: absolute;
+  transition: 0.3s ease-in-out all;
+  width: 100%;
+}
+
+.text-link-wrapper:hover .text-link:before {
+  background-color: var(--color-primary);
+  bottom: 2px;
+}
+
+.text-link-wrapper.text-text-white:hover .text-link:before {
+  background-color: white;
+}
+
+.arrow-down {
+  transition: 0.3s ease-in-out all;
+}
+
+.text-link-wrapper:hover .arrow-down {
+  transform: translateY(2px);
+}
