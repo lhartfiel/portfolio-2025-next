@@ -53,8 +53,6 @@ const UxCarousel = ({
         mousewheel={true}
         autoHeight={true}
         freeMode={true}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         {images.map((img) => {
           return (

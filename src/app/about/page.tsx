@@ -28,6 +28,7 @@ const About = async () => {
       <PageAbout
         aboutHeading={aboutData.subheading}
         aboutDescription={aboutData.description}
+        truncateLength={720}
       />
       <AboutFact
         heading={aboutData.funFactHeading}

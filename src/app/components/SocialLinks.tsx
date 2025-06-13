@@ -17,7 +17,7 @@ const SocialLinks = () => {
             key={`${data.icon}-${idx}`}
             href={data.link}
             target={data.link !== "/contact" ? "_blank" : ""}
-            className="flex items-center justify-center rounded-full bg-tertiary mr-5 last:mr-0 sm:mr-8 w-[40px] h-[40px] hover:scale-105 hover:brightness-105"
+            className="flex items-center justify-center rounded-full bg-tertiary mr-5 last:mr-0 sm:mr-8 w-[40px] h-[40px] transition duration-300 hover:scale-110 hover:brightness-105"
           >
             <FontAwesomeIcon
               className="text-2xl mx-1 text-primary"

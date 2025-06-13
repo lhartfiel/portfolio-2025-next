@@ -31,6 +31,7 @@ const Home = async () => {
       <PageAbout
         aboutHeading={homeData.aboutHeading}
         aboutDescription={homeData.aboutDescription}
+        truncateLength={560}
       />
       <HomeSkills
         skillsHeading={homeData.skillsHeading}

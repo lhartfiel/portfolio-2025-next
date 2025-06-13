@@ -27,10 +27,10 @@ const Button = ({
           href={link}
           className={`relative inline-block font-kanit font-bold rounded-[20px] transition duration-300 ease-in-out
           ${customClass ? customClass : ""}
-          ${size === "large" ? "py-[9px]" : "py-[7px] px-[14px]"}
+
         ${
           type === "primary"
-            ? "bg-accent border-1 border-accent text-black"
+            ? "bg-accent border-1 border-accent text-black hover:brightness-110 hover:shadow-btn"
             : "bg-white border-1 border-accent text-accent hover:bg-accent hover:text-white "
         }`}
         >
@@ -41,7 +41,6 @@ const Button = ({
           onClick={() => (callback ? callback() : null)}
           className={`relative inline-block font-kanit font-bold justify-center rounded-[20px] transition duration-300 ease-in-out
             ${customClass ? customClass : ""}
-          ${size === "large" ? "py-[9px]" : "py-[7px] px-[14px]"}
         ${
           type === "primary" && !disabled
             ? "bg-accent border-1 border-accent text-black"
