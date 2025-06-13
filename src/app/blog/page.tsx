@@ -30,7 +30,7 @@ const BlogList = async () => {
     <>
       {blogsPosts[0] && <BlogPostFeatured post={blogsPosts[0]} />}
       {blogsPosts.length > 0 && (
-        <div className="grid grid-cols-12 mx-[12px] gap-6">
+        <article className="grid grid-cols-12 mx-[12px] gap-6">
           <div className="col-span-12">
             <div className="flex flex-wrap justify-start">
               {blogsPosts.map((post: Post, idx: number) => {
@@ -38,7 +38,7 @@ const BlogList = async () => {
               })}
             </div>
           </div>
-        </div>
+        </article>
       )}
     </>
   );
