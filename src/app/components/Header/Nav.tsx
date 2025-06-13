@@ -3,6 +3,13 @@ import Link from "next/link";
 import { useContext } from "react";
 import { MobileNavContext, MobileNavDispatchContext } from "./NavContext";
 import { SocialLinks } from "../SocialLinks";
+import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+const arrowIcon = (
+  <FontAwesomeIcon icon={faArrowRight} className="text-intro-sm" />
+);
 
 const navItems = [
   { link: "/development", text: "Development" },
@@ -15,6 +22,8 @@ const navItems = [
 const Nav = () => {
   const mobileNavIsActive = useContext(MobileNavContext);
   const dispatch = useContext(MobileNavDispatchContext);
+  const pathname = usePathname();
+
   return (
     <nav
       className={`flex flex-wrap ${
@@ -33,10 +42,14 @@ const Nav = () => {
           return (
             <Link
               key={item.text}
-              className={`sm:mr-[50px] ${
+              className={`group flex justify-between relative sm:mr-[50px] ${
                 mobileNavIsActive
                   ? "pt-9 pb-5 border-b-[0.5px] border-b-white md:p-0"
-                  : ""
+                  : `${
+                      pathname === item.link
+                        ? "before:h-1 before:bg-tertiary before:w-full before:absolute before:-bottom-1 cursor-default"
+                        : "before:h-1 before:bg-transparent before:transition-all before:duration-400 before:absolute before:w-full before:bottom-4 hover:before:bg-primary hover:before:-bottom-1"
+                    } `
               }`}
               href={item.link}
               onClick={() => {
@@ -44,6 +57,11 @@ const Nav = () => {
               }}
             >
               {item.text}
+              {mobileNavIsActive && (
+                <span className="inline-block relative transition-all duration-300 -left-4 group-hover:left-0 opacity-0 pr-8 group-hover:pr-0 group-hover:opacity-100 text-white">
+                  {arrowIcon}
+                </span>
+              )}
             </Link>
           );
         })}
