@@ -91,7 +91,7 @@ const AboutInterests = ({ interests }: { interests: [Interest] }) => {
                   showAllContent[interest.name] ? "Read Less" : "Read More"
                 }
                 callback={(e) => readMoreHandler(e, interest.name)}
-                customClass={`block mt-auto ml-auto pt-4 text-right ${
+                customClass={`block justify-end mt-auto ml-auto pt-4 text-right ${
                   idx % 2 === 0 ? "text-primary " : "text-text-white"
                 }`}
               ></ButtonLink>

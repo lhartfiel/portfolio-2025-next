@@ -30,7 +30,7 @@ const UxProject = ({ projects }: { projects: [Project] }) => {
                 key={project.title}
                 className="relative flex flex-wrap md:flex-nowrap w-full justify-center items-stretch text-primary border-1 border-portfolio-gray-light shadow rounded-lg"
               >
-                <div className="flex-shrink-0 absolute flex justify-center items-center -top-4 -left-4 lg:-left-6 bg-tertiary font-kanit text-primary text-2xl lg:text-[32px] w-9 h-9 lg:w-11 lg:h-11 rounded-full">
+                <div className="flex-shrink-0 absolute z-10 flex justify-center items-center -top-4 -left-4 lg:-left-6 bg-tertiary font-kanit text-primary text-2xl lg:text-[32px] w-9 h-9 lg:w-11 lg:h-11 rounded-full">
                   {idx + 1}
                 </div>
                 {project.excerptImage && (

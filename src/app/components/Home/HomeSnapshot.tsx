@@ -25,7 +25,7 @@ const HomeSnapshot = ({
                 key={snapshot.value}
                 className="w-full mr-6 md:mr-11 last:mr-0"
               >
-                <p className="font-kanit font-bold text-primary text-center text-4xl bg-secondary px-4 py-3 mb-4">
+                <p className="font-kanit font-bold text-primary text-center text-[28px] md:text-4xl bg-secondary px-4 py-3 mb-4">
                   {snapshot.value}
                 </p>
                 {snapshot.description && (

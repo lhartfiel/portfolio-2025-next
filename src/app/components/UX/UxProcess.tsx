@@ -48,7 +48,7 @@ const UxProcess = ({
           {processHeading}
         </h2>
       )}
-      <div className="col-span-full grid grid-cols-2 lg:[grid-template-columns:repeat(3,288px)] mx-auto gap-6">
+      <div className="col-span-full grid grid-cols-2 lg:[grid-template-columns:repeat(3,288px)] mx-auto gap-4 md:gap-6">
         {processes?.length > 0 &&
           processes.map((step) => {
             const { heading, description, icon } = step;
@@ -59,7 +59,7 @@ const UxProcess = ({
             return (
               <div key={icon} className="flex flex-nowrap">
                 {processIcon && (
-                  <div className="shrink-0 icon text-[30px] md:text-[32px] w-14 h-14 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
+                  <div className="shrink-0 icon text-[28px] md:text-[32px] w-12 h-12 md:w-16 md:h-16 bg-primary text-tertiary rounded-full flex justify-center items-center">
                     <FontAwesomeIcon icon={processIcon} />
                   </div>
                 )}
