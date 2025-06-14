@@ -20,7 +20,7 @@ type Interest = {
   heading: string;
   description: string;
 };
-const AboutInterests = ({ interests }: { interests: [Interest] }) => {
+const AboutInterests = ({ interests }: { interests: Interest[] }) => {
   const [showAllContent, setShowAllContent] = useState<Record<string, boolean>>(
     {}
   );
@@ -49,6 +49,7 @@ const AboutInterests = ({ interests }: { interests: [Interest] }) => {
           )}...`;
           return (
             <div
+              data-testid="interest-block"
               className={`relative md:min-h-[375px] lg:min-h-[440px] xl:min-h-[415px] h-auto flex flex-wrap col-span-4 md:col-span-5 lg:col-span-3 border-2 border-primary px-6 pb-5
               ${
                 idx % 2 === 0
@@ -71,6 +72,7 @@ const AboutInterests = ({ interests }: { interests: [Interest] }) => {
               >
                 {aboutIcon && (
                   <FontAwesomeIcon
+                    data-testid="interest-icon"
                     icon={aboutIcon}
                     className="relative mx-auto"
                   />
@@ -80,21 +82,26 @@ const AboutInterests = ({ interests }: { interests: [Interest] }) => {
                 <h3 className="text-h3-sm md:text-h3 pt-4 md:pt-13 font-bold">
                   {interest.heading}
                 </h3>
-                <span className="transition duration-300 transition-ease-in-out">
+                <span
+                  data-testid="about-description"
+                  className="transition duration-300 transition-ease-in-out"
+                >
                   {showAllContent[interest.name] && interest.description
                     ? parse(interest.description)
                     : parse(truncatedDescription)}
                 </span>
               </span>
-              <ButtonLink
-                buttonText={
-                  showAllContent[interest.name] ? "Read Less" : "Read More"
-                }
-                callback={(e) => readMoreHandler(e, interest.name)}
-                customClass={`block justify-end mt-auto ml-auto pt-4 text-right ${
-                  idx % 2 === 0 ? "text-primary " : "text-text-white"
-                }`}
-              ></ButtonLink>
+              {interest.description.length > 245 && (
+                <ButtonLink
+                  buttonText={
+                    showAllContent[interest.name] ? "Read Less" : "Read More"
+                  }
+                  callback={(e) => readMoreHandler(e, interest.name)}
+                  customClass={`block justify-end mt-auto ml-auto pt-4 text-right ${
+                    idx % 2 === 0 ? "text-primary " : "text-text-white"
+                  }`}
+                ></ButtonLink>
+              )}
             </div>
           );
         })}
