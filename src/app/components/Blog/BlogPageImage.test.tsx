@@ -1,4 +1,4 @@
-import { render, screen, waitFor, fireEvent } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { BlogPageImage } from "./BlogPageImage";
 
 const blogData = {
@@ -54,6 +54,7 @@ describe("BlogPageImage component", () => {
       "flex justify-center items-center text-primary color-primary text-6xl"
     );
   });
+
   it("should still load the app if the image is missing", () => {
     const updatedBlog = { ...blogData, image: "" };
     render(<BlogPageImage blog={updatedBlog} />);

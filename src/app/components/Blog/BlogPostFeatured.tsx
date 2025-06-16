@@ -12,6 +12,7 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
     <div className="flex flex-wrap items-center justify-center relative w-full h-[405px] mb-16">
       <div className="overlay absolute top-o bottom-0 left-0 right-0 w-full h-full z-10 bg-black opacity-60"></div>
       <Image
+        data-testid="feat-img"
         src={`${hostname}${post.image}`}
         alt={`Photo for ${post.title}`}
         fill
@@ -27,11 +28,17 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
           {post.title}
         </h1>
         <div className="h-full justify-between lg:justify-start flex flex-col col-span-10 col-start-2 xl:col-span-6 xl:col-start-4">
-          <p className="text-white text-body-min-sm md:text-body-min text-shadow-xl my-3">
+          <p
+            data-testid="blog-date"
+            className="text-white text-body-min-sm md:text-body-min text-shadow-xl my-3"
+          >
             {date.format("MMM D, YYYY")}
           </p>
           {post.excerpt && (
-            <span className="block text-white text-intro-sm lg:text-intro text-shadow-xl mb-6 w-full">
+            <span
+              data-testid="blog-excerpt"
+              className="block text-white text-intro-sm lg:text-intro text-shadow-xl mb-6 w-full"
+            >
               {parse(post.excerpt)}
             </span>
           )}
