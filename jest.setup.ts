@@ -7,11 +7,7 @@ if (typeof global.TransformStream === "undefined") {
 }
 
 process.env.NEXT_PUBLIC_IMAGE_PATH = "http://localhost:3000/";
-let onLoadingCompleteHandler: (() => void) | null = null;
-
-(global as any).onImageLoadComplete = () => {
-  if (onLoadingCompleteHandler) onLoadingCompleteHandler();
-};
+let onImageLoadComplete: (() => void) | null = null;
 
 jest.mock("@apollo/client-integration-nextjs", () => ({
   registerApolloClient: jest.fn(() => ({
@@ -24,7 +20,9 @@ jest.mock("@apollo/client-integration-nextjs", () => ({
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: any) => {
-    onLoadingCompleteHandler = props.onLoadingComplete;
+    onImageLoadComplete = props.onLoadingComplete;
     return React.createElement("img", props);
   },
 }));
+
+export { onImageLoadComplete };

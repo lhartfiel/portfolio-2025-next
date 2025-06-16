@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import { BlogPageImage } from "./BlogPageImage";
+import { onImageLoadComplete } from "../../../../jest.setup.ts";
 
 const blogData = {
   id: 1,
@@ -23,7 +24,9 @@ describe("BlogPageImage component", () => {
     render(<BlogPageImage blog={blogData} />);
     const image = screen.getByTestId("blog-img");
 
-    (global as any).onImageLoadComplete();
+    if (onImageLoadComplete) {
+      onImageLoadComplete(); // Triggers the callback
+    }
 
     await waitFor(() => {
       expect(screen.queryByTestId("img-loader")).not.toBeInTheDocument();
