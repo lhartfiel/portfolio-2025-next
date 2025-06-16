@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Nav } from "./Nav";
 import { MobileNavContext } from "./NavContext";
 
@@ -8,6 +8,16 @@ describe("Nav component", () => {
     const navWrapper = await findByTestId("nav-items");
     expect(navWrapper).toBeInTheDocument();
     expect(navWrapper).toHaveClass("max-sm:hidden");
+  });
+
+  it("should display the h-full class when the mobile nav is active", () => {
+    render(
+      <MobileNavContext.Provider value={true}>
+        <Nav />
+      </MobileNavContext.Provider>
+    );
+
+    expect(screen.getByRole("navigation")).toHaveClass("h-full");
   });
 
   it("should not display the hidden className when mobileNavIsActive is true", async () => {
