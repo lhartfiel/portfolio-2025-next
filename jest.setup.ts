@@ -1,3 +1,4 @@
+import React from "react";
 import "@testing-library/jest-dom";
 import "@/src/styles/globals.css";
 import { TransformStream } from "web-streams-polyfill";
@@ -6,6 +7,11 @@ if (typeof global.TransformStream === "undefined") {
 }
 
 process.env.NEXT_PUBLIC_IMAGE_PATH = "http://localhost:3000/";
+let onLoadingCompleteHandler: (() => void) | null = null;
+
+(global as any).onImageLoadComplete = () => {
+  if (onLoadingCompleteHandler) onLoadingCompleteHandler();
+};
 
 jest.mock("@apollo/client-integration-nextjs", () => ({
   registerApolloClient: jest.fn(() => ({
@@ -13,4 +19,12 @@ jest.mock("@apollo/client-integration-nextjs", () => ({
     query: jest.fn(),
     PreloadQuery: jest.fn(),
   })),
+}));
+
+jest.mock("next/image", () => ({
+  __esModule: true,
+  default: (props: any) => {
+    onLoadingCompleteHandler = props.onLoadingComplete;
+    return React.createElement("img", props);
+  },
 }));
