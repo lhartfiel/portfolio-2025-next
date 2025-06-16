@@ -8,7 +8,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const arrowIcon = (
-  <FontAwesomeIcon icon={faArrowRight} className="text-intro-sm" />
+  <FontAwesomeIcon
+    aria-hidden="true"
+    icon={faArrowRight}
+    className="text-intro-sm"
+  />
 );
 
 const navItems = [
@@ -64,7 +68,10 @@ const Nav = () => {
             >
               {item.text}
               {mobileNavIsActive && pathname !== item.link && (
-                <span className="inline-block relative transition-all duration-300 -left-4 group-hover:left-0 opacity-0 pr-8 group-hover:pr-0 group-hover:opacity-100 text-white">
+                <span
+                  aria-hidden="true"
+                  className="inline-block relative transition-all duration-300 -left-4 group-hover:left-0 opacity-0 pr-8 group-hover:pr-0 group-hover:opacity-100 text-white"
+                >
                   {arrowIcon}
                 </span>
               )}
