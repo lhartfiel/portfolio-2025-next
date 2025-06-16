@@ -34,22 +34,22 @@ describe("AboutInterests component", () => {
   });
 
   it("should display an icon if matches imported icons", () => {
-    const { getAllByTestId } = render(<AboutInterests interests={interests} />);
-    const icons = getAllByTestId("interest-icon");
+    render(<AboutInterests interests={interests} />);
+    const icons = screen.getAllByTestId("interest-icon");
     expect(icons).toHaveLength(1);
   });
 
   it("should display the correct heading", () => {
-    const { getAllByRole } = render(<AboutInterests interests={interests} />);
-    const interestHeadings = getAllByRole("heading");
+    render(<AboutInterests interests={interests} />);
+    const interestHeadings = screen.getAllByRole("heading");
     interests.forEach((interest, idx) => {
       expect(interestHeadings[idx]).toHaveTextContent(interest.heading);
     });
   });
 
   it("should expand the description if Read More button and it is clicked", async () => {
-    const { getAllByTestId } = render(<AboutInterests interests={interests} />);
-    const interestBlocks = getAllByTestId("interest-block");
+    render(<AboutInterests interests={interests} />);
+    const interestBlocks = screen.getAllByTestId("interest-block");
     expect(interestBlocks).toHaveLength(interests.length);
 
     for (let idx = 0; idx < interests.length; idx++) {
