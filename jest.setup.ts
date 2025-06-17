@@ -25,4 +25,19 @@ jest.mock("next/image", () => ({
   },
 }));
 
+// Used for the useScreenSize hook
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: jest.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: jest.fn(), // for older browsers
+    removeListener: jest.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
+  })),
+});
+
 export { onImageLoadComplete };
