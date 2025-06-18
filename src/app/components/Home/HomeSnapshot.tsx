@@ -9,7 +9,7 @@ const HomeSnapshot = ({
   snapshots,
 }: {
   snapshotHeading: string;
-  snapshots: [Snapshot];
+  snapshots: Snapshot[];
 }) => {
   return (
     <section className="px-6 grid grid-cols-4 col-span-4 md:grid-cols-12 gap-x-6 w-full justify-center items-center bg-white text-black pb-7 md:pb-11">

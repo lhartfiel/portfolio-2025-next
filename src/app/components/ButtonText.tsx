@@ -15,21 +15,19 @@ const ButtonText = ({
   disabled?: boolean;
 }) => {
   return (
-    <button
-      disabled={disabled ? true : false}
-      type="button"
+    <p
       className={`group relative flex items-center justify-center
         ${size === "large" ? "w-[230px] py-[9px]" : "py-[7px] px-[14px]"} ${
         disabled ? "cursor-not-allowed" : "cursor-pointer"
       }`}
     >
-      <span>{text}</span>
+      {text}
       {size === "large" && !disabled && (
         <span className="opacity-0 absolute transition-all duration-300 right-[32px] group-hover:right-4 group-hover:opacity-100 ">
           {arrowIcon}
         </span>
       )}
-    </button>
+    </p>
   );
 };
 

@@ -13,11 +13,15 @@ const BlogPageImage = ({ blog }: { blog: BlogPost }) => {
   return (
     <>
       {isImageLoading && (
-        <div className="flex justify-center items-center text-primary color-primary text-6xl">
+        <div
+          data-testid="img-loader"
+          className="flex justify-center items-center text-primary color-primary text-6xl"
+        >
           {loader}
         </div>
       )}
       <Image
+        data-testid="blog-img"
         src={`${hostname}${blog.image}`}
         alt={`Photo for ${blog.title}`}
         fill

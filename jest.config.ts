@@ -12,6 +12,7 @@ const createJestConfig = nextJest({
 });
 
 const config: Config = {
+  verbose: true,
   clearMocks: true,
   moduleDirectories: ["node_modules", "<rootDir>/"],
   testEnvironment: "jsdom",

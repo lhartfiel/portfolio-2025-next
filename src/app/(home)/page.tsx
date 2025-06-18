@@ -1,9 +1,6 @@
 import getHomepageData from "../api/homepage";
-import { HomeSkills } from "@/components/Home/HomeSkills";
-import { HomeSnapshot } from "@/components/Home/HomeSnapshot";
-import { PageAbout } from "@/components/PageAbout";
-import { PageIntro } from "@/components/PageIntro";
 import { DataError } from "@/components/DataError";
+import { HomeLayout } from "@/components/Home/HomeLayout";
 
 const Home = async () => {
   let homeData = null;
@@ -19,28 +16,7 @@ const Home = async () => {
 
   return (
     <div className="w-full mx-[12px]">
-      <PageIntro
-        highFiveCount={homeData.highFiveCount}
-        image={homeData.image}
-        imageAlt={homeData.imageAlt}
-        title={homeData.title}
-        intro={homeData.intro}
-        type="home"
-        id={homeData.id}
-      />
-      <PageAbout
-        aboutHeading={homeData.aboutHeading}
-        aboutDescription={homeData.aboutDescription}
-        truncateLength={560}
-      />
-      <HomeSkills
-        skillsHeading={homeData.skillsHeading}
-        skills={homeData.skills}
-      />
-      <HomeSnapshot
-        snapshotHeading={homeData.snapshotHeading}
-        snapshots={homeData.snapshots}
-      />
+      <HomeLayout homeData={homeData} />
     </div>
   );
 };

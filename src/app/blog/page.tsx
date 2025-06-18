@@ -26,6 +26,8 @@ const BlogList = async () => {
     return <DataError />;
   }
 
+  console.log(blogsPosts);
+
   return (
     <>
       {blogsPosts[0] && <BlogPostFeatured post={blogsPosts[0]} />}

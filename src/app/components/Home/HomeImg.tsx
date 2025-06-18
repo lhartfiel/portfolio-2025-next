@@ -109,7 +109,7 @@ const HomeImg = ({
             showHighFiveCount();
           }}
           target=""
-          alt=""
+          alt="Give Lindsay a high five"
           title=""
           href="#"
           coords="18,95,260,732"
