@@ -18,6 +18,7 @@ const SocialLinks = () => {
       {icons.map((data, idx) => {
         return (
           <Link
+            data-testid="social-link"
             aria-label={data.label}
             key={`${data.icon}-${idx}`}
             href={data.link}
