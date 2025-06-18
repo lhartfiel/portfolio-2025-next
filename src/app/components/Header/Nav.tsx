@@ -43,6 +43,7 @@ const Nav = () => {
         }`}
       >
         {navItems.map((item) => {
+          console.log("Current pathname:", pathname);
           return (
             <Link
               key={item.text}
@@ -69,6 +70,7 @@ const Nav = () => {
               {item.text}
               {mobileNavIsActive && pathname !== item.link && (
                 <span
+                  data-testid="arrow-icon"
                   aria-hidden="true"
                   className="inline-block relative transition-all duration-300 -left-4 group-hover:left-0 opacity-0 pr-8 group-hover:pr-0 group-hover:opacity-100 text-white"
                 >
