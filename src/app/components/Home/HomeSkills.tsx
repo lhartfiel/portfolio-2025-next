@@ -1,11 +1,12 @@
 "use client";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/Button";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsersRectangle } from "@fortawesome/free-solid-svg-icons";
 import { faLaptopCode } from "@fortawesome/free-solid-svg-icons";
-import DOMPurify from "dompurify";
 import parse from "html-react-parser";
+import DOMPurify from "isomorphic-dompurify";
 
 //Note: any new icons passed in the django admin will need to be added here as the entire FontAwesome library is NOT being imported
 const iconMap = {
@@ -31,6 +32,14 @@ const HomeSkills = ({
   skills: Skill[];
   isMdUp: boolean;
 }) => {
+  // const [DOMPurify, setDOMPurify] = useState<any>(null);
+  // useEffect(() => {
+  //   import("dompurify").then((mod) => {
+  //     setDOMPurify(mod.default || mod); // handles both export styles
+  //   });
+  // }, []);
+
+  // if (!DOMPurify) return null;
   return (
     <section className="px-6 grid grid-cols-4 col-span-4 md:grid-cols-12 gap-x-6 w-full justify-center items-center bg-white text-black py-7 md:py-11">
       <h2 className="col-span-4 md:col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3 text-h2-sm md:text-h2 font-kanit font-bold text-center w-full mb-12">
