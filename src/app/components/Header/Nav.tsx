@@ -43,7 +43,6 @@ const Nav = () => {
         }`}
       >
         {navItems.map((item) => {
-          console.log("Current pathname:", pathname);
           return (
             <Link
               key={item.text}
