@@ -1,4 +1,5 @@
 "use client";
+import { sanitize } from "isomorphic-dompurify";
 import parse from "html-react-parser";
 import { Button } from "../Button";
 import Image from "next/image";
@@ -39,6 +40,7 @@ const UxProject = ({ projects }: { projects: Project[] }) => {
                 </div>
                 {project?.excerptImage && project.excerptImage.length > 0 && (
                   <div
+                    data-testid="img-wrapper"
                     className={`relative overflow-hidden h-[200px] md:h-[450px] w-full md:w-2/3 ${
                       (idx + 1) % 2 === 0 ? "md:order-2" : "md:order-1"
                     }`}
@@ -55,6 +57,7 @@ const UxProject = ({ projects }: { projects: Project[] }) => {
                   </div>
                 )}
                 <div
+                  data-testid="project-content"
                   className={`flex flex-col justify-start bg-portfolio-gray-light items-start mt-4 md:mt-0 w-full md:w-1/3 p-6  ${
                     (idx + 1) % 2 === 0 ? "md:order-1" : "md:order-2"
                   }`}
@@ -63,8 +66,11 @@ const UxProject = ({ projects }: { projects: Project[] }) => {
                     {project.title}
                   </h3>
                   {project.excerpt && (
-                    <span className="mb-8 text-black">
-                      {parse(project.excerpt)}
+                    <span
+                      data-testid="project-excerpt"
+                      className="mb-8 text-black"
+                    >
+                      {parse(sanitize(project.excerpt))}
                     </span>
                   )}
                   <Button
