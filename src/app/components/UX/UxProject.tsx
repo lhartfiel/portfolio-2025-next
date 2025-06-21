@@ -1,4 +1,5 @@
 "use client";
+import { sanitize } from "isomorphic-dompurify";
 import parse from "html-react-parser";
 import { Button } from "../Button";
 import Image from "next/image";
@@ -7,7 +8,7 @@ import useScreenSize from "src/app/hooks/useScreenSize";
 type Project = {
   duration: string;
   excerpt: string;
-  excerptImage: string;
+  excerptImage?: string | null;
   intro: string;
   projectType: string;
   role: string;
@@ -15,7 +16,7 @@ type Project = {
   title: string;
 };
 
-const UxProject = ({ projects }: { projects: [Project] }) => {
+const UxProject = ({ projects }: { projects: Project[] }) => {
   const lgSize = useScreenSize("lg");
   return (
     <section className="grid items-start justify-center grid-cols-4 md:grid-cols-12 xl:[grid-template-columns:repeat(12,72px)] mx-auto gap-x-6 md:gap-y-6 px-6 py-7 md:py-11">
@@ -27,14 +28,19 @@ const UxProject = ({ projects }: { projects: [Project] }) => {
           projects.map((project, idx) => {
             return (
               <div
+                data-testid="project"
                 key={project.title}
                 className="relative flex flex-wrap md:flex-nowrap w-full justify-center items-stretch text-primary border-1 border-portfolio-gray-light shadow rounded-lg"
               >
-                <div className="flex-shrink-0 absolute z-10 flex justify-center items-center -top-4 -left-4 lg:-left-6 bg-tertiary font-kanit text-primary text-2xl lg:text-[32px] w-9 h-9 lg:w-11 lg:h-11 rounded-full">
+                <div
+                  data-testid="number"
+                  className="flex-shrink-0 absolute z-10 flex justify-center items-center -top-4 -left-4 lg:-left-6 bg-tertiary font-kanit text-primary text-2xl lg:text-[32px] w-9 h-9 lg:w-11 lg:h-11 rounded-full"
+                >
                   {idx + 1}
                 </div>
-                {project.excerptImage && (
+                {project?.excerptImage && project.excerptImage.length > 0 && (
                   <div
+                    data-testid="img-wrapper"
                     className={`relative overflow-hidden h-[200px] md:h-[450px] w-full md:w-2/3 ${
                       (idx + 1) % 2 === 0 ? "md:order-2" : "md:order-1"
                     }`}
@@ -51,6 +57,7 @@ const UxProject = ({ projects }: { projects: [Project] }) => {
                   </div>
                 )}
                 <div
+                  data-testid="project-content"
                   className={`flex flex-col justify-start bg-portfolio-gray-light items-start mt-4 md:mt-0 w-full md:w-1/3 p-6  ${
                     (idx + 1) % 2 === 0 ? "md:order-1" : "md:order-2"
                   }`}
@@ -59,8 +66,11 @@ const UxProject = ({ projects }: { projects: [Project] }) => {
                     {project.title}
                   </h3>
                   {project.excerpt && (
-                    <span className="mb-8 text-black">
-                      {parse(project.excerpt)}
+                    <span
+                      data-testid="project-excerpt"
+                      className="mb-8 text-black"
+                    >
+                      {parse(sanitize(project.excerpt))}
                     </span>
                   )}
                   <Button

@@ -23,6 +23,7 @@ const Header = () => {
     >
       <div className="flex flex-wrap sm:flex-nowrap justify-between items-center max-w-screen-2xl w-full">
         <Link
+          data-testid="logo"
           href="/"
           onClick={() => {
             if (dispatch && mobileNavIsActive) dispatch();

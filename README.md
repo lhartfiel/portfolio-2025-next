@@ -35,6 +35,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 - Jest - unit tests
   - Jest tests are located in the same directory as the component they are testing
   - To run tests: `npm run test` or `npm run test:watch`
+  - To see test coverage: `npx jest --coverage`
 - Playwright - end-to-end tests
 
   - Tests are located in the `tests` directory

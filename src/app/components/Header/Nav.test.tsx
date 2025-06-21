@@ -1,4 +1,5 @@
 import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { Nav } from "./Nav";
 import { MobileNavContext } from "./NavContext";
 import { MobileNavDispatchContext } from "./NavContext";
@@ -137,7 +138,7 @@ describe("Nav component", () => {
     });
   });
 
-  it("should dispatch when the nav item is clicked if the mobile nav is active", () => {
+  it("should dispatch when the nav item is clicked if the mobile nav is active", async () => {
     (usePathname as jest.Mock).mockReturnValue("/about");
     const mockDispatch = jest.fn();
 
@@ -149,7 +150,7 @@ describe("Nav component", () => {
       </MobileNavContext.Provider>
     );
     const uxLink = screen.getByRole("link", { name: "UX" });
-    uxLink.click();
+    await userEvent.click(uxLink);
     expect(mockDispatch).toHaveBeenCalled();
   });
 });
