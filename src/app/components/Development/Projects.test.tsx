@@ -111,7 +111,7 @@ describe("Projects component", () => {
   it("should display all of the description text when link is clicked to Read More", async () => {
     render(<Projects heading={headingProp} projects={projectsProps} />);
     const projects = screen.getAllByTestId("project");
-    for (let [idx, project] of projects.entries()) {
+    for (const [idx, project] of projects.entries()) {
       const description = within(project).getByTestId("project-desc");
       const link = within(project).getByRole("link");
       expect(description).toHaveTextContent(
