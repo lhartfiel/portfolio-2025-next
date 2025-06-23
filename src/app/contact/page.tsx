@@ -105,7 +105,7 @@ const Contact = () => {
       </p>
       <form className="w-full py-12 col-span-4 md:col-start-3 col-start-1 lg:col-span-8 lg:col-start-3 lg:grid lg:grid-cols-8 lg:mb-12 mx-auto justify-center bg-primary">
         <div className="col-span-4 col-start-1 md:col-span-6 md:col-start-2 text-center mb-6">
-          {loading && <p data-testid="loading">"Loading..."</p>}
+          {loading && <p data-testid="loading">Loading...</p>}
           {submissionMessage.message && (
             <div
               data-testid="submission-message"
