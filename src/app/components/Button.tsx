@@ -37,7 +37,8 @@ const Button = ({
           <ButtonText text={text} size={size} />
         </Link>
       ) : (
-        <a
+        <button
+          disabled={disabled}
           onClick={() => (callback ? callback() : null)}
           className={`relative inline-block font-kanit font-bold justify-center rounded-[20px] transition duration-300 ease-in-out
             ${customClass ? customClass : ""}
@@ -51,7 +52,7 @@ const Button = ({
         `}
         >
           <ButtonText text={text} size={size} disabled={disabled} />
-        </a>
+        </button>
       )}
     </>
   );

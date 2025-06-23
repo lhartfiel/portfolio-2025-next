@@ -69,17 +69,17 @@ const Contact = () => {
     },
     onError: (error) => {
       console.error("Error sending message", error);
-      if (error.graphQLErrors.length > 0) {
+      if (error.graphQLErrors && error.graphQLErrors.length > 0) {
         console.error("GraphQL Errors:", error.graphQLErrors);
         setSubmissionMessage({
           success: false,
           message: `Error sending message. ${error.graphQLErrors[0].message}.`,
         });
-      } else if (error.networkError) {
+      } else if (error.networkError !== null && error.networkError?.message) {
         console.error("Network Error:", error.networkError);
         setSubmissionMessage({
           success: false,
-          message: `Error sending message. ${error.networkError}.`,
+          message: `Error sending message. ${error.networkError.message}.`,
         });
       } else {
         setSubmissionMessage({
@@ -105,9 +105,12 @@ const Contact = () => {
       </p>
       <form className="w-full py-12 col-span-4 md:col-start-3 col-start-1 lg:col-span-8 lg:col-start-3 lg:grid lg:grid-cols-8 lg:mb-12 mx-auto justify-center bg-primary">
         <div className="col-span-4 col-start-1 md:col-span-6 md:col-start-2 text-center mb-6">
-          {loading && "Loading..."}
+          {loading && <p data-testid="loading">"Loading..."</p>}
           {submissionMessage.message && (
-            <div className="flex items-start justify-center text-white text-body-sm md:text-body text-center">
+            <div
+              data-testid="submission-message"
+              className="flex items-start justify-center text-white text-body-sm md:text-body text-center"
+            >
               {submissionMessage.success ? checkmarkIcon : errorIcon}
               <p className="flex flex-wrap">{submissionMessage.message}</p>
             </div>
@@ -168,7 +171,6 @@ const Contact = () => {
               size="large"
               callback={sendMessageWrapper}
               text="Send Message"
-              customClass="inline-block"
             ></Button>
           </div>
         </div>
