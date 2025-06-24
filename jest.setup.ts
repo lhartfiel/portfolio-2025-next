@@ -40,4 +40,16 @@ Object.defineProperty(window, "matchMedia", {
   })),
 });
 
+if (!HTMLFormElement.prototype.requestSubmit) {
+  HTMLFormElement.prototype.requestSubmit = function () {
+    // Prevent jsdom from throwing a not-implemented error
+    // Simulate a basic submit
+    const event = new Event("submit", {
+      bubbles: true,
+      cancelable: true,
+    });
+    this.dispatchEvent(event);
+  };
+}
+
 export { onImageLoadComplete };

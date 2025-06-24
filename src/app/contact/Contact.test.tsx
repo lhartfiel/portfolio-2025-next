@@ -86,7 +86,11 @@ const graphQLErrorMocks = [
         message: "Hello, this is a test message.",
       },
     },
-    error: new GraphQLError("Error sending message. Please check your input"),
+    result: {
+      errors: [
+        new GraphQLError("Error sending message. Please check your input"),
+      ],
+    },
   },
 ];
 
@@ -120,6 +124,7 @@ const fallbackErrorMock = [
       },
     },
     error: new Error(),
+    delay: 100,
   },
 ];
 
@@ -145,8 +150,9 @@ describe("Contact Component", () => {
     renderContact(successMocks);
     await fillAndSubmitForm();
 
-    expect(screen.getByTestId("loading")).toBeInTheDocument();
-    expect(screen.getByTestId("loading")).toHaveTextContent(/Loading.../i);
+    const loading = await screen.findByTestId("loading");
+    expect(loading).toBeInTheDocument();
+    expect(loading).toHaveTextContent(/Loading.../i);
   });
 
   it("should show a disabled button with gray background when the form is not filled out", async () => {
