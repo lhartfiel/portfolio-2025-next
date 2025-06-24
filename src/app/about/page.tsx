@@ -6,7 +6,6 @@ const About = async () => {
   let aboutData = null;
   try {
     aboutData = await getAboutpageData();
-    console.log("aboot", aboutData);
   } catch (error) {
     console.error("Error loading about page data:", error);
   }
