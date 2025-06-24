@@ -14,7 +14,7 @@ const PageAbout = ({
   aboutHeading?: string;
   aboutDescription: string;
   screenSize?: boolean;
-  truncateLength: number;
+  truncateLength?: number;
 }) => {
   const [showMore, setShowMore] = useState(false);
 
