@@ -37,6 +37,7 @@ const HomeLayout = ({ homeData }: { homeData: homeDataType }) => {
       <PageAbout
         aboutHeading={homeData.aboutHeading}
         aboutDescription={homeData.aboutDescription}
+        screenSize={useScreenSize("sm")}
         truncateLength={560}
       />
       <HomeSkills

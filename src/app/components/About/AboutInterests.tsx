@@ -10,17 +10,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import parse from "html-react-parser";
 import { ButtonLink } from "../ButtonLink";
 import { useState, useCallback } from "react";
+import { aboutInterest } from "./AboutLayout";
 
 const iconMap = { faPersonRunning, faBookOpenReader, faGlobe, faCookieBite };
 library.add(faPersonRunning, faBookOpenReader, faGlobe, faCookieBite);
 
-type Interest = {
-  name: string;
-  icon: string;
-  heading: string;
-  description: string;
-};
-const AboutInterests = ({ interests }: { interests: Interest[] }) => {
+const AboutInterests = ({ interests }: { interests: aboutInterest[] }) => {
   const [showAllContent, setShowAllContent] = useState<Record<string, boolean>>(
     {}
   );
