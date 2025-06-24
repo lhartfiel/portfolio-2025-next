@@ -12,7 +12,10 @@ const PageIntroContent = ({
         {title}
       </h1>
       {intro && (
-        <span className="text-intro-sm md:text-intro text-black">
+        <span
+          data-testid="intro"
+          className="text-intro-sm md:text-intro text-black"
+        >
           {parse(intro)}
         </span>
       )}
