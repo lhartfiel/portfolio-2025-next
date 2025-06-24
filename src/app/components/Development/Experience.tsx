@@ -33,7 +33,6 @@ const Experience = ({
   subheading?: string;
   skills: Skills[];
 }) => {
-  console.log("skills", skills);
   const mediumScreen = useScreenSize("md");
   return (
     <section className="relative z-10 col-span-4 px-6 grid grid-cols-4 md:grid-cols-12 gap-x-6 w-full justify-center items-center border-t-primary border-t-[10px] bg-secondary text-black py-7 md:py-11">

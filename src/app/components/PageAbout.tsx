@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 
 import { ButtonLink } from "./ButtonLink";
 import striptags from "striptags";
+import { sanitize } from "isomorphic-dompurify";
 
 const PageAbout = ({
   aboutHeading,
@@ -18,7 +19,8 @@ const PageAbout = ({
 }) => {
   const [showMore, setShowMore] = useState(false);
 
-  const stripTags = striptags(aboutDescription, ["p", "br"]);
+  const sanitizeContent = sanitize(aboutDescription);
+  const stripTags = striptags(sanitizeContent, ["p", "br"]);
   const truncatedText =
     stripTags.length > truncateLength
       ? stripTags.substring(0, truncateLength) + "..."
