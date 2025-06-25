@@ -1,9 +1,10 @@
 import { render, screen } from "@testing-library/react";
 import { PageIntro } from "./PageIntro";
+import Image from "next/image";
 
 jest.mock("./Home/HomeImg", () => ({
   HomeImg: ({ image, imageAlt }: { image: string; imageAlt?: string }) => (
-    <img
+    <Image
       src={image}
       alt={imageAlt || "Page Image"}
       data-testid="mock-home-img"
