@@ -9,7 +9,7 @@ const ButtonLink = ({
   callback,
 }: {
   buttonText: string;
-  customClass: string;
+  customClass?: string;
   callback: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }) => {
   const [clickIcon, setClickIcon] = useState(false);
@@ -24,12 +24,15 @@ const ButtonLink = ({
   return (
     <>
       <a
+        data-testid="button-link"
         href="#"
         className={`flex w-full text-link-wrapper body-sm font-semibold ${customClass}`}
         onClick={clickHandler}
       >
-        <span className="text-link relative">{buttonText}</span>
-        <span className="arrow-down ml-2">
+        <span data-testid="button-text" className="text-link relative">
+          {buttonText}
+        </span>
+        <span data-testid="arrow-icon" className="arrow-down ml-2">
           <FontAwesomeIcon
             icon={faChevronDown}
             className={`ml-1 transition duration-300 ${
