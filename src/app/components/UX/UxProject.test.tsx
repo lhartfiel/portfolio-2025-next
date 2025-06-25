@@ -59,7 +59,7 @@ describe("UX Project Component", () => {
     render(<UxProject projects={projectProps} />);
     const imgWrappers = screen.getAllByTestId("img-wrapper");
     imgWrappers.forEach((wrapper, idx) => {
-      if (idx + (1 % 2) === 0) {
+      if ((idx + 1) % 2 === 0) {
         expect(wrapper).toHaveClass("md:order-2");
       } else {
         expect(wrapper).toHaveClass("md:order-1");

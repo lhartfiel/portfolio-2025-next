@@ -34,7 +34,7 @@ const Button = ({
             : "bg-white border-1 border-accent text-accent hover:bg-accent hover:text-white "
         }`}
         >
-          <ButtonText text={text} size={size} />
+          <ButtonText text={text} size={size} disabled={disabled} />
         </Link>
       ) : (
         <button
