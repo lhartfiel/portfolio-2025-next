@@ -63,12 +63,18 @@ const PageIntro = ({
               )}
             </div>
           </div>
-          <div className="order-2 lg:order-1 lg:col-span-5 lg:col-start-2 xl:col-span-4 xl:col-start-3 my-9 lg:my-14">
+          <div
+            data-testid="content-wrapper"
+            className="order-2 lg:order-1 lg:col-span-5 lg:col-start-2 xl:col-span-4 xl:col-start-3 my-9 lg:my-14"
+          >
             <PageIntroContent title={title} intro={intro} />
           </div>
         </>
       ) : (
-        <div className="col-span-4 lg:col-span-10 lg:col-start-2 xl:col-span-6 xl:col-start-4 justify-center text-center my-9 lg:my-14">
+        <div
+          data-testid="content-wrapper"
+          className="col-span-4 lg:col-span-10 lg:col-start-2 xl:col-span-6 xl:col-start-4 justify-center text-center my-9 lg:my-14"
+        >
           <PageIntroContent title={title} intro={intro} />
         </div>
       )}

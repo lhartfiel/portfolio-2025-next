@@ -9,17 +9,17 @@ interface UxProjectParams {
   }>;
 }
 
-const UxProject = async ({ params }: UxProjectParams) => {
-  let uxProject = null;
+const UxProjectPage = async ({ params }: UxProjectParams) => {
+  let uxProjectData = null;
   const { slug } = await params;
 
   try {
-    uxProject = await getUxProjectBySlug({ slug });
+    uxProjectData = await getUxProjectBySlug({ slug });
   } catch (error) {
     console.error("Error loading about UX page data:", error);
   }
 
-  if (!uxProject) {
+  if (!uxProjectData) {
     return (
       <div className="w-full mx-[12px]">
         <p className="text-red-500 text-lg">
@@ -30,21 +30,21 @@ const UxProject = async ({ params }: UxProjectParams) => {
   }
   return (
     <>
-      <PageIntro title={uxProject.title} intro={uxProject.intro} />
+      <PageIntro title={uxProjectData.title} intro={uxProjectData.intro} />
       <UxDetails
-        role={uxProject.role}
-        duration={uxProject.duration}
-        type={uxProject.projectType}
+        role={uxProjectData.role}
+        duration={uxProjectData.duration}
+        type={uxProjectData.projectType}
       />
       <UxBlock
         blocks={
-          Array.isArray(uxProject.blocks)
-            ? uxProject.blocks
-            : [uxProject.blocks]
+          Array.isArray(uxProjectData.blocks)
+            ? uxProjectData.blocks
+            : [uxProjectData.blocks]
         }
       />
     </>
   );
 };
 
-export default UxProject;
+export default UxProjectPage;

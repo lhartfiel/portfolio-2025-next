@@ -7,7 +7,7 @@ import { DataError } from "@/components/DataError";
 
 const UserExperience = async () => {
   let uxData,
-    uxProject = null;
+    uxProjectData = null;
 
   try {
     uxData = await getUserExperiencePageData();
@@ -16,12 +16,12 @@ const UserExperience = async () => {
   }
 
   try {
-    uxProject = await getUxProjectData();
+    uxProjectData = await getUxProjectData();
   } catch (error) {
     console.error("Error loading about UX page data:", error);
   }
 
-  if (!uxProject) {
+  if (!uxProjectData) {
     return <DataError />;
   }
 
@@ -40,8 +40,8 @@ const UserExperience = async () => {
           </p>
         </div>
       )}
-      {uxProject ? (
-        <UxProject projects={uxProject} />
+      {uxProjectData ? (
+        <UxProject projects={uxProjectData} />
       ) : (
         <div className="w-full mx-[12px]">
           <p className="text-red-500 text-lg">

@@ -34,10 +34,11 @@ const Button = ({
             : "bg-white border-1 border-accent text-accent hover:bg-accent hover:text-white "
         }`}
         >
-          <ButtonText text={text} size={size} />
+          <ButtonText text={text} size={size} disabled={disabled} />
         </Link>
       ) : (
-        <a
+        <button
+          disabled={disabled}
           onClick={() => (callback ? callback() : null)}
           className={`relative inline-block font-kanit font-bold justify-center rounded-[20px] transition duration-300 ease-in-out
             ${customClass ? customClass : ""}
@@ -51,7 +52,7 @@ const Button = ({
         `}
         >
           <ButtonText text={text} size={size} disabled={disabled} />
-        </a>
+        </button>
       )}
     </>
   );

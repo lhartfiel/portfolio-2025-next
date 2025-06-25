@@ -1,5 +1,6 @@
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { MobileMenu } from "./MobileMenu";
+import userEvent from "@testing-library/user-event";
 import { MobileNavContext } from "./NavContext";
 
 describe("MobileMenu component", () => {
@@ -14,7 +15,7 @@ describe("MobileMenu component", () => {
     expect(hamburgerIcon).toHaveAttribute("aria-label", "Toggle mobile menu");
   });
 
-  it("should call toggleMobileNav when hamburger menu is clicked", () => {
+  it("should call toggleMobileNav when hamburger menu is clicked", async () => {
     const toggleMobileNavMock = jest.fn();
 
     render(
@@ -24,7 +25,7 @@ describe("MobileMenu component", () => {
     );
 
     const hamburgerIcon = screen.getByRole("button");
-    fireEvent.click(hamburgerIcon);
+    await userEvent.click(hamburgerIcon);
     expect(toggleMobileNavMock).toHaveBeenCalledTimes(1);
   });
 

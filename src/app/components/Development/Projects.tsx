@@ -2,13 +2,13 @@
 import parse from "html-react-parser";
 import { useState, useCallback } from "react";
 import { ButtonLink } from "../ButtonLink";
-import striptags from "striptags";
+import { sanitize } from "isomorphic-dompurify";
 
 type Project = {
-  order: number;
+  order?: number | null;
   projectDescription: string;
   projectTitle: string;
-  skill: [{ type: string }];
+  skill: { type: string }[];
 };
 
 const Projects = ({
@@ -16,7 +16,7 @@ const Projects = ({
   projects,
 }: {
   heading: string;
-  projects: [Project];
+  projects: Project[];
 }) => {
   const [showAllContent, setShowAllContent] = useState<Record<string, boolean>>(
     {}
@@ -33,10 +33,6 @@ const Projects = ({
     []
   );
 
-  function stripHtml(html: string) {
-    return striptags(html);
-  }
-
   return (
     <section className="grid items-start justify-center grid-cols-4 md:grid-cols-12 xl:[grid-template-columns:repeat(12,72px)] mx-auto gap-x-6 md:gap-y-6 px-6 py-7 md:py-11">
       {heading && (
@@ -48,32 +44,37 @@ const Projects = ({
         {projects?.length > 0 &&
           projects.map((project, idx) => {
             const rawDescription = project?.projectDescription || "";
-            const cleanText = stripHtml(rawDescription);
+            const cleanText = sanitize(rawDescription);
             const truncatedDescription =
-              cleanText.length > 150
+              cleanText.length > 120
                 ? cleanText.substring(0, 120) + "..."
                 : cleanText;
 
             return (
               <div
-                key={project.order}
+                data-testid="project"
+                key={`${project.order}-${project.projectTitle}`}
                 className="flex flex-wrap md:min-h-[375px] lg:min-h-[440px] xl:min-h-[415px] h-auto justify-start items-start relative w-full md:w-1/3 text-black"
               >
                 <span className="flex items-start">
-                  <div className="relative flex-shrink-0 lg:absolute flex justify-center items-center lg:-top-4 lg:-left-14 bg-tertiary font-kanit text-primary text-2xl lg:text-[32px] w-9 h-9 lg:w-11 lg:h-11 rounded-full">
-                    {idx + 1}
+                  <div
+                    data-testid="order-number"
+                    className="relative flex-shrink-0 lg:absolute flex justify-center items-center lg:-top-4 lg:-left-14 bg-tertiary font-kanit text-primary text-2xl lg:text-[32px] w-9 h-9 lg:w-11 lg:h-11 rounded-full"
+                  >
+                    {project.order ?? idx + 1}
                   </div>
                   <h3 className="min-w-0 break-words text-wrap text-h3-sm lg:text-h3 font-semibold ml-4 lg:ml-0 mb-2">
                     {project.projectTitle}
                   </h3>
                 </span>
                 <span className="text-body-sm lg:text-body mt-4 lg:mt-0">
-                  {showAllContent[project.projectTitle] &&
-                  project.projectDescription
-                    ? parse(project.projectDescription)
-                    : parse(truncatedDescription)}
-
-                  {cleanText.length > 150 ? (
+                  <span data-testid="project-desc">
+                    {showAllContent[project.projectTitle] &&
+                    project.projectDescription
+                      ? parse(project.projectDescription)
+                      : parse(truncatedDescription)}
+                  </span>
+                  {cleanText.length > 120 ? (
                     <ButtonLink
                       buttonText={
                         showAllContent[project.projectTitle]
@@ -91,6 +92,7 @@ const Projects = ({
                   {project.skill.map((skillTag) => {
                     return (
                       <span
+                        data-testid="project-skill"
                         key={skillTag.type}
                         className="bg-primary text-white font-medium text-[12px] px-2 py-1 mr-3 mb-4"
                       >

@@ -17,13 +17,11 @@ const iconMap = {
 };
 type Skills = {
   heading: string;
-  description: string;
+  description?: string;
   icon: string;
-  skillIcon: [
-    {
-      type: string;
-    }
-  ];
+  skillIcon: {
+    type: string;
+  }[];
 };
 
 const Experience = ({
@@ -32,8 +30,8 @@ const Experience = ({
   skills,
 }: {
   heading: string;
-  subheading: string;
-  skills: [Skills];
+  subheading?: string;
+  skills: Skills[];
 }) => {
   const mediumScreen = useScreenSize("md");
   return (
@@ -45,7 +43,10 @@ const Experience = ({
           </h2>
         )}
         {subheading && (
-          <p className="text-intro-min-sm lg:text-intro-min text-black text-left md:text-center mb-7">
+          <p
+            data-testid="experience-subhead"
+            className="text-intro-min-sm lg:text-intro-min text-black text-left md:text-center mb-7"
+          >
             {subheading}
           </p>
         )}
@@ -58,11 +59,17 @@ const Experience = ({
                   : undefined;
               return (
                 <span
+                  data-testid="skill-wrapper"
                   key={skill.icon}
                   className="flex flex-nowrap gap-6 md:gap-0 md:flex-wrap justify-start md:justify-center items-start w-full md:w-1/3"
                 >
                   <div className="flex icon text-4xl min-w-12 md:text-5xl md:w-auto text-primary text-center mb-7">
-                    {skillIcon && <FontAwesomeIcon icon={skillIcon} />}
+                    {skillIcon && (
+                      <FontAwesomeIcon
+                        data-testid="skill-icon"
+                        icon={skillIcon}
+                      />
+                    )}
                   </div>
 
                   <div className="flex flex-wrap justify-start text-left mb-8">
@@ -71,9 +78,14 @@ const Experience = ({
                     </h3>
                     <p className="skills w-full text-left md:text-center text-body-min-sm lg:text-body-min">
                       {skill.skillIcon.map((skillType, idx) => (
-                        <span key={skillType.type} className="inline-block ">
+                        <span
+                          data-testid="skill-type"
+                          key={skillType.type}
+                          className="inline-block "
+                        >
                           {skillType.type}
                           <span
+                            test-id="type-divider"
                             className={`mx-2 ${
                               skill.skillIcon.length === idx + 1 ? "hidden" : ""
                             }`}
