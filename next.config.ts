@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import * as path from "path";
 
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_PATH;
 const DOMAIN_PATH = process.env.NEXT_SERVER_PATH;
@@ -20,6 +21,9 @@ const nextConfig: NextConfig = {
           },
         ]
       : [],
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
   },
 };
 

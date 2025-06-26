@@ -8,7 +8,8 @@ This is my latest portfolio site using NextJS to display both my frontend develo
 - Typescript
 - Tailwind
 - GraphQL
-- Node > 18
+- Node > 20
+- Storybook
 
 ## Getting Started
 
@@ -29,6 +30,10 @@ If you encounter any issues with node, ensure you are running Node > 18. Run `nv
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## Storybook
+
+Storybook is being used to define components and the overall theme. It needs to be run on a separate server. To run locally, run `npm run storybook`
 
 ## Testing
 
