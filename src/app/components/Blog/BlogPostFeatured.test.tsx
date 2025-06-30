@@ -54,24 +54,36 @@ describe("BlogPostFeatured component", () => {
     render(<BlogPostFeatured post={blogData} />);
     expect(screen.getByTestId("blog-date")).toHaveTextContent("Jul 12, 2024");
   });
-
-  it("should render the excerpt if it exists", () => {
+  it("should render the subtitle if it is provided", () => {
     render(<BlogPostFeatured post={blogData} />);
+
+    expect(screen.getByTestId("blog-excerpt")).toHaveTextContent(
+      blogData.subtitle
+    );
+  });
+
+  it("should render the excerpt if no subtitle is provided", () => {
+    const newBlogData = {
+      ...blogData,
+      subtitle: "",
+    };
+    render(<BlogPostFeatured post={newBlogData} />);
 
     expect(screen.getByTestId("blog-excerpt")).toHaveTextContent(
       blogData.excerpt
     );
   });
 
-  it("should not render the excerpt if it doesn't exist", () => {
-    const updatedBlog = { ...blogData, excerpt: "" };
+  it("should not render the excerpt if excerpt and subtitle are not provided", () => {
+    const updatedBlog = { ...blogData, excerpt: "", subtitle: "" };
     render(<BlogPostFeatured post={updatedBlog} />);
     expect(screen.queryByTestId("blog-excerpt")).not.toBeInTheDocument();
   });
 
-  it("should render parsed HTML in the excerpt", () => {
+  it("should render parsed HTML in the excerpt when no subtitle is provided", () => {
     const updatedBlog = {
       ...blogData,
+      subtitle: "",
       excerpt: "<strong>A halloween excerpt with html</strong>",
     };
     render(<BlogPostFeatured post={updatedBlog} />);

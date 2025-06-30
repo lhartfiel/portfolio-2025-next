@@ -34,12 +34,12 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
           >
             {date.format("MMM D, YYYY")}
           </p>
-          {post.excerpt && (
+          {(post.subtitle || post.excerpt) && (
             <span
               data-testid="blog-excerpt"
               className="block text-white text-intro-sm lg:text-intro text-shadow-xl mb-6 w-full"
             >
-              {parse(post.excerpt)}
+              {post.subtitle ? parse(post.subtitle) : parse(post.excerpt)}
             </span>
           )}
           <div className="wrapper mt-auto -mb-[18px] lg:mb-0 lg:mt-0">

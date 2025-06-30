@@ -29,7 +29,7 @@ const BlogPageImage = ({ blog }: { blog: BlogPost }) => {
           objectFit: "cover",
           objectPosition: "center",
         }}
-        onLoadingComplete={() => setIsImageLoading(false)}
+        onLoad={() => setIsImageLoading(false)}
       />
     </>
   );

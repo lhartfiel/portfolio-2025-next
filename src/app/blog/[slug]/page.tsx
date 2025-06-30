@@ -33,7 +33,6 @@ const BlogPage = async ({ params }: BlogPageParams) => {
   const { slug } = await params;
   let blog = {} as BlogPost;
   try {
-    console.log("client", getClient());
     const { data } = await getClient().query({
       query: GET_SINGLE_BLOG_POST,
       variables: {
@@ -45,8 +44,6 @@ const BlogPage = async ({ params }: BlogPageParams) => {
     console.error("Error fetching blog posts:", error);
   }
   const date = dayjs(blog.createdAt, "MMM D, YYYY");
-  console.log("typeof parse", typeof parse);
-  console.log("blog.content", blog.content);
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <article className={`blog flex flex-col w-full`}>
