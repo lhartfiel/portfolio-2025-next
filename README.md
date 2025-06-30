@@ -53,3 +53,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 This is a fairly simple portfolio site that fetches content from graphQL. So why Next.js? Next is one of the frameworks recommended on the React website as a full-stack solution. It provides server-side rendering, which is ideal for quick data fetching, but can also be integrated with client-side components.
 
 Next also offers an incredibly intuitive routing structure that is based on directory paths and enables dymnamic routes, which I used for blog posts and UX projects.
+
+## Clearing Cache
+
+When publishing Blog Posts, Netlify doesn't automatically clear the cache. The trigger deployment with no cache seems to cause issues, particularly for Blog updates. It is best to push a new commit to the repo so there is a clean build.
