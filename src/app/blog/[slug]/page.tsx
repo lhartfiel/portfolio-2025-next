@@ -29,6 +29,8 @@ export interface BlogPost {
   slug: string;
 }
 
+export const revalidate = 14400; //revalidate every 4 hours
+
 const BlogPage = async ({ params }: BlogPageParams) => {
   const { slug } = await params;
   let blog = {} as BlogPost;

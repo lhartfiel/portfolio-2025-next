@@ -8,6 +8,8 @@ interface UxProjectParams {
     slug: string;
   }>;
 }
+export const revalidate = 86400;
+export const dynamic = "force-static";
 
 const UxProjectPage = async ({ params }: UxProjectParams) => {
   let uxProjectData = null;

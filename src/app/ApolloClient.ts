@@ -12,17 +12,27 @@ const GRAPHQL_URL =
 if (!GRAPHQL_URL) {
   throw new Error("Missing NEXT_PUBLIC_GRAPHQL_URL environment variable");
 }
+
+function fetchWithTimeout(
+  url: RequestInfo | URL,
+  options: RequestInit = {},
+  timeout = 5000
+): Promise<Response> {
+  return Promise.race<Response>([
+    fetch(url, options),
+    new Promise<Response>((_, reject) =>
+      setTimeout(() => reject(new Error("Fetch timed out")), timeout)
+    ),
+  ]);
+}
+
 export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
       // this needs to be an absolute url, as relative urls cannot be used in SSR
       uri: `${GRAPHQL_URL}`,
-      fetchOptions: {
-        // you can pass additional options that should be passed to `fetch` here,
-        // e.g. Next.js-related `fetch` options regarding caching and revalidation
-        // see https://nextjs.org/docs/app/api-reference/functions/fetch#fetchurl-options
-      },
+      fetch: (url, options) => fetchWithTimeout(url, options, 5000),
     }),
   });
 });

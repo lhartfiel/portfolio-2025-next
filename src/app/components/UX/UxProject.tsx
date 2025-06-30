@@ -49,6 +49,9 @@ const UxProject = ({ projects }: { projects: Project[] }) => {
                       src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${project.excerptImage}`}
                       alt={"Page Image"}
                       fill
+                      sizes={
+                        "(max-width: 768px) 500px, (max-width: 1200px) 620px"
+                      }
                       style={{
                         objectFit: "contain",
                         objectPosition: "center",

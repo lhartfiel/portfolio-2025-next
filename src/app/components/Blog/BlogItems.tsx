@@ -20,6 +20,7 @@ const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
                   src={`${hostname}${post.image}`}
                   alt={`Photo for ${post.title}`}
                   fill
+                  sizes="(max-width: 768px) 775px (max-width: 1440px) 400px, 600px"
                   style={{
                     objectFit: "cover",
                     objectPosition: "center",

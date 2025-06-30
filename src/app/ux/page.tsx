@@ -5,6 +5,9 @@ import { UxProcess } from "@/components/UX/UxProcess";
 import { UxProject } from "@/components/UX/UxProject";
 import { DataError } from "@/components/DataError";
 
+export const revalidate = 86400; // Revalidate every 24 hours
+export const dynamic = "force-static";
+
 const UserExperience = async () => {
   let uxData,
     uxProjectData = null;
@@ -21,13 +24,14 @@ const UserExperience = async () => {
     console.error("Error loading about UX page data:", error);
   }
 
-  if (!uxProjectData) {
+  if (!uxProjectData || !uxData) {
     return <DataError />;
   }
 
   return (
     <>
       <PageIntro title={uxData.title} intro={uxData.intro} />
+
       {uxData ? (
         <UxProcess
           processHeading={uxData.processHeading}

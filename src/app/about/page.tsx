@@ -2,6 +2,9 @@ import getAboutpageData from "../api/aboutpage";
 import { DataError } from "@/components/DataError";
 import { AboutLayout } from "@/components/About/AboutLayout";
 
+export const revalidate = 86400;
+export const dynamic = "force-static";
+
 const About = async () => {
   let aboutData = null;
   try {
