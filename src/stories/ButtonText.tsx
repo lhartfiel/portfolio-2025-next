@@ -1,6 +1,12 @@
-import { ButtonSize } from "./Button";
+import { ButtonSize } from "../app/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+export interface ButtonTextProps {
+  text: string;
+  size: ButtonSize;
+  disabled?: boolean;
+}
 
 const arrowIcon = (
   <FontAwesomeIcon
@@ -8,16 +14,12 @@ const arrowIcon = (
     className="text-intro-sm leading-[20px]"
   />
 );
-const ButtonText = ({
+export const ButtonText = ({
   text,
   size,
-  disabled,
-}: {
-  text: string;
-  size: ButtonSize;
-  disabled?: boolean;
-}) => {
-  const truncatedText = text.length > 16 ? `${text.slice(0, 16)}...` : text;
+  disabled = false,
+}: ButtonTextProps) => {
+  const truncatedText = text?.length > 16 ? `${text.slice(0, 16)}...` : text;
   return (
     <p
       className={`group relative flex items-center justify-center
@@ -34,5 +36,3 @@ const ButtonText = ({
     </p>
   );
 };
-
-export { ButtonText };

@@ -1,0 +1,53 @@
+import { Meta, Typeset } from "@storybook/addon-docs/blocks";
+
+<Meta title="Typography" />
+
+export const typography = {
+  type: {
+    gothicA1: '"Gothic A1", sans-serif',
+    kanit: '"Kanit", sans-serif',
+  },
+  weight: {
+    regular: "400",
+    medium: "500",
+    bold: "700",
+  },
+  size: {
+    h1Lg: 60,
+    h1Sm: 32,
+    h2Lg: 36,
+    h2Sm: 24,
+    h3: 24,
+    h4: 16,
+  },
+};
+
+export const SampleText =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+# Typography
+
+## **Font:** Kanit
+
+<Typeset
+  fontSizes={[
+    Number(typography.size.h1Lg),
+    Number(typography.size.h1Sm),
+    Number(typography.size.h2Lg),
+    Number(typography.size.h2Sm),
+  ]}
+  fontWeight={typography.weight.bold}
+  sampleText={SampleText}
+  fontFamily={typography.type.gothicA1}
+/>
+
+## **Font:** Gothic A1
+
+**Weights:** 400(regular), 500(medium), 700(bold)
+
+<Typeset
+  fontSizes={[Number(typography.size.h3), Number(typography.size.h4)]}
+  fontWeight={typography.weight.medium}
+  sampleText={SampleText}
+  fontFamily={typography.type.gothicA1}
+/>

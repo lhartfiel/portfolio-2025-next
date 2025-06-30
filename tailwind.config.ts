@@ -49,4 +49,5 @@ module.exports = {
   },
   safelist: ["text-primary"],
   plugins: [],
+  darkMode: "class",
 };
