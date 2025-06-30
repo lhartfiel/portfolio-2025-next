@@ -35,19 +35,28 @@ describe("BlogPageImage component", () => {
     expect(image).toBeInTheDocument();
   });
 
-  it("should display the correct alt image text", () => {
+  it("should display the correct alt image text", async () => {
     render(<BlogPageImage blog={blogData} />);
-    const image = screen.getByTestId("blog-img");
-    expect(image).toHaveAttribute("alt", `Photo for ${blogData.title}`);
+    if (onImageLoadComplete) {
+      onImageLoadComplete(); // Triggers the callback
+    }
+
+    await waitFor(() => {
+      const image = screen.getByTestId("blog-img");
+      expect(image).toHaveAttribute("alt", `Photo for ${blogData.title}`);
+    });
   });
 
-  it("should display the correct image source", () => {
+  it("should display the correct image source", async () => {
     render(<BlogPageImage blog={blogData} />);
-    const image = screen.getByTestId("blog-img");
-    expect(image).toHaveAttribute(
-      "src",
-      `http://localhost:3000/${blogData.image}`
-    );
+
+    await waitFor(() => {
+      const image = screen.getByTestId("blog-img");
+      expect(image).toHaveAttribute(
+        "src",
+        `http://localhost:3000/${blogData.image}`
+      );
+    });
   });
 
   it("should display the correct loader styles", () => {
@@ -58,9 +67,9 @@ describe("BlogPageImage component", () => {
     );
   });
 
-  it("should still load the app if the image is missing", () => {
+  it("should still not load the image tag if the image is missing", () => {
     const updatedBlog = { ...blogData, image: "" };
     render(<BlogPageImage blog={updatedBlog} />);
-    expect(screen.getByTestId("blog-img")).toBeInTheDocument();
+    expect(screen.queryByTestId("blog-img")).not.toBeInTheDocument();
   });
 });

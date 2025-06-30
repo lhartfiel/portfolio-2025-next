@@ -20,17 +20,19 @@ const BlogPageImage = ({ blog }: { blog: BlogPost }) => {
           {loader}
         </div>
       )}
-      <Image
-        data-testid="blog-img"
-        src={`${hostname}${blog.image}`}
-        alt={`Photo for ${blog.title}`}
-        fill
-        style={{
-          objectFit: "cover",
-          objectPosition: "center",
-        }}
-        onLoad={() => setIsImageLoading(false)}
-      />
+      {blog.image && blog.title && (
+        <Image
+          data-testid="blog-img"
+          src={`${hostname}${blog.image}`}
+          alt={`Photo for ${blog.title}`}
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          onLoad={() => setIsImageLoading(false)}
+        />
+      )}
     </>
   );
 };

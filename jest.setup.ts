@@ -20,7 +20,7 @@ jest.mock("@apollo/client-integration-nextjs", () => ({
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: any) => {
-    onImageLoadComplete = props.onLoadingComplete;
+    onImageLoadComplete = props.onLoad;
     return React.createElement("img", props);
   },
 }));
