@@ -1,18 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { Header } from './Header';
-import './page.css';
-
-type User = {
-  name: string;
-};
+import "./page.css";
 
 export const Page: React.FC = () => {
-  const [user, setUser] = React.useState<User>();
-
   return (
     <article>
-      <Header
+      <h1>Page</h1>
+      {/* <Header
         user={user}
         onLogin={() => setUser({ name: 'Jane Doe' })}
         onLogout={() => setUser(undefined)}
@@ -67,7 +61,7 @@ export const Page: React.FC = () => {
           </svg>
           Viewports addon in the toolbar
         </div>
-      </section>
+      </section> */}
     </article>
   );
 };

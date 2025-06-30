@@ -1,12 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/nextjs";
-import {
-  Title,
-  Subtitle,
-  Description,
-  Primary,
-  Controls,
-  Stories,
-} from "@storybook/blocks";
 
 import { fn } from "storybook/test";
 import { action } from "storybook/actions";

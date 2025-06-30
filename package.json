@@ -9,7 +9,7 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "STORYBOOK=true storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
@@ -43,7 +43,9 @@
     "@storybook/addon-a11y": "^9.0.13",
     "@storybook/addon-docs": "^9.0.13",
     "@storybook/addon-onboarding": "^9.0.13",
+    "@storybook/addon-themes": "^9.0.14",
     "@storybook/nextjs": "^9.0.13",
+    "@storybook/react": "^9.0.13",
     "@tailwindcss/postcss": "^4.1.7",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
