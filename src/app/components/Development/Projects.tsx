@@ -40,7 +40,7 @@ const Projects = ({
           {heading}
         </h2>
       )}
-      <div className="flex flex-wrap md:h-full md:flex-nowrap items-start col-span-full lg:col-span-10 lg:col-start-2 gap-11 lg:gap-14">
+      <div className="flex flex-wrap md:h-auto md:flex-nowrap items-start col-span-full lg:col-span-10 lg:col-start-2 gap-11 lg:gap-14">
         {projects?.length > 0 &&
           projects.map((project, idx) => {
             const rawDescription = project?.projectDescription || "";

@@ -72,7 +72,7 @@ const successMocks = [
         },
       },
     },
-    delay: 50, // Add a delay to test the loading state
+    delay: 500, // Add a delay to test the loading state
   },
 ];
 
@@ -149,7 +149,6 @@ describe("Contact Component", () => {
   it("displays the Loading message when the form is submitted", async () => {
     renderContact(successMocks);
     await fillAndSubmitForm();
-
     const loading = await screen.findByTestId("loading");
     expect(loading).toBeInTheDocument();
     expect(loading).toHaveTextContent(/Loading.../i);

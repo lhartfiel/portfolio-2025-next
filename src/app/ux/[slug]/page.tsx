@@ -19,6 +19,7 @@ const UxProjectPage = async ({ params }: UxProjectParams) => {
     uxProjectData = await getUxProjectBySlug({ slug });
   } catch (error) {
     console.error("Error loading about UX page data:", error);
+    return null;
   }
 
   if (!uxProjectData) {

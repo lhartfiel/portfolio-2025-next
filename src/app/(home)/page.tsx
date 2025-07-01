@@ -8,6 +8,7 @@ const Home = async () => {
     homeData = await getHomepageData();
   } catch (error) {
     console.error("Error loading homepage data:", error);
+    return null;
   }
 
   if (!homeData) {

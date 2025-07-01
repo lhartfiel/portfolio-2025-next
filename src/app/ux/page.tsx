@@ -16,12 +16,14 @@ const UserExperience = async () => {
     uxData = await getUserExperiencePageData();
   } catch (error) {
     console.error("Error loading about UX page data:", error);
+    return null;
   }
 
   try {
     uxProjectData = await getUxProjectData();
   } catch (error) {
     console.error("Error loading about UX page data:", error);
+    return null;
   }
 
   if (!uxProjectData || !uxData) {
