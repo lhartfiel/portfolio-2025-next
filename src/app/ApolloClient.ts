@@ -15,7 +15,7 @@ if (!GRAPHQL_URL) {
 function fetchWithTimeout(
   url: RequestInfo | URL,
   options: RequestInit = {},
-  timeout = 5000
+  timeout = 8000
 ): Promise<Response> {
   return Promise.race<Response>([
     fetch(url, options),
