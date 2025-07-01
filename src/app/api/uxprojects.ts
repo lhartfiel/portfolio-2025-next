@@ -1,4 +1,5 @@
 import { getClient } from "../ApolloClient";
+import { ApolloError } from "@apollo/client";
 import { GET_UX_PROJECTS, GET_UX_PROJECT_BY_SLUG } from "./graphql/queries";
 
 export interface ImageType {
@@ -36,7 +37,17 @@ const getUxProjectData = async () => {
     uxProjectData = data?.uxProject || [];
     return uxProjectData;
   } catch (error) {
-    console.error("Error fetching blog posts:", error);
+    if (error instanceof ApolloError) {
+      console.error("ApolloError:", {
+        message: error.message,
+        graphQLErrors: error.graphQLErrors,
+        networkError: error.networkError,
+      });
+    } else if (error instanceof Error) {
+      console.error("Error:", error.message, error.stack);
+    } else {
+      console.error("Unknown error type", error);
+    }
     return null;
   }
 };

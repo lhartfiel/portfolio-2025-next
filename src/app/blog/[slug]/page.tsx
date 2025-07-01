@@ -1,5 +1,6 @@
 import { GET_SINGLE_BLOG_POST } from "../../api/graphql/queries";
 import { getClient } from "../../ApolloClient";
+import { ApolloError } from "@apollo/client";
 import parse from "html-react-parser";
 import styles from "../blog.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -42,9 +43,18 @@ const BlogPage = async ({ params }: BlogPageParams) => {
       },
     });
     blog = data?.blogBySlug || {};
-  } catch (error: any) {
-    console.error("GraphQL fetch error:", error?.message);
-    console.error("Full error:", JSON.stringify(error, null, 2));
+  } catch (error) {
+    if (error instanceof ApolloError) {
+      console.error("ApolloError:", {
+        message: error.message,
+        graphQLErrors: error.graphQLErrors,
+        networkError: error.networkError,
+      });
+    } else if (error instanceof Error) {
+      console.error("Error:", error.message, error.stack);
+    } else {
+      console.error("Unknown error type", error);
+    }
     return null;
   }
   const date = dayjs(blog.createdAt, "MMM D, YYYY");
