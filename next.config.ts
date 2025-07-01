@@ -8,6 +8,7 @@ if (IMAGE_URL) {
 }
 
 const nextConfig: NextConfig = {
+  productionBrowserSourceMaps: true,
   images: {
     domains: DOMAIN_PATH ? [DOMAIN_PATH] : [],
     remotePatterns: url
