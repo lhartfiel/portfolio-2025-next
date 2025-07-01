@@ -6,6 +6,7 @@ const getAboutpageData = async () => {
   let aboutData = [];
   try {
     const { data } = await getClient().query({ query: GET_ABOUT_PAGE });
+    console.log("Fetching about data...");
     aboutData = data?.about || [];
     return aboutData;
   } catch (error) {

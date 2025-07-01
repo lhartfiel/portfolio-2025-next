@@ -15,17 +15,24 @@ if (!GRAPHQL_URL) {
 function fetchWithTimeout(
   url: RequestInfo | URL,
   options: RequestInit = {},
-  timeout = 8000
+  timeout = 5000
 ): Promise<Response> {
-  return Promise.race<Response>([
-    fetch(url, options),
-    new Promise<Response>((_, reject) =>
-      setTimeout(() => {
-        console.error("GraphQL fetch to", url, "timed out");
-        reject(new Error("Fetch timed out"));
-      }, timeout)
-    ),
-  ]);
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      console.error("GraphQL fetch to", url, "timed out");
+      reject(new Error("Fetch timed out"));
+    }, timeout);
+
+    fetch(url, options)
+      .then((res) => {
+        clearTimeout(timer); // 🛑 Stop the timeout from firing
+        resolve(res);
+      })
+      .catch((err) => {
+        clearTimeout(timer); // 🛑 Also stop it on failure
+        reject(err);
+      });
+  });
 }
 
 export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
