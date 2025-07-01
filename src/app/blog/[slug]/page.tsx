@@ -42,8 +42,10 @@ const BlogPage = async ({ params }: BlogPageParams) => {
       },
     });
     blog = data?.blogBySlug || {};
-  } catch (error) {
-    console.error("Error fetching blog posts:", error);
+  } catch (error: any) {
+    console.error("GraphQL fetch error:", error?.message);
+    console.error("Full error:", JSON.stringify(error, null, 2));
+    return null;
   }
   const date = dayjs(blog.createdAt, "MMM D, YYYY");
   return (

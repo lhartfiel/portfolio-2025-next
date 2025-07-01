@@ -6,8 +6,7 @@ import {
 } from "@apollo/client-integration-nextjs";
 
 // GraphQL client for server-side rendering
-const GRAPHQL_URL =
-  process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:3000/api/graphql";
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
 
 if (!GRAPHQL_URL) {
   throw new Error("Missing NEXT_PUBLIC_GRAPHQL_URL environment variable");
@@ -21,7 +20,10 @@ function fetchWithTimeout(
   return Promise.race<Response>([
     fetch(url, options),
     new Promise<Response>((_, reject) =>
-      setTimeout(() => reject(new Error("Fetch timed out")), timeout)
+      setTimeout(() => {
+        console.error("GraphQL fetch to", url, "timed out");
+        reject(new Error("Fetch timed out"));
+      }, timeout)
     ),
   ]);
 }

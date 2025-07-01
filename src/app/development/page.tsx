@@ -14,6 +14,7 @@ const Development = async () => {
     devData = await getDevData();
   } catch (error) {
     console.error("Error loading about page data:", error);
+    return null;
   }
 
   if (!devData) {

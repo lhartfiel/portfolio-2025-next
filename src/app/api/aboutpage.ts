@@ -7,8 +7,9 @@ const getAboutpageData = async () => {
     const { data } = await getClient().query({ query: GET_ABOUT_PAGE });
     aboutData = data?.about || [];
     return aboutData;
-  } catch (error) {
-    console.error("Error fetching blog posts:", error);
+  } catch (error: any) {
+    console.error("GraphQL fetch error:", error?.message);
+    console.error("Full error:", JSON.stringify(error, null, 2));
     return null;
   }
 };
