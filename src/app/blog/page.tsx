@@ -16,7 +16,7 @@ export interface Post {
 export const revalidate = 14400; //revalidate every 4 hours
 
 const BlogList = async () => {
-  let blogsPosts = await getBlogList();
+  const blogsPosts = await getBlogList();
 
   if (blogsPosts.length === 0) {
     return <DataError />;
