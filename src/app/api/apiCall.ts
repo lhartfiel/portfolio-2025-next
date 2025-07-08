@@ -4,7 +4,7 @@ import { getClient } from "../ApolloClient";
 const apiCall = async (
   query: DocumentNode,
   objectName: string,
-  variables?: Record<string, null>
+  variables?: Record<string, string | number | boolean | null | undefined>
 ) => {
   let dataList = [];
   try {
