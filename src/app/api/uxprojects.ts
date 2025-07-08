@@ -1,6 +1,6 @@
 import { getClient } from "../ApolloClient";
-import { ApolloError } from "@apollo/client";
 import { GET_UX_PROJECTS, GET_UX_PROJECT_BY_SLUG } from "./graphql/queries";
+import apiCall from "./apiCall";
 
 export interface ImageType {
   image: string;
@@ -30,26 +30,11 @@ interface Project {
   blocks: Block;
 }
 
+/**
+ * Fetches UX Project data by calling the shared apiCall function
+ */
 const getUxProjectData = async () => {
-  let uxProjectData = [];
-  try {
-    const { data } = await getClient().query({ query: GET_UX_PROJECTS });
-    uxProjectData = data?.uxProject || [];
-    return uxProjectData;
-  } catch (error) {
-    if (error instanceof ApolloError) {
-      console.error("ApolloError:", {
-        message: error.message,
-        graphQLErrors: error.graphQLErrors,
-        networkError: error.networkError,
-      });
-    } else if (error instanceof Error) {
-      console.error("Error:", error.message, error.stack);
-    } else {
-      console.error("Unknown error type", error);
-    }
-    return null;
-  }
+  return apiCall(GET_UX_PROJECTS, "uxProject");
 };
 
 const getUxProjectBySlug = async ({ slug }: { slug: string }) => {
