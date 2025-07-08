@@ -17,6 +17,12 @@ jest.mock("@apollo/client-integration-nextjs", () => ({
   })),
 }));
 
+jest.mock("./src/app/ApolloClient", () => ({
+  getClient: jest.fn(),
+  query: jest.fn(),
+  PreloadQuery: jest.fn(),
+}));
+
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: any) => {
