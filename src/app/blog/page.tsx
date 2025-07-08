@@ -18,7 +18,7 @@ export const revalidate = 14400; //revalidate every 4 hours
 const BlogList = async () => {
   const blogsPosts = await getBlogList();
 
-  if (blogsPosts.length === 0) {
+  if (blogsPosts?.length === 0) {
     return <DataError />;
   }
 
