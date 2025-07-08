@@ -1,4 +1,3 @@
-import { getClient } from "../ApolloClient";
 import { GET_UX_PROJECTS, GET_UX_PROJECT_BY_SLUG } from "./graphql/queries";
 import apiCall from "./apiCall";
 
@@ -18,7 +17,7 @@ export interface Block {
   limitHeight: boolean;
 }
 
-interface Project {
+export interface Project {
   title: string;
   intro: string;
   excerpt?: string;
@@ -38,20 +37,7 @@ const getUxProjectData = async () => {
 };
 
 const getUxProjectBySlug = async ({ slug }: { slug: string }) => {
-  let uxProjectData = {} as Project;
-  try {
-    const { data } = await getClient().query({
-      query: GET_UX_PROJECT_BY_SLUG,
-      variables: {
-        slug,
-      },
-    });
-    uxProjectData = data?.uxProjectBySlug || {};
-    return uxProjectData;
-  } catch (error) {
-    console.error("Error fetching UX Project:", error);
-    return null;
-  }
+  return apiCall(GET_UX_PROJECT_BY_SLUG, "uxProjectBySlug", { slug });
 };
 
 export { getUxProjectData, getUxProjectBySlug };

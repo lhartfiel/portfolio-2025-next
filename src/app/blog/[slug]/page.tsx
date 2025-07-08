@@ -8,6 +8,7 @@ import { faCalendarDays } from "@fortawesome/free-regular-svg-icons";
 import { Suspense } from "react";
 import { BlogPageImage } from "@/components/Blog/BlogPageImage";
 import dayjs from "dayjs";
+import { getBlogPage } from "src/app/api/blogListpage";
 
 const calendarIcon = (
   <FontAwesomeIcon icon={faCalendarDays} className="w-4 mx-2" />
@@ -35,28 +36,9 @@ export const revalidate = 14400; //revalidate every 4 hours
 const BlogPage = async ({ params }: BlogPageParams) => {
   const { slug } = await params;
   let blog = {} as BlogPost;
-  try {
-    const { data } = await getClient().query({
-      query: GET_SINGLE_BLOG_POST,
-      variables: {
-        slug,
-      },
-    });
-    blog = data?.blogBySlug || {};
-  } catch (error) {
-    if (error instanceof ApolloError) {
-      console.error("ApolloError:", {
-        message: error.message,
-        graphQLErrors: error.graphQLErrors,
-        networkError: error.networkError,
-      });
-    } else if (error instanceof Error) {
-      console.error("Error:", error.message, error.stack);
-    } else {
-      console.error("Unknown error type", error);
-    }
-    return null;
-  }
+
+  blog = await getBlogPage(slug);
+
   const date = dayjs(blog.createdAt, "MMM D, YYYY");
   return (
     <Suspense fallback={<div>Loading...</div>}>

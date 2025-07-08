@@ -4,6 +4,7 @@ import { ApolloError } from "@apollo/client";
 import { BlogItems } from "@/components/Blog/BlogItems";
 import { BlogPostFeatured } from "@/components/Blog/BlogPostFeatured";
 import { DataError } from "@/components/DataError";
+import { getBlogList } from "../api/blogListpage";
 
 export interface Post {
   id: number;
@@ -18,24 +19,7 @@ export interface Post {
 export const revalidate = 14400; //revalidate every 4 hours
 
 const BlogList = async () => {
-  let blogsPosts = [];
-  try {
-    const { data } = await getClient().query({ query: GET_ALL_BLOG_POSTS });
-    blogsPosts = data?.allBlogs || [];
-  } catch (error) {
-    if (error instanceof ApolloError) {
-      console.error("ApolloError:", {
-        message: error.message,
-        graphQLErrors: error.graphQLErrors,
-        networkError: error.networkError,
-      });
-    } else if (error instanceof Error) {
-      console.error("Error:", error.message, error.stack);
-    } else {
-      console.error("Unknown error type", error);
-    }
-    return null;
-  }
+  let blogsPosts = await getBlogList();
 
   if (blogsPosts.length === 0) {
     return <DataError />;

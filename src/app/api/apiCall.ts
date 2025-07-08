@@ -1,10 +1,17 @@
 import { ApolloError, DocumentNode } from "@apollo/client";
 import { getClient } from "../ApolloClient";
 
-const apiCall = async (query: DocumentNode, objectName: string) => {
+const apiCall = async (
+  query: DocumentNode,
+  objectName: string,
+  variables?: Record<string, any>
+) => {
   let dataList = [];
   try {
-    const { data } = await getClient().query({ query: query });
+    const { data } = await getClient().query({
+      query,
+      variables,
+    });
     console.log("Fetching data...");
     dataList = data?.[objectName] || [];
     return dataList;
