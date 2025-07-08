@@ -24,8 +24,10 @@ const BlogList = async () => {
 
   return (
     <>
-      {blogsPosts[0] && <BlogPostFeatured post={blogsPosts[0]} />}
-      {blogsPosts.length > 0 && (
+      {blogsPosts?.length && blogsPosts[0] && (
+        <BlogPostFeatured post={blogsPosts[0]} />
+      )}
+      {blogsPosts?.length > 0 && (
         <article className="grid grid-cols-12 mx-[12px] gap-6">
           <div className="col-span-12">
             <div className="flex flex-wrap justify-start">
