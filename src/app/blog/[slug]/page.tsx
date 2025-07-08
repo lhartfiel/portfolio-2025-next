@@ -1,6 +1,3 @@
-import { GET_SINGLE_BLOG_POST } from "../../api/graphql/queries";
-import { getClient } from "../../ApolloClient";
-import { ApolloError } from "@apollo/client";
 import parse from "html-react-parser";
 import styles from "../blog.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
