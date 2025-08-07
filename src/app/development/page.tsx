@@ -18,7 +18,6 @@ const Development = async () => {
     return null;
   }
 
-  console.log("dev", devData);
   if (!devData) {
     return <DataError />;
   }
