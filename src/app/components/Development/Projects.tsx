@@ -3,12 +3,17 @@ import parse from "html-react-parser";
 import { useState, useCallback } from "react";
 import { ButtonLink } from "../ButtonLink";
 import { sanitize } from "isomorphic-dompurify";
+import { SkillsTag } from "./SkillsTag";
+
+export type SkillType = {
+  type: string;
+};
 
 type Project = {
   order?: number | null;
   projectDescription: string;
   projectTitle: string;
-  skill: { type: string }[];
+  skill: SkillType[];
 };
 
 const Projects = ({
@@ -89,17 +94,9 @@ const Projects = ({
                   )}
                 </span>
                 <div className="flex flex-wrap tags mt-12">
-                  {project.skill.map((skillTag) => {
-                    return (
-                      <span
-                        data-testid="project-skill"
-                        key={skillTag.type}
-                        className="bg-primary text-white font-medium text-[12px] px-2 py-1 mr-3 mb-4"
-                      >
-                        {skillTag.type}
-                      </span>
-                    );
-                  })}
+                  {project.skill.map((skillTag: SkillType) => (
+                    <SkillsTag key={skillTag?.type} tag={skillTag} />
+                  ))}
                 </div>
               </div>
             );

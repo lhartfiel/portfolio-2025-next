@@ -111,6 +111,19 @@ export const GET_DEVELOPMENT_PAGE = gql`
           type
         }
       }
+      sideprojectHeading
+      sideprojectSubheading
+      sideprojects {
+        sideprojectTitle
+        sideprojectDescription
+        image
+        imageAlt
+        order
+        skill {
+          type
+        }
+        webUrl
+      }
       skills {
         heading
         description
