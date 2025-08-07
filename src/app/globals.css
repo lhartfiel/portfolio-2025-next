@@ -29,8 +29,8 @@
   --text-h3--line-height: 32px;
   --text-h3-sm: 20px;
   --text-h3-sm--line-height: 26px;
-  --text-h4-sm: 20px;
-  --text-h4-sm--line-height: 26px;
+  --text-h4: 20px;
+  --text-h4--line-height: 26px;
   --text-h4-sm: 16px;
   --text-h4-sm--line-height: 20px;
   --text-intro: 24px;
@@ -51,6 +51,7 @@
   --text-body-min-sm--line-height: 20px;
 
   --shadow-btn: 1px 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-card: 0px 0px 4px 4px rgba(0, 0, 0, 0.15);
   --text-shadow-xl: 2px 2px 2px rgba(0, 0, 0, 0.85);
 
   @keyframes twirl-in {

@@ -2,6 +2,7 @@ import getDevData from "../api/developmentpage";
 import { PageIntro } from "@/components/PageIntro";
 import { Experience } from "@/components/Development/Experience";
 import { Projects } from "@/components/Development/Projects";
+import { SideProjects } from "@/components/Development/SideProjects";
 import { DataError } from "@/components/DataError";
 
 export const revalidate = 86400;
@@ -29,6 +30,14 @@ const Development = async () => {
         skills={devData.skills}
       />
       <Projects heading={devData.projectHeading} projects={devData.projects} />
+      {devData.sideprojects && (
+        <>
+          <SideProjects
+            heading={devData.sideprojectHeading}
+            sideprojects={devData.sideprojects}
+          />
+        </>
+      )}
     </>
   );
 };
