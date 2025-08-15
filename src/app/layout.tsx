@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { MobileNavProvider } from "./components/Header/NavContext";
 import { LayoutBody } from "./components/LayoutBody";
+import { GoogleTrackingScript } from "./GoogleTracking";
 
 export const metadata: Metadata = {
   title: "Lindsay Hartfiel Portfolio",
@@ -15,6 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <GoogleTrackingScript />
       <MobileNavProvider>
         <body>
           <LayoutBody>{children}</LayoutBody>
