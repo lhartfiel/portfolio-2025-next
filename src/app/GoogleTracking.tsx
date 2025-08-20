@@ -5,7 +5,7 @@ const GoogleTrackingScript = () => {
   return (
     <>
       <Script
-        async={true}
+        async
         src="https://www.googletagmanager.com/gtag/js?id=G-CEXHSSMDN7"
         strategy="afterInteractive"
       />
