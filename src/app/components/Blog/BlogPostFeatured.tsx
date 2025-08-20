@@ -10,7 +10,7 @@ const BlogPostFeatured = ({ post }: { post: Post }) => {
   const date = dayjs(post.createdAt, "MMM D, YYYY");
   return (
     <div className="flex flex-wrap items-center justify-center relative w-full h-[405px] mb-16">
-      <div className="overlay absolute top-o bottom-0 left-0 right-0 w-full h-full z-10 bg-black opacity-60"></div>
+      <div className="overlay absolute top-o bottom-0 left-0 right-0 w-full h-full z-10 bg-black opacity-75"></div>
       <Image
         data-testid="feat-img"
         src={`${hostname}${post.image}`}
