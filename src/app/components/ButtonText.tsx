@@ -23,7 +23,7 @@ const ButtonText = ({
     >
       {text}
       {size === "large" && !disabled && (
-        <span className="opacity-0 absolute transition-all duration-300 right-[32px] group-hover:right-4 group-hover:opacity-100 ">
+        <span className="opacity-0 absolute transition-all duration-300 right-[32px] group-hover:right-4 group-hover:opacity-100 h-[20px]">
           {arrowIcon}
         </span>
       )}

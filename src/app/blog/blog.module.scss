@@ -20,10 +20,24 @@
     margin-bottom: 20px;
 
     @media screen and (min-width: 1024px) {
-      font-size: var(--text-h3-sm);;
-      line-height: var(--text-h3-sm--line-height);
+      font-size: var(--text-h3);;
+      line-height: var(--text-h3--line-height);
     }
   }
+
+  h4 {
+    font-family: "Gothic A1", sans-serif;
+    font-size: var(--text-h4-sm);
+    font-weight: 600;
+    line-height: var(--text-h4-sm--line-height);
+    margin-bottom: 20px;
+
+    @media screen and (min-width: 1024px) {
+      font-size: var(--text-h4);;
+      line-height: var(--text-h4--line-height);
+    }
+  }
+
 
   p, ol, ul {
     margin-bottom: var(--text-intro-sm--line-height);
