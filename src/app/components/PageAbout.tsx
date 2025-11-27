@@ -4,7 +4,7 @@ import parse from "html-react-parser";
 
 import { ButtonLink } from "./ButtonLink";
 import striptags from "striptags";
-import { sanitize } from "isomorphic-dompurify";
+import { sanitize } from "@/utils/sanitize";
 
 const PageAbout = ({
   aboutHeading,

@@ -1,5 +1,5 @@
 "use client";
-import { sanitize } from "isomorphic-dompurify";
+import { sanitize } from "@/utils/sanitize";
 import parse from "html-react-parser";
 import { Button } from "../Button";
 import Image from "next/image";

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { SkillType } from "./Projects";
 import { SkillsTag } from "./SkillsTag";
-import { sanitize } from "isomorphic-dompurify";
+import { sanitize } from "@/utils/sanitize";
 import parse, {
   domToReact,
   Element,

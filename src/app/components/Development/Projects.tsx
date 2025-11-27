@@ -2,7 +2,7 @@
 import parse from "html-react-parser";
 import { useState, useCallback } from "react";
 import { ButtonLink } from "../ButtonLink";
-import { sanitize } from "isomorphic-dompurify";
+import { sanitize } from "@/utils/sanitize";
 import { SkillsTag } from "./SkillsTag";
 
 export type SkillType = {

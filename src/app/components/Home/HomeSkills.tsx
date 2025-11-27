@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUsersRectangle } from "@fortawesome/free-solid-svg-icons";
 import { faLaptopCode } from "@fortawesome/free-solid-svg-icons";
 import parse from "html-react-parser";
-import DOMPurify from "isomorphic-dompurify";
+import { sanitize } from "@/utils/sanitize";
 
 //Note: any new icons passed in the django admin will need to be added here as the entire FontAwesome library is NOT being imported
 const iconMap = {
@@ -43,7 +43,7 @@ const HomeSkills = ({
               skill.icon in iconMap
                 ? iconMap[skill.icon as keyof typeof iconMap]
                 : undefined;
-            const cleanedDesc = DOMPurify.sanitize(skill.description);
+            const cleanedDesc = sanitize(skill.description);
             return (
               <div
                 data-testid="skill"
