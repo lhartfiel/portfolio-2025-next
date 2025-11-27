@@ -8,7 +8,6 @@ import {
   faCheck,
   faExclamationTriangle,
 } from "@fortawesome/free-solid-svg-icons";
-import DOMPurify from "isomorphic-dompurify";
 
 const checkmarkIcon = (
   <div className="flex items-center justify-center aspect-square shrink-0 bg-secondary w-6 h-6 md:w-8 md:h-8 rounded-full mr-2">
@@ -37,8 +36,12 @@ const Contact = () => {
   });
   const [errorMessage, setErrorMessage] = useState("");
 
+  // Simple sanitization function to strip HTML tags
   const sanitizeInput = (input: string): string => {
-    return DOMPurify.sanitize(input, { ALLOWED_TAGS: [] });
+    return input
+      .replace(/<[^>]*>/g, "") // Remove HTML tags
+      .replace(/[<>]/g, "") // Remove any remaining < or >
+      .trim();
   };
 
   const verifyEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
