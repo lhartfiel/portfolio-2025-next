@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { HomeImg } from "./Home/HomeImg";
-
+import { getFullImageUrl } from "@/utils/getImagePath";
 import { PageIntroContent } from "./PageIntroContent";
 
 type PageIntro = {
@@ -50,7 +50,7 @@ const PageIntro = ({
                 />
               ) : (
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}`}
+                  src={getFullImageUrl(image)}
                   alt={imageAlt || "Page Image"}
                   width={600}
                   height={600}

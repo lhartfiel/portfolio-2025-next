@@ -10,6 +10,7 @@ import {
   Mousewheel,
 } from "swiper/modules";
 import { ImageType } from "src/app/api/uxprojects";
+import { getFullImageUrl } from "@/utils/getImagePath";
 
 import "swiper/css";
 import "swiper/css/zoom";
@@ -29,7 +30,6 @@ const UxCarousel = ({
   slidesPerView: number;
   limitHeight?: boolean;
 }) => {
-  const imagePath = process.env.NEXT_PUBLIC_IMAGE_PATH;
   return (
     <div className={`${styles.carousel}`}>
       <Swiper
@@ -58,7 +58,7 @@ const UxCarousel = ({
           return (
             <SwiperSlide key={img.image}>
               <div className="swiper-zoom-container">
-                <img src={`${imagePath}${img.image}`} alt={img.imageAlt} />
+                <img src={getFullImageUrl(img.image)} alt={img.imageAlt} />
               </div>
             </SwiperSlide>
           );

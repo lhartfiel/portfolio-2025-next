@@ -13,6 +13,7 @@ import parse, {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { ButtonLink } from "../ButtonLink";
+import { getFullImageUrl } from "@/utils/getImagePath";
 import styles from "./development.module.scss";
 
 const arrowRight = (
@@ -34,7 +35,6 @@ type SideProjectType = {
   webUrl: string;
 };
 
-const hostname = process.env.NEXT_PUBLIC_IMAGE_PATH;
 const SideProjects = ({
   heading,
   sideprojects,
@@ -107,7 +107,7 @@ const SideProjects = ({
             >
               <div className="relative col-span-full lg:col-span-7 lg:col-start-1 h-[350px] md:h-full aspect-[16/11] w-full overflow-hidden">
                 <Image
-                  src={`${hostname}${project.image}`}
+                  src={getFullImageUrl(project.image)}
                   alt={project.imageAlt}
                   className="transition duration-400 group-hover:scale-105"
                   fill

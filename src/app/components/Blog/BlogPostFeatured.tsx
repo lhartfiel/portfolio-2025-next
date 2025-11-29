@@ -4,16 +4,16 @@ import parse from "html-react-parser";
 import { Post } from "../../blog/page";
 import { Button } from "../Button";
 import dayjs from "dayjs";
+import { getFullImageUrl } from "@/utils/getImagePath";
 
 const BlogPostFeatured = ({ post }: { post: Post }) => {
-  const hostname = process.env.NEXT_PUBLIC_IMAGE_PATH;
   const date = dayjs(post.createdAt, "MMM D, YYYY");
   return (
     <div className="flex flex-wrap items-center justify-center relative w-full h-[405px] mb-16">
       <div className="overlay absolute top-o bottom-0 left-0 right-0 w-full h-full z-10 bg-black opacity-75"></div>
       <Image
         data-testid="feat-img"
-        src={`${hostname}${post.image}`}
+        src={getFullImageUrl(post.image)}
         alt={`Photo for ${post.title}`}
         fill
         sizes="(max-width: 1440px) 100vw, 1440px"

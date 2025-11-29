@@ -4,6 +4,7 @@ import { SEND_HIGH_FIVE } from "src/app/api/graphql/mutations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBurst } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import { getFullImageUrl } from "@/utils/getImagePath";
 
 const HomeImg = ({
   image,
@@ -63,7 +64,7 @@ const HomeImg = ({
     <>
       <Image
         useMap="#selfmap"
-        src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${image}`}
+        src={getFullImageUrl(image)}
         alt={imageAlt}
         width={600}
         height={600}

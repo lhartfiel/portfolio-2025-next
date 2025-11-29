@@ -4,9 +4,9 @@ import parse from "html-react-parser";
 import { Post } from "../../blog/page";
 import { Button } from "../Button";
 import dayjs from "dayjs";
+import { getFullImageUrl } from "@/utils/getImagePath";
 
 const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
-  const hostname = process.env.NEXT_PUBLIC_IMAGE_PATH;
   const date = dayjs(post.createdAt, "MMM D, YYYY");
 
   return (
@@ -17,7 +17,7 @@ const BlogItems = ({ post, idx }: { post: Post; idx: number }) => {
             {post.image && (
               <span className="relative img-wrapper h-[180px] w-full overflow-hidden mb-6 xl:mb-8">
                 <Image
-                  src={`${hostname}${post.image}`}
+                  src={getFullImageUrl(post.image)}
                   alt={`Photo for ${post.title}`}
                   fill
                   sizes="(max-width: 768px) 775px (max-width: 1440px) 400px, 600px"

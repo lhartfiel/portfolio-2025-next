@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import { Button } from "../Button";
 import Image from "next/image";
 import useScreenSize from "src/app/hooks/useScreenSize";
+import { getFullImageUrl } from "@/utils/getImagePath";
 
 type Project = {
   duration: string;
@@ -46,7 +47,7 @@ const UxProject = ({ projects }: { projects: Project[] }) => {
                     }`}
                   >
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_IMAGE_PATH}${project.excerptImage}`}
+                      src={getFullImageUrl(project.excerptImage)}
                       alt={"Page Image"}
                       fill
                       sizes={
