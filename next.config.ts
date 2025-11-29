@@ -11,16 +11,17 @@ const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   images: {
     domains: DOMAIN_PATH ? [DOMAIN_PATH] : [],
-    remotePatterns: url
-      ? [
-          {
-            protocol: url.protocol.replace(":", "") as "http" | "https",
-            hostname: url.hostname,
-            port: url.port || undefined,
-            pathname: "/media/uploads/**",
-          },
-        ]
-      : [],
+    remotePatterns:
+      url && url.protocol
+        ? [
+            {
+              protocol: url.protocol.replace(":", "") as "http" | "https",
+              hostname: url.hostname,
+              port: url.port || undefined,
+              pathname: "/media/uploads/**",
+            },
+          ]
+        : [],
   },
 };
 
