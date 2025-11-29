@@ -19,7 +19,7 @@ const PageAbout = ({
 }) => {
   const [showMore, setShowMore] = useState(false);
 
-  const sanitizeContent = sanitize(aboutDescription);
+  const sanitizeContent = sanitize(aboutDescription || "");
   const stripTags = striptags(sanitizeContent, ["p", "br"]);
   const truncatedText =
     stripTags.length > truncateLength

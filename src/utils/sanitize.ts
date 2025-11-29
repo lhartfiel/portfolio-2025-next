@@ -5,6 +5,7 @@
 
 // Simple regex-based sanitization as fallback
 const regexSanitize = (input: string): string => {
+  if (!input) return "";
   return input
     .replace(/<[^>]*>/g, "") // Remove HTML tags
     .replace(/[<>]/g, "") // Remove any remaining < or >
@@ -13,6 +14,8 @@ const regexSanitize = (input: string): string => {
 
 // Client-side sanitization using DOMPurify
 export const sanitize = (input: string): string => {
+  if (!input) return "";
+
   // Check if we're in a browser environment
   if (typeof window !== "undefined") {
     try {

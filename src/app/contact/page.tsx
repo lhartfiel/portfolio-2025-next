@@ -38,6 +38,7 @@ const Contact = () => {
 
   // Simple sanitization function to strip HTML tags
   const sanitizeInput = (input: string): string => {
+    if (!input) return "";
     return input
       .replace(/<[^>]*>/g, "") // Remove HTML tags
       .replace(/[<>]/g, "") // Remove any remaining < or >
