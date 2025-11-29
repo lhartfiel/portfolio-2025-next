@@ -2,7 +2,7 @@
 import { useState, useCallback } from "react";
 import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE } from "../api/graphql/mutations";
-
+import { isSpamMessage } from "@/utils/spamDetector";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -104,9 +104,6 @@ const Contact = () => {
   });
 
   const sendMessageWrapper = useCallback(() => {
-    // Import spam detection
-    const { isSpamMessage } = require("@/utils/spamDetector");
-
     // Check for spam before sending
     const { isSpam, reason } = isSpamMessage(name, email, message);
     if (isSpam) {
