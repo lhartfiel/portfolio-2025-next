@@ -2,7 +2,7 @@
 import { useState, useCallback } from "react";
 import { useMutation } from "@apollo/client";
 import { SEND_MESSAGE } from "../api/graphql/mutations";
-import { Button } from "@/components/Button";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -104,8 +104,29 @@ const Contact = () => {
   });
 
   const sendMessageWrapper = useCallback(() => {
+    // Import spam detection
+    const { isSpamMessage } = require("@/utils/spamDetector");
+
+    // Check for spam before sending
+    const { isSpam, reason } = isSpamMessage(name, email, message);
+    if (isSpam) {
+      setSubmissionMessage({
+        success: false,
+        message: `Unable to send message: ${reason}. Please ensure your message contains valid text.`,
+      });
+      return;
+    }
+
     sendMessage();
-  }, [sendMessage]);
+  }, [sendMessage, name, email, message, setSubmissionMessage]);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent) => {
+      e.preventDefault();
+      sendMessageWrapper();
+    },
+    [sendMessageWrapper]
+  );
 
   return (
     <section className="grid grid-cols-4 flex-1 md:grid-cols-8 px-10 gap-x-4 lg:grid-cols-12 w-full bg-primary lg:bg-transparent">
@@ -116,7 +137,10 @@ const Contact = () => {
         Have questions? Curious about an opportunity to work together? Please
         fill out the form below and I’ll get back to you within 3 days.
       </p>
-      <form className="w-full py-12 col-span-4 md:col-start-3 col-start-1 lg:col-span-8 lg:col-start-3 lg:grid lg:grid-cols-8 lg:mb-12 mx-auto justify-center bg-primary">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full py-12 col-span-4 md:col-start-3 col-start-1 lg:col-span-8 lg:col-start-3 lg:grid lg:grid-cols-8 lg:mb-12 mx-auto justify-center bg-primary"
+      >
         <div className="col-span-4 col-start-1 md:col-span-6 md:col-start-2 text-center mb-6">
           {loading && <p data-testid="loading">Loading...</p>}
           {submissionMessage.message && (
@@ -176,15 +200,36 @@ const Contact = () => {
             ></textarea>
           </div>
           <div className="flex justify-center">
-            <Button
+            <button
+              type="submit"
               disabled={
                 !name || !email || !message || errorMessage ? true : false
               }
-              type="primary"
-              size="large"
-              callback={sendMessageWrapper}
-              text="Send Message"
-            ></Button>
+              className={`group relative inline-block font-kanit font-bold rounded-[20px] transition duration-300 ease-in-out w-[230px] py-[9px] ${
+                !name || !email || !message || errorMessage
+                  ? "bg-portfolio-gray cursor-not-allowed text-black"
+                  : "bg-accent border-1 border-accent text-black hover:brightness-110 hover:shadow-btn cursor-pointer"
+              }`}
+            >
+              <span className="relative flex items-center justify-center">
+                Send Message
+                {!(!name || !email || !message || errorMessage) && (
+                  <span className="opacity-0 absolute transition-all duration-300 right-[32px] group-hover:right-4 group-hover:opacity-100 h-[20px]">
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                )}
+              </span>
+            </button>
           </div>
         </div>
       </form>
