@@ -2,7 +2,6 @@
 import parse from "html-react-parser";
 import { useState, useCallback } from "react";
 import { ButtonLink } from "../ButtonLink";
-import { sanitize } from "@/utils/sanitize";
 import { SkillsTag } from "./SkillsTag";
 
 export type SkillType = {
@@ -49,11 +48,17 @@ const Projects = ({
         {projects?.length > 0 &&
           projects.map((project, idx) => {
             const rawDescription = project?.projectDescription || "";
-            const cleanText = sanitize(rawDescription);
             const truncatedDescription =
-              cleanText.length > 120
-                ? cleanText.substring(0, 120) + "..."
-                : cleanText;
+              rawDescription.length > 120
+                ? rawDescription.substring(0, 120) + "..."
+                : rawDescription;
+
+            // const rawDescription = project?.projectDescription || "";
+            // const cleanText = sanitize(rawDescription);
+            // const truncatedDescription =
+            //   cleanText.length > 120
+            //     ? cleanText.substring(0, 120) + "..."
+            //     : cleanText;
 
             return (
               <div
@@ -79,7 +84,7 @@ const Projects = ({
                       ? parse(project.projectDescription)
                       : parse(truncatedDescription)}
                   </span>
-                  {cleanText.length > 120 ? (
+                  {rawDescription.length > 120 ? (
                     <ButtonLink
                       buttonText={
                         showAllContent[project.projectTitle]

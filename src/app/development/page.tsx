@@ -34,7 +34,7 @@ const Development = async () => {
         <>
           <SideProjects
             heading={devData.sideprojectHeading}
-            sideprojects={devData.sideprojects}
+            sideprojects={devData?.sideprojects || []}
           />
         </>
       )}

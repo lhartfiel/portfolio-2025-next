@@ -50,7 +50,7 @@
   ol li, ul li, code {
     font-family: "Gothic A1", sans-serif;
     font-size: var(--text-body-sm);
-    line-height: var(--text-body-sm--line-height);
+    line-height: 24px;
     position: relative;
 
     @media screen and (min-width: 1024px) {

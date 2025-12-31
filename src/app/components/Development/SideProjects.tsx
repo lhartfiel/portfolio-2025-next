@@ -1,9 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { SkillType } from "./Projects";
 import { SkillsTag } from "./SkillsTag";
-import { sanitize } from "@/utils/sanitize";
 import parse, {
   domToReact,
   Element,
@@ -46,7 +45,13 @@ const SideProjects = ({
     {}
   );
 
-  const sortedSideprojects = sideprojects.sort((a, b) => a?.order - b?.order);
+  const sortedSideprojects = useMemo(
+    () =>
+      [...sideprojects].sort(
+        (a: SideProjectType, b: SideProjectType) => a?.order - b?.order
+      ),
+    [sideprojects]
+  );
 
   const transformLink: HTMLReactParserOptions["replace"] = (node: DOMNode) => {
     // Prevent links within richtext from bubbling to parent button when clicked
@@ -94,15 +99,14 @@ const SideProjects = ({
       >
         {sortedSideprojects.map((project) => {
           const rawDescription = project?.sideprojectDescription || "";
-          const cleanText = sanitize(rawDescription);
           const truncatedDescription =
-            cleanText.length > 320
-              ? cleanText.substring(0, 320) + "..."
-              : cleanText;
+            rawDescription.length > 320
+              ? rawDescription.substring(0, 320) + "..."
+              : rawDescription;
           return (
             <button
               onClick={() => window.open(project.webUrl)}
-              className={`order-${project.order} side-project transition duration-300 ease-in-out group grid grid-cols-subgrid col-span-full md:col-start-1 lg:col-start-2 relative bg-transparent overflow-hidden hover:cursor-pointer hover:shadow-card text-left my-4 mx-2`}
+              className={`side-project transition duration-300 ease-in-out group grid grid-cols-subgrid col-span-full md:col-start-1 lg:col-start-2 relative bg-transparent overflow-hidden hover:cursor-pointer hover:shadow-card text-left my-4 mx-2`}
               key={project.sideprojectTitle}
             >
               <div className="relative col-span-full lg:col-span-7 lg:col-start-1 h-[350px] md:h-full aspect-[16/11] w-full overflow-hidden">
@@ -127,10 +131,11 @@ const SideProjects = ({
                   )}
                   {truncatedDescription && (
                     <span
+                      suppressHydrationWarning
                       className={`${styles.sideproject} text-body-sm mt-4 lg:mt-0`}
                     >
                       {showAllContent[project.sideprojectTitle]
-                        ? parse(cleanText, {
+                        ? parse(rawDescription, {
                             replace: transformLink,
                           })
                         : parse(truncatedDescription, {
