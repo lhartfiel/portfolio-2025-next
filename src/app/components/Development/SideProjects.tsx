@@ -1,9 +1,8 @@
 "use client";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import { SkillType } from "./Projects";
 import { SkillsTag } from "./SkillsTag";
-import { sanitize } from "@/utils/sanitize";
 import parse, {
   domToReact,
   Element,
