@@ -43,12 +43,12 @@
   --text-intro-min-sm--line-height: 28px;
   --text-body: 20px;
   --text-body--line-height: 32px;
-  --text-body-sm: 16px;
-  --text-body-sm--line-height: 26px;
+  --text-body-sm: 18px;
+  --text-body-sm--line-height: 28px;
   --text-body-min: 18px;
   --text-body-min--line-height: 28px;
-  --text-body-min-sm: 15px;
-  --text-body-min-sm--line-height: 20px;
+  --text-body-min-sm: 16px;
+  --text-body-min-sm--line-height: 22px;
 
   --shadow-btn: 1px 2px 4px rgba(0, 0, 0, 0.2);
   --shadow-card: 0px 0px 4px 4px rgba(0, 0, 0, 0.15);

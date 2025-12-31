@@ -42,11 +42,11 @@ const UxDetails = ({
     },
   ];
   return (
-    <div className="flex flex-nowrap justify-between md:items-start md:justify-center py-4 px-6 bg-primary w-full text-h4 md:text-h3-sm">
+    <div className="flex flex-wrap sm:flex-nowrap justify-between md:items-start md:justify-center py-4 px-6 bg-primary w-full text-h4 md:text-h3-sm">
       {details.map((detail) => (
         <div
           key={detail.name}
-          className="flex flex-nowrap items-start sm:w-1/3 lg:w-auto icon text-white mr-2 md:mr-8"
+          className="flex flex-nowrap mb-3 sm:mb-0 items-start sm:w-1/3 lg:w-auto icon text-white mr-2 md:mr-8"
         >
           {detail.icon}{" "}
           <span className="flex flex-wrap ">

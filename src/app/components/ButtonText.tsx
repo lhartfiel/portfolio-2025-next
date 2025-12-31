@@ -17,7 +17,7 @@ const ButtonText = ({
   return (
     <p
       className={`group relative flex items-center justify-center
-        ${size === "large" ? "w-[230px] py-[9px]" : "py-[7px] px-[14px]"} ${
+        ${size === "large" ? "w-[230px] py-[9px]" : "py-[7px] px-[36px]"} ${
         disabled ? "cursor-not-allowed" : "cursor-pointer"
       }`}
     >
