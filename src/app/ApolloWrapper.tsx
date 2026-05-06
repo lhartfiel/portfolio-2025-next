@@ -9,8 +9,11 @@ import {
 import { loadErrorMessages, loadDevMessages } from "@apollo/client/dev";
 
 // GraphQL client for client-side rendering
-const GRAPHQL_URL =
-  process.env.NEXT_PUBLIC_GRAPHQL_URL || "http://localhost:3000/api/graphql";
+const GRAPHQL_URL = process.env.NEXT_PUBLIC_GRAPHQL_URL;
+
+if (!GRAPHQL_URL) {
+  throw new Error("Missing NEXT_PUBLIC_GRAPHQL_URL environment variable");
+}
 
 if (process.env.NODE_ENV !== "production") {
   // Adds messages only in a dev environment
