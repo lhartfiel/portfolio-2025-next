@@ -11,7 +11,7 @@ const About = async () => {
     aboutData = await getAboutpageData();
   } catch (error) {
     console.error("Error loading about page data:", error);
-    return <DataError />;
+    return null;
   }
 
   if (!aboutData) {

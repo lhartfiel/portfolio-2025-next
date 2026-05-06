@@ -26,11 +26,11 @@ function fetchWithTimeout(
 
     fetch(url, options)
       .then((res) => {
-        clearTimeout(timer); // 🛑 Stop the timeout from firing
+        clearTimeout(timer);
         resolve(res);
       })
       .catch((err) => {
-        clearTimeout(timer); // 🛑 Also stop it on failure
+        clearTimeout(timer);
         reject(err);
       });
   });
